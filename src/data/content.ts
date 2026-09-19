@@ -175,11 +175,11 @@ export const education = {
 };
 
 export const beyondWork = {
-  body: "Former India No. 2 and National Squash Champion; UniSport Nationals medallist (2× Silver, 1× Bronze); coach; live music producer and musician.",
+  body: "Represented India at the Junior Asian Games; former India No. 2 and National Squash Champion; UniNationals Australia 3-time medallist; coach.",
   lesson:
-    "Fifteen years of competitive sport taught me the things consulting actually runs on: performing under pressure, setting measurable goals, and coaching other people to hit them.",
+    "Fifteen years of elite competition taught me the things consulting actually runs on: performing under pressure, setting measurable goals, and coaching other people to hit them.",
   extra:
-    "On the creative side, producing live music events and building software tools for artists taught me product empathy, rapid prototyping, and designing for non-technical users.",
+    "Outside athletics, I teach music theory and piano accompaniment, perform in rock bands, and produce live music events. Breaking down complex theory for students and adapting live with an ensemble reinforced the same communication, listening, and collaborative habits I bring to client work.",
 };
 
 export const toolkit = [
