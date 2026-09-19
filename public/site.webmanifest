@@ -1,0 +1,14 @@
+{
+  "name": "Kulvir Sharma — Business Analyst, Digital Transformation",
+  "short_name": "Kulvir Sharma",
+  "description": "I turn business problems into practical, technology-enabled solutions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fdfdfb",
+  "theme_color": "#fdfdfb",
+  "icons": [
+    { "src": "/favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
