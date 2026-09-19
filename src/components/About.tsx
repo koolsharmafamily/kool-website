@@ -7,7 +7,7 @@ export function About() {
     <Section id="about" labelledBy="about-heading">
       <SectionHeading id="about-heading" kicker="Background" title="Education and development" />
 
-      <Reveal className="rounded-lg border border-rule bg-surface p-5 sm:p-6">
+      <Reveal className="rounded-lg border border-rule bg-surface p-5 sm:p-6 card-elevation">
         <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
           <h3 className="text-[1.15rem]">{education.primary.qualification}</h3>
           <span className="text-[0.85rem] tabular-nums text-ink-soft">
@@ -34,11 +34,11 @@ export function About() {
             as="li"
             key={item.qualification}
             index={i}
-            className="rounded-lg border border-rule bg-surface p-5"
+            className="rounded-lg border border-rule bg-surface p-5 card-elevation"
           >
             <h3 className="text-[1rem]">{item.qualification}</h3>
             <p className="mt-1 text-[0.9rem] text-ink-muted">{item.institution}</p>
-            <p className="mt-1 text-[0.82rem] tabular-nums text-ink-soft">{item.dates}</p>
+            {item.dates && <p className="mt-1 text-[0.82rem] tabular-nums text-ink-soft">{item.dates}</p>}
           </Reveal>
         ))}
       </ul>

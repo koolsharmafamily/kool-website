@@ -112,3 +112,16 @@ export type CaseStudy = {
   challenges?: { title: string; body: string }[];
   limitations?: string[];
 };
+
+export type GalleryEntry = {
+  name: string;
+  note: string;
+  href?: string;
+};
+
+export type OtherWorkItem = {
+  title: string;
+  body: string;
+  gallery?: GalleryEntry[];
+  meta?: string;
+};

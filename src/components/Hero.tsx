@@ -5,7 +5,7 @@ import { DownloadIcon, LinkedInIcon, MailIcon } from "./Icons";
 
 export function Hero() {
   return (
-    <section id="top" className="pt-12 pb-14 sm:pt-20 sm:pb-20">
+    <section id="top" className="pt-16 pb-16 sm:pt-24 sm:pb-24">
       <Container>
         <Reveal>
           <h1 className="text-[2.25rem] leading-[1.1] sm:text-[3.25rem]">{hero.name}</h1>

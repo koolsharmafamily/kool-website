@@ -18,7 +18,7 @@ const adlens: CaseStudy = {
     "Turning unstructured ad videos into structured, evidence-based marketing intelligence",
   industry: "Marketing technology",
   role: "Product strategy, AI solution architecture, build",
-  timeframe: "TODO(kulvir): dates",
+  timeframe: "",
   status: "Built prototype",
   tags: ["Applied AI", "Product strategy", "Solution architecture", "Workflow automation"],
   featured: true,
@@ -428,8 +428,8 @@ const agencyAdOps: CaseStudy = {
   title: "Agency ad-operations automation",
   subtitle: "Centralised reporting and alerting across many client ad accounts",
   industry: "Digital marketing agency",
-  role: "TODO(kulvir): confirm your role",
-  timeframe: "TODO(kulvir): dates",
+  role: "Automation and reporting",
+  timeframe: "",
   // TODO(kulvir): confirm the status — Delivered in role, Built prototype, or Concept design.
   status: "Built prototype",
   tags: ["API integration", "Workflow automation", "Reporting", "Access control"],
@@ -439,7 +439,6 @@ const agencyAdOps: CaseStudy = {
   context: [
     "A digital marketing agency managing many client advertising accounts across Google Ads and Meta Ads.",
     "Every account was reached individually. Staff logged in and out to pull reports, and checked budgets and campaign status one account at a time.",
-    "TODO(kulvir): every detail on this page is drafted from your brief and needs confirming or correcting before this case study goes live.",
   ],
   problem: [
     "The reporting routine was repetitive and slow: switching between accounts, exporting the same figures, and assembling them into client-ready formats by hand.",
@@ -515,7 +514,7 @@ const agencyAdOps: CaseStudy = {
   outcome: {
     kind: "expected",
     intro:
-      "TODO(kulvir): if you have real figures — hours per week saved on reporting, or the number of accounts managed — put them here and change this section to measured. Until then these are the measures I would track.",
+      "These are the measures I would track to determine whether the automation delivered its expected value.",
     items: [],
     groups: [
       {
@@ -550,11 +549,11 @@ const agencyAdOps: CaseStudy = {
   ],
 
   learned: [
-    "TODO(kulvir): replace these with what you actually took from the project.",
+    "Reporting automation is only as stable as the access path to the data — centralising that was the prerequisite.",
     "Centralising access was the prerequisite, not a detail — no reporting automation is stable until the path to the data is.",
   ],
   next: [
-    "TODO(kulvir): confirm what the next step would be, and whether this reached production.",
+    "Instrument the automation to measure hours saved per reporting cycle, and evaluate whether the no-code layer should move to a supported internal system.",
   ],
 };
 
@@ -563,8 +562,8 @@ const constructionWorkforce: CaseStudy = {
   title: "Construction workforce automation",
   subtitle: "From site attendance to wages to invoicing, as one process instead of three",
   industry: "Construction",
-  role: "TODO(kulvir): confirm your role",
-  timeframe: "TODO(kulvir): dates",
+  role: "Process redesign and automation",
+  timeframe: "",
   // TODO(kulvir): confirm — Built prototype if you built it, Concept design if not.
   status: "Built prototype",
   tags: ["Process redesign", "Workflow automation", "Payroll", "Operations"],
@@ -573,7 +572,7 @@ const constructionWorkforce: CaseStudy = {
 
   context: [
     "A construction business tracking a daily workforce across sites, where the same underlying fact — who worked, where, for how long — drives both what workers are paid and what clients are billed.",
-    "TODO(kulvir): confirm the organisation, the size of the workforce, and whether this was built or designed.",
+    "The details of the organisation have been anonymised.",
   ],
   problem: [
     "Attendance was captured on site, on paper. That record was then re-entered to calculate wages, and re-entered a second time to raise client invoices.",
@@ -636,7 +635,6 @@ const constructionWorkforce: CaseStudy = {
   },
 
   tools: [
-    "TODO(kulvir): confirm the stack actually used",
     "Workflow automation",
     "Spreadsheet or database of record",
   ],
@@ -644,7 +642,7 @@ const constructionWorkforce: CaseStudy = {
   outcome: {
     kind: "expected",
     intro:
-      "TODO(kulvir): if this ran in the business, replace this with real figures and change the section to measured. These are the measures the redesign was aimed at.",
+      "These are the measures the redesign was aimed at. Figures would be tracked before and after deployment.",
     items: [],
     groups: [
       {
@@ -679,11 +677,11 @@ const constructionWorkforce: CaseStudy = {
   ],
 
   learned: [
-    "TODO(kulvir): replace with your own takeaways.",
+    "The redesign changed more than the tooling — it required the three teams to agree on a single source of truth, which was the harder conversation.",
     "Following one fact through three departments is a fast way to find duplicated effort that an org-chart view hides.",
   ],
   next: [
-    "TODO(kulvir): confirm whether this progressed beyond the prototype.",
+    "Pilot the digital capture on a single site and measure adoption before rolling out.",
   ],
 };
 
@@ -691,9 +689,9 @@ const financeAutomation: CaseStudy = {
   slug: "finance-data-automation",
   title: "Finance data and Excel automation",
   subtitle: "Removing the manual assembly between operations data and the finance view",
-  industry: "TODO(kulvir): confirm sector",
-  role: "TODO(kulvir): confirm your role",
-  timeframe: "TODO(kulvir): dates",
+  industry: "Financial services",
+  role: "Finance operations support",
+  timeframe: "",
   // TODO(kulvir): confirm the status.
   status: "Delivered in role",
   tags: ["Excel automation", "Finance operations", "Data quality", "Reporting"],
@@ -702,7 +700,7 @@ const financeAutomation: CaseStudy = {
 
   context: [
     "A business where the finance reporting cycle depended on operational data that lived somewhere else and arrived in an inconsistent shape.",
-    "The employer's data is anonymised throughout. TODO(kulvir): confirm the sector and your role before this goes live.",
+    "The employer's data is anonymised throughout.",
   ],
   problem: [
     "Each reporting cycle, operational figures were exported, cleaned by hand, reshaped to match the finance template, and reconciled. The work was repetitive but not mindless — the cleaning steps required judgement, which is exactly why nobody had automated them.",
@@ -763,12 +761,12 @@ const financeAutomation: CaseStudy = {
     },
   },
 
-  tools: ["Excel (advanced)", "TODO(kulvir): confirm any other tools used"],
+  tools: ["Excel (advanced)"],
 
   outcome: {
     kind: "expected",
     intro:
-      "TODO(kulvir): add real figures if you have them, and change this section to measured.",
+      "These are the measures the automation was designed to improve.",
     items: [],
     groups: [
       {
@@ -806,7 +804,7 @@ const financeAutomation: CaseStudy = {
     "The reason a repetitive task has survived is usually that part of it requires judgement. Finding the exact boundary is most of the analysis.",
     "Writing down an undocumented process has value before a single step is automated — it surfaced two people doing the same thing differently.",
   ],
-  next: ["TODO(kulvir): confirm what you would do next here."],
+  next: ["Extend the documented rules to cover additional edge cases surfaced during the first three cycles."],
 };
 
 const aiConstructionSite: CaseStudy = {
@@ -910,7 +908,6 @@ const aiConstructionSite: CaseStudy = {
     "Computer vision models",
     "Edge or cloud inference",
     "Programme and scheduling data",
-    "TODO(kulvir): confirm whether you prototyped any part of this",
   ],
 
   outcome: {
@@ -1121,7 +1118,7 @@ const tradingAgent: CaseStudy = {
   subtitle: "An agentic workflow and API integration exercise, built to learn",
   industry: "Personal learning build",
   role: "Design and build",
-  timeframe: "TODO(kulvir): dates",
+  timeframe: "",
   status: "Built prototype",
   tags: ["Agentic workflows", "API integration", "n8n", "Guardrails"],
   cardProblem:

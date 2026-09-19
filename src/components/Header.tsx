@@ -42,7 +42,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-rule bg-paper/90 backdrop-blur-sm no-print">
-      <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-3 px-5 py-2.5 sm:px-8 sm:py-3">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-5 py-2.5 sm:px-8 sm:py-3">
         <a
           href="/"
           onClick={(e) => {
@@ -126,7 +126,7 @@ export function Header() {
           aria-label="Primary"
           className="border-t border-rule bg-paper md:hidden"
         >
-          <ul className="mx-auto flex w-full max-w-5xl list-none flex-col px-5 py-2 sm:px-8">
+          <ul className="mx-auto flex w-full max-w-6xl list-none flex-col px-5 py-2 sm:px-8">
             {nav.map((item) => {
               const id = item.href.split("#")[1];
               const isActive = onHome && active === id;

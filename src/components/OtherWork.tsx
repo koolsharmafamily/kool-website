@@ -18,7 +18,7 @@ export function OtherWork() {
             as="li"
             key={item.title}
             index={Math.min(i, 4)}
-            className="flex min-w-0 flex-col rounded-lg border border-rule bg-surface p-5"
+            className="flex min-w-0 flex-col rounded-lg border border-rule bg-surface p-5 card-elevation"
           >
             <h3 className="text-[1.05rem]">{item.title}</h3>
             <p className="mt-2 text-[0.9rem] leading-relaxed text-ink-muted">{item.body}</p>

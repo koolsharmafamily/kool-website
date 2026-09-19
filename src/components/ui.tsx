@@ -10,7 +10,7 @@ export function Container({
   className?: string;
 }) {
   return (
-    <div className={`mx-auto w-full max-w-5xl px-5 sm:px-8 ${className}`}>{children}</div>
+    <div className={`mx-auto w-full max-w-6xl px-5 sm:px-8 ${className}`}>{children}</div>
   );
 }
 
@@ -92,6 +92,7 @@ export function Chip({ children }: { children: ReactNode }) {
 
 /** A definition row: label on the left, value on the right. */
 export function MetaRow({ label, value }: { label: string; value: ReactNode }) {
+  if (!value) return null;
   return (
     <div className="grid grid-cols-[minmax(0,7rem)_1fr] gap-x-4 gap-y-1 border-b border-rule py-3 last:border-b-0 max-[480px]:grid-cols-1">
       <dt className="text-[0.8rem] font-semibold uppercase tracking-[0.08em] text-ink-soft">

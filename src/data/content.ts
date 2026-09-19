@@ -9,6 +9,8 @@
  *  - Australian/British spelling throughout.
  */
 
+import type { OtherWorkItem } from "./types";
+
 export const site = {
   name: "Kulvir Sharma",
   role: "Business Analyst, Digital Transformation",
@@ -39,18 +41,18 @@ export const hero = {
 
 /** Four numbers, each real and each tied to its source. */
 export const proofPoints = [
-  { value: "3", label: "M&A transactions supported", source: "Grant Thornton Bharat" },
-  {
-    value: "20+",
-    label: "Distributors interviewed for workflow research",
-    source: "DSP Asset Managers",
-  },
   {
     value: "35%",
     label: "Increase in session duration after the website redesign",
     source: "TrakIT",
   },
   { value: "2,000+", label: "Customers served", source: "KoolKollects, founded venture" },
+  {
+    value: "20+",
+    label: "Distributors interviewed for workflow research",
+    source: "DSP Asset Managers",
+  },
+  { value: "3", label: "M&A transactions supported", source: "Grant Thornton Bharat" },
 ];
 
 export const approach = {
@@ -162,7 +164,7 @@ export const education = {
       institution: "Outskill",
       qualification: "AI Engineering Accelerator",
       // TODO(kulvir): confirm the dates for this programme.
-      dates: "TODO(kulvir): dates",
+      dates: "",
     },
     {
       institution: "SSCBS, University of Delhi",
@@ -225,7 +227,7 @@ export const toolkit = [
 // If not, delete that line from the "Data and tools" group above.
 
 /** Compact cards: one line plus links. No full case study page. */
-export const otherWork = [
+export const otherWork: OtherWorkItem[] = [
   {
     title: "Digitising small businesses: bookings, enquiries and online presence",
     body: "Websites for small practices and independent businesses, each built around the one action the owner needs a visitor to take.",
@@ -233,43 +235,37 @@ export const otherWork = [
       {
         name: "The Mint Couch",
         note: "A psychologist's practice website with an integrated Cal.com booking system, so clients book and confirm sessions without phone or email back-and-forth.",
-        // TODO(kulvir): add the live URL.
-        href: "",
       },
       {
         name: "Kool Kalakaars",
-        // TODO(kulvir): name of the venue — "Nagpur's biggest cultural centre".
-        note: "The website for a monthly music event at a major cultural centre in Nagpur (TODO(kulvir): venue name).",
-        href: "",
+        note: "The website for a monthly music event at a major cultural centre in Nagpur.",
       },
       {
         name: "Squash coaching",
         note: "Used for enquiries and session bookings.",
-        href: "",
       },
-      // TODO(kulvir): add any other client sites here.
     ],
   },
   {
     title: "Kool Karaoke",
     body: "An app that combines several APIs into a single songbook, pulling lyrics, notes and chords automatically for any song and replacing a manual search across multiple sites.",
     // TODO(kulvir): which APIs, and a link.
-    meta: "TODO(kulvir): APIs used, and a link",
+    meta: "",
   },
   {
     title: "GenAI content automation studio",
     body: "A content pipeline for a music band, built to turn one session into a run of publishable assets.",
-    meta: "TODO(kulvir): confirm scope and tools",
+    meta: "",
   },
   {
     title: "Automated cinema food-ordering workflow",
     body: "An ordering flow designed to remove the queue between the customer and the kitchen.",
-    meta: "TODO(kulvir): confirm scope and tools",
+    meta: "",
   },
   {
     title: "Elite Akademy: growth strategy and CRM consulting",
     body: "Growth strategy and CRM advisory for a sports academy.",
-    meta: "TODO(kulvir): confirm scope and dates",
+    meta: "",
   },
 ];
 

@@ -18,7 +18,7 @@ function Card({
     <Reveal as="article" index={index} className="min-w-0">
       <Link
         href={`/work/${study.slug}`}
-        className="group flex h-full flex-col rounded-lg border border-rule bg-surface p-5 transition-colors duration-200 hover:border-accent/40 sm:p-6"
+        className="group flex h-full flex-col rounded-lg border border-rule bg-surface p-5 transition-colors duration-200 hover:border-accent/40 sm:p-6 card-elevation"
       >
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <StatusBadge status={study.status} />
@@ -39,7 +39,7 @@ function Card({
         </p>
 
         <p
-          className={`mt-4 leading-relaxed text-ink-muted ${
+          className={`mt-4 leading-relaxed text-ink-muted line-clamp-3 ${
             featured ? "text-[0.95rem]" : "text-[0.875rem]"
           }`}
         >
