@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <title>Kulvir Sharma | Business Analyst, Digital Transformation</title>
     <meta
@@ -13,6 +17,7 @@
     <link rel="canonical" href="https://kulvirsharma-portfolio.vercel.app/" />
     <meta name="author" content="Kulvir Sharma" />
     <meta name="theme-color" content="#fdfdfb" />
+    <meta name="color-scheme" content="light" />
 
     <!-- Open Graph: this is the preview shown when the link is pasted into LinkedIn or an email -->
     <meta property="og:type" content="website" />
@@ -37,17 +42,9 @@
     />
     <meta name="twitter:image" content="https://kulvirsharma-portfolio.vercel.app/og-image.png" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap"
-    />
+    <!-- Fonts are self-hosted via @fontsource and imported in src/main.tsx:
+         no render-blocking round trip to fonts.googleapis.com, no third party
+         in the critical path, and only the weights the design uses. -->
 
     <script type="application/ld+json">
       {
