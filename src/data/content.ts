@@ -15,11 +15,10 @@ export const site = {
   url: "https://kulvirsharma-portfolio.vercel.app",
   email: "kulvirsharma13@gmail.com",
   linkedin: "https://www.linkedin.com/in/kulvir-sharma-0452a5256/",
-  linkedinLabel: "linkedin.com/in/kulvir-sharma",
-  // TODO(kulvir): confirm your GitHub profile URL, then pin AdLens first and
-  // make unfinished repos private before this link goes live.
-  github: "https://github.com/TODO-kulvir",
-  githubLabel: "github.com/TODO-kulvir",
+  // TODO(kulvir): before sending the link out, pin your best repos (AdLens
+  // first — it has no repo on this account yet) and make unfinished ones
+  // private. Recruiters won't read the code, but technical interviewers might.
+  github: "https://github.com/koolsharmafamily",
   resume: "/Kulvir-Sharma-Resume.pdf",
 };
 
