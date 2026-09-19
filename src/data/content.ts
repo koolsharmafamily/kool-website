@@ -175,11 +175,11 @@ export const education = {
 };
 
 export const beyondWork = {
-  body: "Former India No. 2 and National Squash Champion; UniSport Nationals medallist (2× Silver, 1× Bronze); coach; Melbourne University Squash Club committee.",
+  body: "Former India No. 2 and National Squash Champion; UniSport Nationals medallist (2× Silver, 1× Bronze); coach; live music producer and musician.",
   lesson:
     "Fifteen years of competitive sport taught me the things consulting actually runs on: performing under pressure, setting measurable goals, and coaching other people to hit them.",
   extra:
-    "At Janet Clarke Hall I led a team of six running quarterly events for the college.",
+    "On the creative side, producing live music events and building software tools for artists taught me product empathy, rapid prototyping, and designing for non-technical users.",
 };
 
 export const toolkit = [
