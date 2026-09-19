@@ -25,3 +25,7 @@ dist-ssr
 
 # Local Claude Code settings
 .claude/settings.local.json
+
+# Working documents — kept local, not published with the site
+AUDIT.md
+PORTFOLIO_AUDIT_PROMPT.md
