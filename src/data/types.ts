@@ -60,6 +60,16 @@ export type CaseStudy = {
   status: Status;
   tags: string[];
 
+  /** Case display ID e.g. "CAS-01" / "CASE 01". */
+  caseNumber: string;
+
+  /** Executive SCR summary (Situation / Complication / Resolution). */
+  scr?: {
+    situation: string;
+    complication: string;
+    resolution: string;
+  };
+
   /** Card-only fields. */
   cardProblem: string;
   featured?: boolean;

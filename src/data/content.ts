@@ -33,56 +33,69 @@ export const nav = [
 ];
 
 export const hero = {
+  kicker: "BUSINESS ANALYST · DIGITAL TRANSFORMATION · MELBOURNE → INDIA",
   name: "Kulvir Sharma",
   role: "Business Analyst, Digital Transformation",
   value: "I turn business problems into practical, technology-enabled solutions.",
-  sub: "Commerce (Finance & Management), University of Melbourne. Experience across M&A advisory, financial services, B2B SaaS and AI automation.",
+  sub: "Commerce graduate (Finance & Management), University of Melbourne. Proven record across M&A advisory, financial services, B2B SaaS, and applied AI automation.",
+  trustedBy: [
+    "Grant Thornton Bharat",
+    "DSP Asset Managers",
+    "Publicis Sapient",
+    "TrakIT",
+    "University of Melbourne",
+  ],
 };
 
 /** Four numbers, each real and each tied to its source. */
 export const proofPoints = [
   {
     value: "35%",
-    label: "Increase in session duration after the website redesign",
+    label: "Increase in session duration after website redesign",
     source: "TrakIT",
   },
-  { value: "2,000+", label: "Customers served", source: "KoolKollects, founded venture" },
+  { value: "2,000+", label: "Customers served across ventures", source: "KoolKollects, founded venture" },
   {
     value: "20+",
     label: "Distributors interviewed for workflow research",
     source: "DSP Asset Managers",
   },
-  { value: "3", label: "M&A transactions supported", source: "Grant Thornton Bharat" },
+  { value: "3", label: "M&A transactions supported in lead advisory", source: "Grant Thornton Bharat" },
 ];
 
 export const approach = {
   intro:
-    "Whether it's a client's booking process, an agency's reporting or a band's content pipeline, I like finding the friction and building something that removes it.",
+    "Whether it is an institutional booking process, multi-account agency reporting, or a content pipeline, I isolate the structural friction and build targeted solutions.",
   steps: [
     {
       name: "Understand",
       question: "What actually happens today?",
       body: "I sit with the people doing the work and map the process as it runs, not as the documentation describes it.",
+      caption: "Applied in: DSP distributor research",
     },
     {
       name: "Analyse",
       question: "Where does the time and the money go?",
       body: "I separate the friction that is merely annoying from the friction that is expensive, then size the gap.",
+      caption: "Applied in: Construction workforce redesign",
     },
     {
       name: "Design",
       question: "What should happen instead?",
       body: "I design the future-state process first, and only then decide which parts are worth automating.",
+      caption: "Applied in: Finance reporting automation",
     },
     {
       name: "Build",
       question: "Does it work outside a slide?",
-      body: "I build a working version — a workflow, an integration, a prototype — so the recommendation can be tested rather than argued about.",
+      body: "I build a working version (a workflow, an integration, or a functional prototype) so the recommendation can be tested rather than argued about.",
+      caption: "Applied in: AdLens AI prototype",
     },
     {
       name: "Measure",
       question: "How will we know it worked?",
-      body: "I define the measures before launch, so the result is a number rather than an opinion.",
+      body: "I define the measures before launch, so the result is a measurable metric rather than an opinion.",
+      caption: "Applied in: TrakIT Australian market entry",
     },
   ],
 };
@@ -150,7 +163,7 @@ export const experience = [
 export const education = {
   primary: {
     institution: "The University of Melbourne",
-    qualification: "Bachelor of Commerce — Finance & Management",
+    qualification: "Bachelor of Commerce: Finance & Management",
     dates: "2022 – 2026",
     scholarships: [
       "Olive Wykes & Elite Athlete Scholarship, Janet Clarke Hall (2023, 2024)",
@@ -270,6 +283,7 @@ export const otherWork: OtherWorkItem[] = [
 ];
 
 export const contact = {
-  line: "Open to graduate and analyst roles in Business Analysis, Digital Transformation and Technology Consulting.",
-  note: "The quickest way to reach me is email — I reply to everything.",
+  title: "Let's talk about the problem you're solving.",
+  line: "Open to Business Analyst, Digital Transformation and Technology Consulting roles across Melbourne and India.",
+  note: "The quickest way to reach me is email. I reply to every enquiry.",
 };

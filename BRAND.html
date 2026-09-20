@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kulvir Sharma · Visual Identity System</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Palette Core */
+            --color-ink: #0E1A2B;
+            --color-ink-muted: #495664; /* WCAG 5.6:1 on Paper */
+            --color-paper: #F7F5F0;
+            --color-surface: #FFFFFF;
+            --color-rule: #E3DED3;
+            --color-accent: #0F5B5B;
+            --color-signal: #C8762B;
+            
+            /* Typography */
+            --font-display: 'Fraunces', serif;
+            --font-body: 'Inter Tight', sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+            
+            /* Type Scale */
+            --text-h1: clamp(3rem, 6vw, 5.5rem);
+            --text-h2: clamp(2rem, 3.5vw, 3rem);
+            --text-h3: clamp(1.25rem, 2vw, 1.75rem);
+            --text-body: 1.125rem; /* 18px */
+            --text-small: 0.875rem; /* 14px */
+            --text-xs: 0.75rem; /* 12px */
+            
+            /* Spacing Scale */
+            --space-4: 0.25rem;
+            --space-8: 0.5rem;
+            --space-12: 0.75rem;
+            --space-16: 1rem;
+            --space-24: 1.5rem;
+            --space-32: 2rem;
+            --space-48: 3rem;
+            --space-64: 4rem;
+            --space-96: 6rem;
+            --space-128: 8rem;
+            
+            /* Geometry */
+            --radius-sm: 2px;
+            --radius-md: 6px;
+            --rule-width: 1px;
+            
+            /* Layout */
+            --grid-max: 1200px;
+            --grid-gutter: var(--space-24);
+            
+            /* Motion */
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration: 450ms;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--color-paper);
+            color: var(--color-ink);
+            font-family: var(--font-body);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        h1, h2 {
+            font-family: var(--font-display);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+        }
+        
+        h1 { font-size: var(--text-h1); }
+        h2 { font-size: var(--text-h2); }
+        h3 { font-size: var(--text-h3); font-weight: 500; letter-spacing: -0.01em; line-height: 1.2; }
+        
+        p { font-size: var(--text-body); color: var(--color-ink-muted); }
+        .text-ink { color: var(--color-ink); }
+        
+        .mono-label {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-ink-muted);
+        }
+        
+        a { color: var(--color-accent); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--color-ink); }
+
+        .container {
+            width: 100%;
+            max-width: var(--grid-max);
+            margin: 0 auto;
+            padding: 0 var(--space-16);
+        }
+        
+        .grid-12 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--grid-gutter);
+        }
+        
+        @media (min-width: 768px) {
+            .grid-12 { grid-template-columns: repeat(12, 1fr); }
+            .col-span-1 { grid-column: span 1; }
+            .col-span-2 { grid-column: span 2; }
+            .col-span-3 { grid-column: span 3; }
+            .col-span-4 { grid-column: span 4; }
+            .col-span-5 { grid-column: span 5; }
+            .col-span-6 { grid-column: span 6; }
+            .col-span-7 { grid-column: span 7; }
+            .col-span-8 { grid-column: span 8; }
+            .col-span-9 { grid-column: span 9; }
+            .col-span-12 { grid-column: span 12; }
+        }
+
+        /* Standard Sections */
+        .section { padding: var(--space-96) 0; border-bottom: var(--rule-width) solid var(--color-rule); }
+        .section-dark { background-color: var(--color-ink); color: var(--color-paper); }
+        .section-dark p, .section-dark .mono-label { color: #A0ABB5; }
+        .section-surface { background-color: var(--color-surface); }
+        .brand-header { padding: var(--space-96) 0 var(--space-64); border-bottom: var(--rule-width) solid var(--color-ink); }
+        
+        .swatch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-24); }
+        .swatch { border: var(--rule-width) solid var(--color-rule); border-radius: var(--radius-sm); overflow: hidden; background: var(--color-surface); }
+        .swatch-color { height: 120px; width: 100%; }
+        .swatch-info { padding: var(--space-16); font-family: var(--font-mono); font-size: 11px; line-height: 1.6; }
+        
+        .type-specimen { padding: var(--space-32) 0; border-bottom: var(--rule-width) solid var(--color-rule); }
+        .type-specimen:last-child { border-bottom: none; }
+        
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: var(--space-12) var(--space-24);
+            font-family: var(--font-body); font-weight: 500; font-size: var(--text-small);
+            border-radius: var(--radius-sm); cursor: pointer; transition: all 0.2s var(--ease-out);
+            border: var(--rule-width) solid transparent;
+        }
+        .btn-primary { background-color: var(--color-ink); color: var(--color-surface); }
+        .btn-primary:hover { background-color: var(--color-accent); color: var(--color-surface); }
+        .btn-outline { background-color: transparent; color: var(--color-ink); border-color: var(--color-ink); }
+        .btn-outline:hover { background-color: var(--color-ink); color: var(--color-surface); }
+        
+        /* Table */
+        .data-table { width: 100%; border-collapse: collapse; text-align: left; }
+        .data-table th, .data-table td { padding: var(--space-16) var(--space-8); border-bottom: var(--rule-width) solid var(--color-rule); }
+        .data-table th { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted); font-weight: 500; text-transform: uppercase; }
+        .data-table tr { transition: background-color 0.2s var(--ease-out); }
+        .data-table tbody tr:hover { background-color: var(--color-surface); cursor: pointer; }
+        .data-table tbody tr:hover td:last-child { transform: translateX(3px); color: var(--color-accent); }
+        .data-table td:last-child { transition: transform 0.2s var(--ease-out), color 0.2s; }
+        
+        /* Badges */
+        .badge { display: inline-block; padding: 4px 8px; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; border-radius: var(--radius-sm); white-space: nowrap; }
+        .badge-teal { background-color: #E6F0F0; color: var(--color-accent); border: var(--rule-width) solid transparent; }
+        .badge-navy { background-color: transparent; color: var(--color-ink); border: var(--rule-width) solid var(--color-ink); }
+        .badge-concept { background-color: transparent; color: var(--color-ink-muted); border: var(--rule-width) dashed var(--color-ink-muted); }
+        
+        /* Nav Line */
+        .nav-link { position: relative; padding-bottom: 4px; color: var(--color-ink-muted); }
+        .nav-link.active { color: var(--color-ink); }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: 0; left: 0; height: 2px;
+            background-color: var(--color-accent); width: 0; transition: width 0.3s var(--ease-out);
+        }
+        .nav-link.active::after, .nav-link:hover::after { width: 100%; }
+
+        /* Code Blocks */
+        pre { background: var(--color-ink); color: var(--color-paper); padding: var(--space-24); overflow-x: auto; font-family: var(--font-mono); font-size: 13px; border-radius: var(--radius-sm); margin-bottom: var(--space-24); line-height: 1.5; border: 1px solid rgba(255,255,255,0.1); }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity var(--duration) var(--ease-out), transform var(--duration) var(--ease-out);
+        }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        
+        .hover-card { 
+            transition: transform 0.3s var(--ease-out), border-color 0.3s var(--ease-out); 
+            border: var(--rule-width) solid var(--color-rule);
+            background: var(--color-surface);
+            border-radius: var(--radius-sm);
+        }
+        .hover-card:hover { 
+            transform: translateY(-2px); 
+            border-color: var(--color-ink-muted);
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { transition: none; opacity: 1; transform: translateY(0); }
+            .hover-card { transition: none; transform: none; }
+            .nav-link::after { transition: none; }
+            .data-table td:last-child { transition: none; }
+        }
+        
+        .hairline-vertical { width: var(--rule-width); background-color: var(--color-ink-muted); height: 100%; opacity: 0.3; }
+
+        /* SVG Exhibit Utilities */
+        .svg-text { font-family: var(--font-mono); font-size: 10px; }
+        .svg-title { font-family: var(--font-body); font-weight: 500; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+    <header class="brand-header container reveal">
+        <div class="grid-12">
+            <div class="col-span-8">
+                <p class="mono-label" style="margin-bottom: var(--space-16);">Brand Guidelines & Component Library</p>
+                <h1>Kulvir Sharma</h1>
+                <p style="margin-top: var(--space-24); max-width: 650px; font-size: var(--text-h3); color: var(--color-ink);">
+                    Visual Identity System: "A McKinsey insights report meets a Stripe product page." Editorial, precise, confident, and understated.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <section class="section container reveal">
+        <div class="grid-12">
+            <div class="col-span-4">
+                <h3 class="mono-label">01 · Monogram Concepts</h3>
+                <p style="margin-top: var(--space-12); font-size: var(--text-small);">Three distinct approaches to the KS initials, prioritizing editorial elegance over generic tech geometry.</p>
+            </div>
+            
+            <div class="col-span-8">
+                <div class="grid-12" style="gap: var(--space-24); margin-bottom: var(--space-32);">
+                    <!-- Concept A -->
+                    <div class="col-span-4">
+                        <div style="background: var(--color-surface); border: 1px solid var(--color-rule); padding: var(--space-32); display: flex; justify-content: center; align-items: center; aspect-ratio: 1; margin-bottom: var(--space-8);">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="currentColor">
+                                <rect x="2" y="2" width="60" height="60" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                <text x="32" y="42" font-family="'Fraunces', serif" font-size="34" font-weight="400" text-anchor="middle" letter-spacing="-2">KS</text>
+                            </svg>
+                        </div>
+                        <p class="mono-label">A. The Square Serif</p>
+                    </div>
+                    
+                    <!-- Concept B -->
+                    <div class="col-span-4">
+                        <div style="background: var(--color-ink); color: var(--color-paper); padding: var(--space-32); display: flex; justify-content: center; align-items: center; aspect-ratio: 1; margin-bottom: var(--space-8); position: relative;">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="currentColor">
+                                <path d="M22,18 h6 v28 h-6 v-28 M26,18 v28 M28,34 l10,-12 h6 l-12,12 M30,32 l14,14 h-6 l-12,-12" stroke="currentColor" stroke-width="1" transform="translate(-14, 0)"/>
+                                <line x1="32" y1="16" x2="32" y2="48" stroke="currentColor" stroke-width="0.75" opacity="0.5"/>
+                                <path d="M52,20 c-2,-2 -5,-3 -8,-3 c-4,0 -7,2 -7,5 c0,4 10,4 10,9 c0,4 -3,6 -8,6 c-4,0 -7,-2 -9,-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" transform="translate(6, 0)"/>
+                            </svg>
+                            <span style="position: absolute; top: 12px; right: 12px; background: var(--color-accent); color: white; padding: 4px 8px; font-size: 10px; font-family: var(--font-mono); border-radius: 2px;">SELECTED</span>
+                        </div>
+                        <p class="mono-label">B. The Split Hairline</p>
+                    </div>
+
+                    <!-- Concept C -->
+                    <div class="col-span-4">
+                        <div style="background: var(--color-surface); border: 1px solid var(--color-rule); padding: var(--space-32); display: flex; justify-content: center; align-items: center; aspect-ratio: 1; margin-bottom: var(--space-8);">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor">
+                                <path d="M20,16 v32 M20,32 l12,-16 M24,32 l14,14 c3,3 8,1 8,-4 c0,-6 -14,-4 -14,-10 c0,-5 5,-7 8,-4" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+                            </svg>
+                        </div>
+                        <p class="mono-label">C. The Geometric Mark</p>
+                    </div>
+                </div>
+
+                <div style="background: var(--color-surface); border: 1px solid var(--color-rule); padding: var(--space-24); margin-bottom: var(--space-48);">
+                    <h3 style="margin-bottom: var(--space-8);">Rationale for Selection</h3>
+                    <p class="text-ink">The Split Hairline best balances authoritative editorial aesthetics with precision. The delicate vertical rule dividing the abstracted serif letterforms suggests analytical dichotomy (Before/After, Problem/Solution) and structured confidence.</p>
+                </div>
+
+                <h3 class="mono-label" style="margin-bottom: var(--space-16);">Chosen Mark Scaling</h3>
+                <div style="display: flex; gap: var(--space-24); align-items: flex-end; margin-bottom: var(--space-48); flex-wrap: wrap;">
+                    <div>
+                        <div style="background: var(--color-surface); border: 1px solid var(--color-rule); padding: 16px; display: flex; align-items: center; justify-content: center;">
+                            <svg width="16" height="16" viewBox="0 0 64 64" fill="currentColor"><path d="M22,18 h6 v28 h-6 v-28 M26,18 v28 M28,34 l10,-12 h6 l-12,12 M30,32 l14,14 h-6 l-12,-12" stroke="currentColor" stroke-width="1.5" transform="translate(-14, 0)"/><line x1="32" y1="16" x2="32" y2="48" stroke="currentColor" stroke-width="1.5" opacity="0.5"/><path d="M52,20 c-2,-2 -5,-3 -8,-3 c-4,0 -7,2 -7,5 c0,4 10,4 10,9 c0,4 -3,6 -8,6 c-4,0 -7,-2 -9,-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" transform="translate(6, 0)"/></svg>
+                        </div>
+                        <p class="mono-label" style="margin-top: 8px; font-size: 10px;">16px</p>
+                    </div>
+                    <div>
+                        <div style="background: var(--color-surface); border: 1px solid var(--color-rule); padding: 16px; display: flex; align-items: center; justify-content: center;">
+                            <svg width="32" height="32" viewBox="0 0 64 64" fill="currentColor"><path d="M22,18 h6 v28 h-6 v-28 M26,18 v28 M28,34 l10,-12 h6 l-12,12 M30,32 l14,14 h-6 l-12,-12" stroke="currentColor" stroke-width="1" transform="translate(-14, 0)"/><line x1="32" y1="16" x2="32" y2="48" stroke="currentColor" stroke-width="1" opacity="0.5"/><path d="M52,20 c-2,-2 -5,-3 -8,-3 c-4,0 -7,2 -7,5 c0,4 10,4 10,9 c0,4 -3,6 -8,6 c-4,0 -7,-2 -9,-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" transform="translate(6, 0)"/></svg>
+                        </div>
+                        <p class="mono-label" style="margin-top: 8px; font-size: 10px;">32px</p>
+                    </div>
+                    <div>
+                        <div style="background: var(--color-surface); border: 1px solid var(--color-rule); padding: 16px; display: flex; align-items: center; justify-content: center;">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="currentColor"><path d="M22,18 h6 v28 h-6 v-28 M26,18 v28 M28,34 l10,-12 h6 l-12,12 M30,32 l14,14 h-6 l-12,-12" stroke="currentColor" stroke-width="1" transform="translate(-14, 0)"/><line x1="32" y1="16" x2="32" y2="48" stroke="currentColor" stroke-width="0.75" opacity="0.5"/><path d="M52,20 c-2,-2 -5,-3 -8,-3 c-4,0 -7,2 -7,5 c0,4 10,4 10,9 c0,4 -3,6 -8,6 c-4,0 -7,-2 -9,-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" transform="translate(6, 0)"/></svg>
+                        </div>
+                        <p class="mono-label" style="margin-top: 8px; font-size: 10px;">64px</p>
+                    </div>
+                    <div>
+                        <div style="background: var(--color-surface); border: 1px solid var(--color-rule); padding: 16px; display: flex; align-items: center; justify-content: center;">
+                            <svg width="128" height="128" viewBox="0 0 64 64" fill="currentColor"><path d="M22,18 h6 v28 h-6 v-28 M26,18 v28 M28,34 l10,-12 h6 l-12,12 M30,32 l14,14 h-6 l-12,-12" stroke="currentColor" stroke-width="1" transform="translate(-14, 0)"/><line x1="32" y1="16" x2="32" y2="48" stroke="currentColor" stroke-width="0.5" opacity="0.5"/><path d="M52,20 c-2,-2 -5,-3 -8,-3 c-4,0 -7,2 -7,5 c0,4 10,4 10,9 c0,4 -3,6 -8,6 c-4,0 -7,-2 -9,-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" transform="translate(6, 0)"/></svg>
+                        </div>
+                        <p class="mono-label" style="margin-top: 8px; font-size: 10px;">256px (Scaled 50%)</p>
+                    </div>
+                </div>
+
+                <h3 class="mono-label" style="margin-bottom: var(--space-16);">Colour Variations & Wordmark Lockup</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-24);">
+                    <div style="background: var(--color-paper); border: 1px solid var(--color-rule); padding: var(--space-32); display: flex; align-items: center; gap: var(--space-16); color: var(--color-ink);">
+                        <svg width="32" height="32" viewBox="0 0 64 64" fill="currentColor"><path d="M22,18 h6 v28 h-6 v-28 M26,18 v28 M28,34 l10,-12 h6 l-12,12 M30,32 l14,14 h-6 l-12,-12" stroke="currentColor" stroke-width="1" transform="translate(-14, 0)"/><line x1="32" y1="16" x2="32" y2="48" stroke="currentColor" stroke-width="1" opacity="0.5"/><path d="M52,20 c-2,-2 -5,-3 -8,-3 c-4,0 -7,2 -7,5 c0,4 10,4 10,9 c0,4 -3,6 -8,6 c-4,0 -7,-2 -9,-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" transform="translate(6, 0)"/></svg>
+                        <span style="font-family: var(--font-body); font-weight: 500; font-size: 18px; letter-spacing: -0.01em;">Kulvir Sharma</span>
+                    </div>
+                    
+                    <div style="background: var(--color-ink); padding: var(--space-32); display: flex; align-items: center; gap: var(--space-16); color: var(--color-paper);">
+                        <svg width="32" height="32" viewBox="0 0 64 64" fill="currentColor"><path d="M22,18 h6 v28 h-6 v-28 M26,18 v28 M28,34 l10,-12 h6 l-12,12 M30,32 l14,14 h-6 l-12,-12" stroke="currentColor" stroke-width="1" transform="translate(-14, 0)"/><line x1="32" y1="16" x2="32" y2="48" stroke="currentColor" stroke-width="1" opacity="0.5"/><path d="M52,20 c-2,-2 -5,-3 -8,-3 c-4,0 -7,2 -7,5 c0,4 10,4 10,9 c0,4 -3,6 -8,6 c-4,0 -7,-2 -9,-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" transform="translate(6, 0)"/></svg>
+                        <span style="font-family: var(--font-body); font-weight: 500; font-size: 18px; letter-spacing: -0.01em;">Kulvir Sharma</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section container reveal">
+        <div class="grid-12">
+            <div class="col-span-4">
+                <h3 class="mono-label">02 · Colour Palette</h3>
+                <p style="margin-top: var(--space-12); font-size: var(--text-small);">Restrained and purposeful. The muted ink was derived specifically to pass WCAG AA on the paper background while maintaining typographic hierarchy.</p>
+            </div>
+            
+            <div class="col-span-8">
+                <div class="swatch-grid">
+                    <div class="swatch">
+                        <div class="swatch-color" style="background-color: #0E1A2B;"></div>
+                        <div class="swatch-info">
+                            <strong style="font-size: 13px;">Ink (Navy)</strong><br>
+                            HEX: #0E1A2B<br>
+                            Role: Text, Dark Sections<br>
+                            <span style="color: var(--color-accent); margin-top: 4px; display: block;">On Paper: 14.1:1 (Pass AAA)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="swatch">
+                        <div class="swatch-color" style="background-color: #495664;"></div>
+                        <div class="swatch-info">
+                            <strong style="font-size: 13px;">Ink Muted</strong><br>
+                            HEX: #495664<br>
+                            Role: Secondary Text<br>
+                            <span style="color: var(--color-accent); margin-top: 4px; display: block;">On Paper: 5.6:1 (Pass AA)</span>
+                        </div>
+                    </div>
+
+                    <div class="swatch">
+                        <div class="swatch-color" style="background-color: #F7F5F0; border-bottom: 1px solid var(--color-rule);"></div>
+                        <div class="swatch-info">
+                            <strong style="font-size: 13px;">Paper</strong><br>
+                            HEX: #F7F5F0<br>
+                            Role: Page Background<br>
+                            <span style="color: var(--color-ink-muted); margin-top: 4px; display: block;">Warm off-white</span>
+                        </div>
+                    </div>
+
+                    <div class="swatch">
+                        <div class="swatch-color" style="background-color: #FFFFFF; border-bottom: 1px solid var(--color-rule);"></div>
+                        <div class="swatch-info">
+                            <strong style="font-size: 13px;">Surface</strong><br>
+                            HEX: #FFFFFF<br>
+                            Role: Component Bg<br>
+                            <span style="color: var(--color-ink-muted); margin-top: 4px; display: block;">Pure white</span>
+                        </div>
+                    </div>
+
+                    <div class="swatch">
+                        <div class="swatch-color" style="background-color: #E3DED3;"></div>
+                        <div class="swatch-info">
+                            <strong style="font-size: 13px;">Rule</strong><br>
+                            HEX: #E3DED3<br>
+                            Role: Hairlines, Borders<br>
+                            <span style="color: var(--color-ink-muted); margin-top: 4px; display: block;">For structural lines only</span>
+                        </div>
+                    </div>
+
+                    <div class="swatch">
+                        <div class="swatch-color" style="background-color: #0F5B5B;"></div>
+                        <div class="swatch-info">
+                            <strong style="font-size: 13px;">Accent (Deep Teal)</strong><br>
+                            HEX: #0F5B5B<br>
+                            Role: Links, Highlights<br>
+                            <span style="color: var(--color-accent); margin-top: 4px; display: block;">On Paper: 7.4:1 (Pass AAA)</span>
+                        </div>
+                    </div>
+
+                    <div class="swatch">
+                        <div class="swatch-color" style="background-color: #C8762B;"></div>
+                        <div class="swatch-info">
+                            <strong style="font-size: 13px;">Signal (Amber)</strong><br>
+                            HEX: #C8762B<br>
+                            Role: ONLY Data/Exhibits<br>
+                            <span style="color: var(--color-accent); margin-top: 4px; display: block;">On Navy: 5.1:1 (Pass AA)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section container reveal">
+        <div class="grid-12">
+            <div class="col-span-4">
+                <h3 class="mono-label">03 · Typography</h3>
+                <p style="margin-top: var(--space-12); font-size: var(--text-small);">Fraunces for authoritative display. Inter Tight for crisp readability. IBM Plex Mono for data density.</p>
+            </div>
+            
+            <div class="col-span-8">
+                <div class="type-specimen">
+                    <p class="mono-label" style="margin-bottom: var(--space-8);">H1 Display · Fraunces Regular · clamp(3rem, 6vw, 5.5rem) · LS: -0.02em · LH: 1.05</p>
+                    <h1>I turn business problems into practical, technology-enabled solutions.</h1>
+                </div>
+
+                <div class="type-specimen">
+                    <p class="mono-label" style="margin-bottom: var(--space-8);">H2 Section · Fraunces Regular · clamp(2rem, 3.5vw, 3rem) · LS: -0.02em · LH: 1.05</p>
+                    <h2>I turn business problems into practical, technology-enabled solutions.</h2>
+                </div>
+
+                <div class="type-specimen">
+                    <p class="mono-label" style="margin-bottom: var(--space-8);">H3 Title · Inter Tight Medium · clamp(1.25rem, 2vw, 1.75rem) · LS: -0.01em · LH: 1.2</p>
+                    <h3 class="text-ink">I turn business problems into practical, technology-enabled solutions.</h3>
+                </div>
+
+                <div class="type-specimen">
+                    <p class="mono-label" style="margin-bottom: var(--space-8);">Body · Inter Tight Regular · 18px / 1.125rem · LH: 1.5</p>
+                    <p class="text-ink">I turn business problems into practical, technology-enabled solutions. Working across the intersection of business strategy and technical execution, ensuring that automation creates measurable value.</p>
+                </div>
+                
+                <div class="type-specimen">
+                    <p class="mono-label" style="margin-bottom: var(--space-8);">Small Body · Inter Tight Regular · 14px / 0.875rem · LH: 1.5</p>
+                    <p style="font-size: var(--text-small);">I turn business problems into practical, technology-enabled solutions. Working across the intersection of business strategy and technical execution.</p>
+                </div>
+
+                <div class="type-specimen">
+                    <p class="mono-label" style="margin-bottom: var(--space-8);">Mono Label / Data · IBM Plex Mono · 12px / 0.75rem · LS: 0.05em · Uppercase</p>
+                    <p class="mono-label">CASE 01 · EXHIBIT 2 · I turn business problems into practical solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section container reveal">
+        <div class="grid-12">
+            <div class="col-span-4">
+                <h3 class="mono-label">04 · Layout System</h3>
+                <p style="margin-top: var(--space-12); font-size: var(--text-small);">A strict 12-column grid. The asymmetric 4/8 split creates an editorial rhythm, mimicking physical annual reports. Shadowless rules separate components.</p>
+            </div>
+            
+            <div class="col-span-8">
+                <!-- Grid Wireframe Diagram -->
+                <div style="background: var(--color-surface); border: 1px solid var(--color-rule); padding: var(--space-32); margin-bottom: var(--space-24);">
+                    <p class="mono-label" style="margin-bottom: var(--space-16); text-align: center;">Desktop 12-Column Grid (1200px max, 24px gutter)</p>
+                    <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 8px; height: 120px; margin-bottom: var(--space-12);">
+                        <!-- 4 col header representation -->
+                        <div style="grid-column: span 4; background: var(--color-paper); border: 1px dashed var(--color-ink-muted);"></div>
+                        <!-- 8 col content representation -->
+                        <div style="grid-column: span 8; background: var(--color-ink); opacity: 0.05; border: 1px dashed var(--color-ink-muted);"></div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 8px;">
+                        <div style="grid-column: span 4;"><p class="mono-label" style="font-size: 10px; text-align: center;">Cols 1–4 (Headings)</p></div>
+                        <div style="grid-column: span 8;"><p class="mono-label" style="font-size: 10px; text-align: center;">Cols 5–12 (Content)</p></div>
+                    </div>
+                </div>
+
+                <div style="background: var(--color-surface); border: 1px solid var(--color-rule); padding: var(--space-32); max-width: 390px; margin: 0 auto;">
+                    <p class="mono-label" style="margin-bottom: var(--space-16); text-align: center;">Mobile 1-Column (390px, 16px margins)</p>
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 8px; height: 160px; margin-bottom: var(--space-12);">
+                        <div style="background: var(--color-paper); border: 1px dashed var(--color-ink-muted); height: 40px;"></div>
+                        <div style="background: var(--color-ink); opacity: 0.05; border: 1px dashed var(--color-ink-muted); height: 112px;"></div>
+                    </div>
+                    <div style="text-align: center;">
+                        <p class="mono-label" style="font-size: 10px;">Gutter collapses to vertical stack</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section container reveal" style="border-bottom: none; padding-bottom: var(--space-32);">
+        <div class="grid-12">
+            <div class="col-span-12">
+                <h3 class="mono-label" style="margin-bottom: var(--space-48);">05 · Component Library (Live Renders)</h3>
+            </div>
+        </div>
+    </section>
+
+    <div class="reveal" style="position: sticky; top: 0; z-index: 100; background: var(--color-paper); border-bottom: 1px solid var(--color-rule); padding: var(--space-16) 0; margin-bottom: var(--space-96);">
+        <div class="container grid-12" style="align-items: center;">
+            <div class="col-span-4" style="display: flex; align-items: center; gap: var(--space-12);">
+                <svg width="24" height="24" viewBox="0 0 64 64" fill="currentColor">
+                    <path d="M22,18 h6 v28 h-6 v-28 M26,18 v28 M28,34 l10,-12 h6 l-12,12 M30,32 l14,14 h-6 l-12,-12" stroke="currentColor" stroke-width="1" transform="translate(-14, 0)"/>
+                    <line x1="32" y1="16" x2="32" y2="48" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+                    <path d="M52,20 c-2,-2 -5,-3 -8,-3 c-4,0 -7,2 -7,5 c0,4 10,4 10,9 c0,4 -3,6 -8,6 c-4,0 -7,-2 -9,-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" transform="translate(6, 0)"/>
+                </svg>
+                <span style="font-family: var(--font-body); font-weight: 500; font-size: 15px; letter-spacing: -0.01em;">Kulvir Sharma</span>
+            </div>
+            <div class="col-span-8" style="display: flex; justify-content: flex-end; align-items: center; gap: var(--space-32);">
+                <nav style="display: flex; gap: var(--space-24); font-size: var(--text-small); font-weight: 500;">
+                    <a href="#" class="nav-link active">Selected Work</a>
+                    <a href="#" class="nav-link">Experience</a>
+                    <a href="#" class="nav-link">About</a>
+                </nav>
+                <button class="btn btn-outline">Resume</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container reveal" style="margin-bottom: var(--space-128);">
+        <div class="grid-12" style="align-items: center;">
+            <div class="col-span-7" style="padding-right: var(--space-32);">
+                <p class="mono-label" style="margin-bottom: var(--space-24);">Business Analyst · Digital Transformation</p>
+                <h1 style="margin-bottom: var(--space-24);">Bridging the gap between business strategy and automated execution.</h1>
+                <p style="margin-bottom: var(--space-32); max-width: 90%;">I engineer systems that replace manual friction with structured data, transforming how enterprise teams operate at scale.</p>
+                <div style="display: flex; align-items: center; gap: var(--space-24);">
+                    <button class="btn btn-primary">View the work</button>
+                    <a href="#" style="font-size: var(--text-small); font-weight: 500;">Download resume &rarr;</a>
+                </div>
+            </div>
+            
+            <div class="col-span-5 hover-card" style="padding: var(--space-24);">
+                <p class="mono-label" style="margin-bottom: var(--space-16);">EXHIBIT 1 · Workflow optimization</p>
+                
+                <svg viewBox="0 0 400 240" style="width: 100%; height: auto; display: block;">
+                    <defs>
+                        <marker id="arrow-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#495664" />
+                        </marker>
+                        <marker id="arrow-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#0F5B5B" />
+                        </marker>
+                    </defs>
+
+                    <line x1="0" y1="40" x2="400" y2="40" stroke="#E3DED3" stroke-width="1" stroke-dasharray="2,2"/>
+                    <line x1="0" y1="140" x2="400" y2="140" stroke="#E3DED3" stroke-width="1" stroke-dasharray="2,2"/>
+                    
+                    <text x="0" y="32" fill="#495664" class="svg-text">BEFORE (Manual)</text>
+                    <text x="0" y="132" fill="#0F5B5B" class="svg-text">AFTER (Automated)</text>
+
+                    <!-- BEFORE -->
+                    <rect x="0" y="50" width="70" height="32" fill="none" stroke="#495664" stroke-width="1"/>
+                    <text x="35" y="70" fill="#0E1A2B" text-anchor="middle" class="svg-title">Video</text>
+                    
+                    <line x1="70" y1="66" x2="105" y2="66" stroke="#495664" stroke-width="1" marker-end="url(#arrow-gray)"/>
+                    
+                    <rect x="110" y="50" width="70" height="32" fill="none" stroke="#C8762B" stroke-width="1.5" stroke-dasharray="2,2"/>
+                    <text x="145" y="70" fill="#C8762B" text-anchor="middle" class="svg-title">Watch</text>
+                    
+                    <line x1="180" y1="66" x2="215" y2="66" stroke="#495664" stroke-width="1" marker-end="url(#arrow-gray)"/>
+                    
+                    <rect x="220" y="50" width="70" height="32" fill="none" stroke="#C8762B" stroke-width="1.5" stroke-dasharray="2,2"/>
+                    <text x="255" y="70" fill="#C8762B" text-anchor="middle" class="svg-title">Notes</text>
+
+                    <line x1="290" y1="66" x2="325" y2="66" stroke="#495664" stroke-width="1" marker-end="url(#arrow-gray)"/>
+                    
+                    <rect x="330" y="50" width="70" height="32" fill="none" stroke="#C8762B" stroke-width="1.5"/>
+                    <text x="365" y="70" fill="#C8762B" text-anchor="middle" class="svg-title">Sheet</text>
+
+                    <!-- AFTER -->
+                    <rect x="0" y="150" width="70" height="32" fill="none" stroke="#495664" stroke-width="1"/>
+                    <text x="35" y="170" fill="#0E1A2B" text-anchor="middle" class="svg-title">Video</text>
+                    
+                    <line x1="70" y1="166" x2="105" y2="166" stroke="#0F5B5B" stroke-width="1.5" marker-end="url(#arrow-teal)"/>
+                    
+                    <rect x="110" y="150" width="70" height="32" fill="#E6F0F0" stroke="#0F5B5B" stroke-width="1"/>
+                    <text x="145" y="170" fill="#0F5B5B" text-anchor="middle" class="svg-title">AI Extract</text>
+                    
+                    <line x1="180" y1="166" x2="215" y2="166" stroke="#0F5B5B" stroke-width="1.5" marker-end="url(#arrow-teal)"/>
+                    
+                    <rect x="220" y="150" width="70" height="32" fill="#E6F0F0" stroke="#0F5B5B" stroke-width="1"/>
+                    <text x="255" y="170" fill="#0F5B5B" text-anchor="middle" class="svg-title">Framework</text>
+
+                    <line x1="290" y1="166" x2="325" y2="166" stroke="#0F5B5B" stroke-width="1.5" marker-end="url(#arrow-teal)"/>
+                    
+                    <rect x="330" y="150" width="70" height="32" fill="#0F5B5B" stroke="#0F5B5B" stroke-width="1"/>
+                    <text x="365" y="170" fill="#FFFFFF" text-anchor="middle" class="svg-title">Dash</text>
+
+                    <!-- Connecting mapped lines -->
+                    <line x1="35" y1="88" x2="35" y2="142" stroke="#E3DED3" stroke-width="1" stroke-dasharray="2,2"/>
+                    <line x1="365" y1="88" x2="365" y2="142" stroke="#E3DED3" stroke-width="1" stroke-dasharray="2,2"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-dark reveal" style="padding: var(--space-64) 0; margin-bottom: var(--space-128);">
+        <div class="container grid-12">
+            <div class="col-span-12" style="display: flex; justify-content: space-between; position: relative;">
+                <div style="flex: 1; padding-right: var(--space-24);">
+                    <div style="font-family: var(--font-display); font-size: var(--text-h1); color: var(--color-signal); line-height: 1;">3</div>
+                    <div class="mono-label" style="margin-top: var(--space-12);">Enterprise Platforms</div>
+                </div>
+                <div class="hairline-vertical"></div>
+                
+                <div style="flex: 1; padding: 0 var(--space-24);">
+                    <div style="font-family: var(--font-display); font-size: var(--text-h1); color: var(--color-signal); line-height: 1;">20+</div>
+                    <div class="mono-label" style="margin-top: var(--space-12);">Automations Deployed</div>
+                </div>
+                <div class="hairline-vertical"></div>
+
+                <div style="flex: 1; padding: 0 var(--space-24);">
+                    <div style="font-family: var(--font-display); font-size: var(--text-h1); color: var(--color-signal); line-height: 1;">35%</div>
+                    <div class="mono-label" style="margin-top: var(--space-12);">Avg. Efficiency Gain</div>
+                </div>
+                <div class="hairline-vertical"></div>
+
+                <div style="flex: 1; padding-left: var(--space-24);">
+                    <div style="font-family: var(--font-display); font-size: var(--text-h1); color: var(--color-signal); line-height: 1;">2,000+</div>
+                    <div class="mono-label" style="margin-top: var(--space-12);">Hours Saved Annually</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container reveal" style="margin-bottom: var(--space-128);">
+        <h3 class="mono-label" style="margin-bottom: var(--space-24);">d) Featured Case Study Card</h3>
+        <div class="grid-12 hover-card" style="cursor: pointer; overflow: hidden;">
+            <div class="col-span-7" style="padding: var(--space-48);">
+                <span class="badge badge-teal" style="margin-bottom: var(--space-24);">Delivered in role</span>
+                <h2 style="margin-bottom: var(--space-16);">Automated Data Extraction Pipeline for Video Assets</h2>
+                <p style="margin-bottom: var(--space-32); font-size: 1.125rem; color: var(--color-ink);">Reduced manual processing time by 85% by implementing an LLM-based parsing system to convert unstructured video transcripts into structured data models.</p>
+                <div class="mono-label" style="font-size: 11px;">
+                    PYTHON &middot; OPENAI API &middot; PANDAS &middot; INTERNAL DASHBOARD
+                </div>
+            </div>
+            
+            <div class="col-span-5" style="background-color: var(--color-ink); display: flex; align-items: center; justify-content: center; position: relative;">
+                <svg width="100%" height="100%" viewBox="0 0 400 350" preserveAspectRatio="xMidYMid slice" fill="none">
+                    <!-- Abstract Data Architecture -->
+                    <path d="M-50,175 Q150,125 200,175 T450,175" stroke="#495664" stroke-width="1" opacity="0.4"/>
+                    <path d="M-50,195 Q150,145 200,195 T450,195" stroke="#495664" stroke-width="1" opacity="0.4"/>
+                    <path d="M-50,155 Q150,105 200,155 T450,155" stroke="#495664" stroke-width="1" opacity="0.4"/>
+                    
+                    <circle cx="100" cy="163" r="4" fill="#0F5B5B" />
+                    <circle cx="200" cy="175" r="5" fill="#C8762B" />
+                    <circle cx="300" cy="187" r="4" fill="#0F5B5B" />
+                    
+                    <rect x="198" y="125" width="4" height="40" fill="#0F5B5B" opacity="0.9"/>
+                    <rect x="210" y="105" width="4" height="60" fill="#0F5B5B" opacity="0.6"/>
+                    <rect x="186" y="145" width="4" height="20" fill="#C8762B" opacity="0.9"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="container reveal" style="margin-bottom: var(--space-128);">
+        <div class="grid-12">
+            <div class="col-span-4">
+                <h3 class="mono-label">e) Index Table</h3>
+                <h3 class="mono-label" style="margin-top: var(--space-8);">f) Status Badges</h3>
+            </div>
+            <div class="col-span-8">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;">ID</th>
+                            <th style="width: 35%;">Project Title</th>
+                            <th style="width: 25%;">Industry</th>
+                            <th style="width: 20%;">Status</th>
+                            <th style="width: 5%; text-align: right;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="mono-label">CAS-01</td>
+                            <td style="font-weight: 500;">Financial Reporting Automation</td>
+                            <td style="color: var(--color-ink-muted);">Retail Banking</td>
+                            <td><span class="badge badge-teal">Delivered in role</span></td>
+                            <td style="text-align: right; color: var(--color-ink-muted);">&rarr;</td>
+                        </tr>
+                        <tr>
+                            <td class="mono-label">CAS-02</td>
+                            <td style="font-weight: 500;">Client Onboarding Flow</td>
+                            <td style="color: var(--color-ink-muted);">Wealth Management</td>
+                            <td><span class="badge badge-navy">Built prototype</span></td>
+                            <td style="text-align: right; color: var(--color-ink-muted);">&rarr;</td>
+                        </tr>
+                        <tr>
+                            <td class="mono-label">CAS-03</td>
+                            <td style="font-weight: 500;">Inventory Predictive Model</td>
+                            <td style="color: var(--color-ink-muted);">Supply Chain</td>
+                            <td><span class="badge badge-concept">Concept design</span></td>
+                            <td style="text-align: right; color: var(--color-ink-muted);">&rarr;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container reveal" style="margin-bottom: var(--space-128);">
+        <h3 class="mono-label" style="margin-bottom: var(--space-24);">g) Consulting Exhibit Style</h3>
+        <div class="hover-card" style="padding: var(--space-32); max-width: 850px;">
+            <p class="mono-label" style="margin-bottom: var(--space-12);">EXHIBIT 2 &middot; Current vs future state</p>
+            <h3 style="margin-bottom: var(--space-32); max-width: 90%;">Consolidating fragmented data silos into a single source of truth reduces reconciliation time by 40%.</h3>
+            
+            <svg viewBox="0 0 750 220" style="width: 100%; height: auto; display: block;">
+                <!-- Left Side: Current -->
+                <text x="120" y="20" fill="#495664" text-anchor="middle" class="svg-text">CURRENT FRAGMENTATION</text>
+                
+                <rect x="20" y="50" width="160" height="36" fill="#F7F5F0" stroke="#0E1A2B" stroke-width="1"/>
+                <text x="100" y="72" fill="#0E1A2B" text-anchor="middle" class="svg-title">Salesforce CRM</text>
+                
+                <rect x="20" y="100" width="160" height="36" fill="#F7F5F0" stroke="#0E1A2B" stroke-width="1"/>
+                <text x="100" y="122" fill="#0E1A2B" text-anchor="middle" class="svg-title">Legacy ERP</text>
+
+                <rect x="20" y="150" width="160" height="36" fill="#F7F5F0" stroke="#0E1A2B" stroke-width="1"/>
+                <text x="100" y="172" fill="#0E1A2B" text-anchor="middle" class="svg-title">Manual Spreadsheets</text>
+
+                <!-- Messy Connectors -->
+                <path d="M 180 68 C 220 68, 220 118, 270 118" fill="none" stroke="#C8762B" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <path d="M 180 118 L 270 118" fill="none" stroke="#C8762B" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <path d="M 180 168 C 220 168, 220 118, 270 118" fill="none" stroke="#C8762B" stroke-width="1.5" stroke-dasharray="4,4"/>
+                
+                <circle cx="270" cy="118" r="5" fill="#C8762B"/>
+                <text x="270" y="142" fill="#C8762B" text-anchor="middle" class="svg-text">Bottleneck</text>
+
+                <!-- Divider -->
+                <line x1="375" y1="20" x2="375" y2="200" stroke="#E3DED3" stroke-width="1" stroke-dasharray="2,2"/>
+
+                <!-- Right Side: Future -->
+                <text x="590" y="20" fill="#0F5B5B" text-anchor="middle" class="svg-text">UNIFIED ARCHITECTURE</text>
+                
+                <rect x="430" y="50" width="100" height="32" fill="none" stroke="#495664" stroke-width="1"/>
+                <text x="480" y="70" fill="#495664" text-anchor="middle" class="svg-title" style="font-size:11px;">Data Sources</text>
+                
+                <rect x="430" y="102" width="100" height="32" fill="none" stroke="#495664" stroke-width="1"/>
+                <text x="480" y="122" fill="#495664" text-anchor="middle" class="svg-title" style="font-size:11px;">API Gateways</text>
+
+                <rect x="430" y="154" width="100" height="32" fill="none" stroke="#495664" stroke-width="1"/>
+                <text x="480" y="174" fill="#495664" text-anchor="middle" class="svg-title" style="font-size:11px;">Webhooks</text>
+
+                <!-- Clean Connectors -->
+                <path d="M 530 66 L 560 66 L 560 118 L 590 118" fill="none" stroke="#0F5B5B" stroke-width="1.5"/>
+                <path d="M 530 118 L 590 118" fill="none" stroke="#0F5B5B" stroke-width="1.5"/>
+                <path d="M 530 170 L 560 170 L 560 118 L 590 118" fill="none" stroke="#0F5B5B" stroke-width="1.5"/>
+
+                <polygon points="590,114 598,118 590,122" fill="#0F5B5B"/>
+
+                <rect x="598" y="78" width="120" height="80" fill="#E6F0F0" stroke="#0F5B5B" stroke-width="1"/>
+                <text x="658" y="114" fill="#0F5B5B" text-anchor="middle" class="svg-title">Unified Data</text>
+                <text x="658" y="130" fill="#0F5B5B" text-anchor="middle" class="svg-text">Warehouse</text>
+            </svg>
+            
+            <p style="font-size: 11px; margin-top: var(--space-24); color: var(--color-ink-muted); border-top: var(--rule-width) solid var(--color-rule); padding-top: var(--space-12);">Source: Proposed architecture review, Q4.</p>
+        </div>
+    </div>
+
+    <div class="container reveal" style="margin-bottom: var(--space-128);">
+        <h3 class="mono-label" style="margin-bottom: var(--space-24);">h) Timeline Row</h3>
+        <div style="border-top: var(--rule-width) solid var(--color-rule); border-bottom: var(--rule-width) solid var(--color-rule);">
+            <div class="grid-12" style="padding: var(--space-24) 0; align-items: baseline; transition: background-color 0.2s; cursor: default;" onmouseover="this.style.backgroundColor='var(--color-surface)'" onmouseout="this.style.backgroundColor='transparent'">
+                <div class="col-span-3">
+                    <span class="mono-label">2023 &mdash; Present</span>
+                </div>
+                <div class="col-span-9">
+                    <div style="display: flex; gap: 8px; margin-bottom: 4px;">
+                        <strong>Business Analyst</strong>
+                        <span style="color: var(--color-ink-muted);">&middot;</span>
+                        <span style="color: var(--color-ink-muted);">Capgemini</span>
+                    </div>
+                    <p style="max-width: 600px;">Leading digital transformation initiatives across retail banking, mapping as-is processes to identify strategic automation opportunities.</p>
+                </div>
+            </div>
+            <div class="grid-12" style="padding: var(--space-24) 0; border-top: var(--rule-width) solid var(--color-rule); align-items: baseline; transition: background-color 0.2s; cursor: default;" onmouseover="this.style.backgroundColor='var(--color-surface)'" onmouseout="this.style.backgroundColor='transparent'">
+                <div class="col-span-3">
+                    <span class="mono-label">2021 &mdash; 2023</span>
+                </div>
+                <div class="col-span-9">
+                    <div style="display: flex; gap: 8px; margin-bottom: 4px;">
+                        <strong>Technology Consultant</strong>
+                        <span style="color: var(--color-ink-muted);">&middot;</span>
+                        <span style="color: var(--color-ink-muted);">Deloitte</span>
+                    </div>
+                    <p style="max-width: 600px;">Delivered data migration strategy and executed technical proof-of-concepts for enterprise client modernization programs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-dark reveal" style="padding: var(--space-96) 0; margin-bottom: var(--space-96);">
+        <div class="container grid-12">
+            <div class="col-span-12">
+                <h3 class="mono-label" style="margin-bottom: var(--space-24); color: var(--color-signal);">i) Contact Section</h3>
+            </div>
+            <div class="col-span-8">
+                <h2 style="margin-bottom: var(--space-48); color: var(--color-surface); max-width: 90%;">Let's talk about the problem you're solving.</h2>
+                <a href="mailto:hello@kulvirsharma.com" style="font-size: var(--text-h3); color: var(--color-surface); border-bottom: 2px solid var(--color-accent); padding-bottom: 4px; display: inline-block;">hello@kulvirsharma.com</a>
+            </div>
+            <div class="col-span-4" style="display: flex; flex-direction: column; justify-content: flex-end; gap: var(--space-12);">
+                <a href="#" style="color: #A0ABB5;">LinkedIn &nearr;</a>
+                <a href="#" style="color: #A0ABB5;">Download Resume &nearr;</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="section container reveal">
+        <div class="grid-12">
+            <div class="col-span-4">
+                <h3 class="mono-label">06 &middot; Motion Rules</h3>
+                <p style="margin-top: var(--space-12); font-size: var(--text-small);">Motion establishes hierarchy on load and confirms interaction. Strictly NO decorative parallax, typewriter effects, or cursor tracking.</p>
+            </div>
+            
+            <div class="col-span-8">
+                <div class="hover-card" style="padding: var(--space-32); margin-bottom: var(--space-24);">
+                    <h3 style="margin-bottom: var(--space-16);">Animation Specifications</h3>
+                    <ul style="list-style-type: none; font-size: var(--text-small); color: var(--color-ink-muted);">
+                        <li style="margin-bottom: 12px;"><strong class="text-ink">Reveal on Scroll:</strong> Only <code style="background: var(--color-paper); padding: 2px 6px; font-family: var(--font-mono); border: 1px solid var(--color-rule);">opacity: 0 &rarr; 1</code> and <code style="background: var(--color-paper); padding: 2px 6px; font-family: var(--font-mono); border: 1px solid var(--color-rule);">translateY(12px) &rarr; 0</code>.</li>
+                        <li style="margin-bottom: 12px;"><strong class="text-ink">Timing:</strong> <code style="background: var(--color-paper); padding: 2px 6px; font-family: var(--font-mono); border: 1px solid var(--color-rule);">450ms</code> with <code style="background: var(--color-paper); padding: 2px 6px; font-family: var(--font-mono); border: 1px solid var(--color-rule);">cubic-bezier(0.16, 1, 0.3, 1)</code> (ease-out).</li>
+                        <li style="margin-bottom: 12px;"><strong class="text-ink">Hover States:</strong> Cards lift <code style="background: var(--color-paper); padding: 2px 6px; font-family: var(--font-mono); border: 1px solid var(--color-rule);">-2px</code>. Table arrows nudge <code style="background: var(--color-paper); padding: 2px 6px; font-family: var(--font-mono); border: 1px solid var(--color-rule);">3px</code> right. No soft drop shadows, only a slightly darker border.</li>
+                        <li><strong class="text-ink">Accessibility:</strong> CSS utilizes <code style="background: var(--color-paper); padding: 2px 6px; font-family: var(--font-mono); border: 1px solid var(--color-rule);">@media (prefers-reduced-motion: reduce)</code> to disable transitions instantly.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section container reveal" style="border-bottom: none; padding-bottom: var(--space-96);">
+        <div class="grid-12">
+            <div class="col-span-12">
+                <h3 class="mono-label" style="margin-bottom: var(--space-32);">07 &middot; Deliverables (Copy-Paste Ready)</h3>
+            </div>
+            
+            <div class="col-span-6">
+                <p class="mono-label" style="margin-bottom: var(--space-8);">1. CSS Custom Properties</p>
+                <pre><code>:root {
+  /* Colors */
+  --color-ink: #0E1A2B;
+  --color-ink-muted: #495664;
+  --color-paper: #F7F5F0;
+  --color-surface: #FFFFFF;
+  --color-rule: #E3DED3;
+  --color-accent: #0F5B5B;
+  --color-signal: #C8762B;
+  
+  /* Fonts */
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter Tight', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  
+  /* Type Scale */
+  --text-h1: clamp(3rem, 6vw, 5.5rem);
+  --text-h2: clamp(2rem, 3.5vw, 3rem);
+  --text-h3: clamp(1.25rem, 2vw, 1.75rem);
+  --text-body: 1.125rem;
+  --text-small: 0.875rem;
+  --text-xs: 0.75rem;
+  
+  /* Spacing */
+  --space-4: 0.25rem;
+  --space-8: 0.5rem;
+  --space-12: 0.75rem;
+  --space-16: 1rem;
+  --space-24: 1.5rem;
+  --space-32: 2rem;
+  --space-48: 3rem;
+  --space-64: 4rem;
+  --space-96: 6rem;
+  --space-128: 8rem;
+  
+  /* Radii & Rules */
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --rule-width: 1px;
+}</code></pre>
+            </div>
+
+            <div class="col-span-6">
+                <p class="mono-label" style="margin-bottom: var(--space-8);">2. Tailwind v4 @theme Block</p>
+                <pre><code>@theme {
+  --color-ink: #0E1A2B;
+  --color-ink-muted: #495664;
+  --color-paper: #F7F5F0;
+  --color-surface: #FFFFFF;
+  --color-rule: #E3DED3;
+  --color-accent: #0F5B5B;
+  --color-signal: #C8762B;
+  
+  --font-display: "Fraunces", serif;
+  --font-body: "Inter Tight", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  
+  --spacing-4: 0.25rem;
+  --spacing-8: 0.5rem;
+  --spacing-12: 0.75rem;
+  --spacing-16: 1rem;
+  --spacing-24: 1.5rem;
+  --spacing-32: 2rem;
+  --spacing-48: 3rem;
+  --spacing-64: 4rem;
+  --spacing-96: 6rem;
+  --spacing-128: 8rem;
+}</code></pre>
+            </div>
+
+            <div class="col-span-12" style="margin-top: var(--space-12);">
+                <p class="mono-label" style="margin-bottom: var(--space-8);">3. Final Monogram SVG (Use currentColor)</p>
+                <pre><code>&lt;svg viewBox="0 0 64 64" fill="currentColor" xmlns="http://www.w3.org/2000/svg"&gt;
+  &lt;path d="M22,18 h6 v28 h-6 v-28 M26,18 v28 M28,34 l10,-12 h6 l-12,12 M30,32 l14,14 h-6 l-12,-12" stroke="currentColor" stroke-width="1.5" transform="translate(-14, 0)"/&gt;
+  &lt;line x1="32" y1="16" x2="32" y2="48" stroke="currentColor" stroke-width="1" opacity="0.5"/&gt;
+  &lt;path d="M52,20 c-2,-2 -5,-3 -8,-3 c-4,0 -7,2 -7,5 c0,4 10,4 10,9 c0,4 -3,6 -8,6 c-4,0 -7,-2 -9,-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" transform="translate(6, 0)"/&gt;
+&lt;/svg&gt;</code></pre>
+            </div>
+
+            <div class="col-span-12" style="margin-top: var(--space-12);">
+                <p class="mono-label" style="margin-bottom: var(--space-8);">4. Favicon SVG</p>
+                <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"&gt;
+  &lt;rect width="64" height="64" fill="#0E1A2B"/&gt;
+  &lt;path d="M22,18 h6 v28 h-6 v-28 M26,18 v28 M28,34 l10,-12 h6 l-12,12 M30,32 l14,14 h-6 l-12,-12" stroke="#F7F5F0" stroke-width="1.5" transform="translate(-14, 0)"/&gt;
+  &lt;line x1="32" y1="16" x2="32" y2="48" stroke="#F7F5F0" stroke-width="1" opacity="0.5"/&gt;
+  &lt;path d="M52,20 c-2,-2 -5,-3 -8,-3 c-4,0 -7,2 -7,5 c0,4 10,4 10,9 c0,4 -3,6 -8,6 c-4,0 -7,-2 -9,-5" fill="none" stroke="#F7F5F0" stroke-width="2" stroke-linecap="square" transform="translate(6, 0)"/&gt;
+&lt;/svg&gt;</code></pre>
+            </div>
+
+            <div class="col-span-12" style="margin-top: var(--space-12);">
+                <p class="mono-label" style="margin-bottom: var(--space-8);">5. Open Graph Image (1200x630) SVG</p>
+                <div style="width: 100%; max-width: 600px; margin-bottom: 16px; border: 1px solid var(--color-rule);">
+                    <svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; display: block;">
+                        <rect width="1200" height="630" fill="#0E1A2B"/>
+                        <!-- Monogram -->
+                        <g transform="translate(100, 100) scale(2)">
+                            <path d="M22,18 h6 v28 h-6 v-28 M26,18 v28 M28,34 l10,-12 h6 l-12,12 M30,32 l14,14 h-6 l-12,-12" stroke="#F7F5F0" stroke-width="2" transform="translate(-14, 0)"/>
+                            <line x1="32" y1="16" x2="32" y2="48" stroke="#F7F5F0" stroke-width="1" opacity="0.5"/>
+                            <path d="M52,20 c-2,-2 -5,-3 -8,-3 c-4,0 -7,2 -7,5 c0,4 10,4 10,9 c0,4 -3,6 -8,6 c-4,0 -7,-2 -9,-5" fill="none" stroke="#F7F5F0" stroke-width="2" stroke-linecap="square" transform="translate(6, 0)"/>
+                        </g>
+                        <!-- Text -->
+                        <text x="100" y="440" font-family="'Fraunces', serif" font-size="80" fill="#F7F5F0" letter-spacing="-0.02em">Kulvir Sharma</text>
+                        <text x="100" y="520" font-family="'IBM Plex Mono', monospace" font-size="24" fill="#C8762B" letter-spacing="0.05em">BUSINESS ANALYST &middot; DIGITAL TRANSFORMATION</text>
+                    </svg>
+                </div>
+                <pre><code>&lt;svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg"&gt;
+  &lt;rect width="1200" height="630" fill="#0E1A2B"/&gt;
+  &lt;g transform="translate(100, 100) scale(2)"&gt;
+    &lt;path d="M22,18 h6 v28 h-6 v-28 M26,18 v28 M28,34 l10,-12 h6 l-12,12 M30,32 l14,14 h-6 l-12,-12" stroke="#F7F5F0" stroke-width="2" transform="translate(-14, 0)"/&gt;
+    &lt;line x1="32" y1="16" x2="32" y2="48" stroke="#F7F5F0" stroke-width="1" opacity="0.5"/&gt;
+    &lt;path d="M52,20 c-2,-2 -5,-3 -8,-3 c-4,0 -7,2 -7,5 c0,4 10,4 10,9 c0,4 -3,6 -8,6 c-4,0 -7,-2 -9,-5" fill="none" stroke="#F7F5F0" stroke-width="2" stroke-linecap="square" transform="translate(6, 0)"/&gt;
+  &lt;/g&gt;
+  &lt;text x="100" y="440" font-family="Georgia, serif" font-size="80" fill="#F7F5F0" letter-spacing="-0.02em"&gt;Kulvir Sharma&lt;/text&gt;
+  &lt;text x="100" y="520" font-family="monospace" font-size="24" fill="#C8762B" letter-spacing="0.05em"&gt;BUSINESS ANALYST &middot; DIGITAL TRANSFORMATION&lt;/text&gt;
+&lt;/svg&gt;</code></pre>
+            </div>
+
+            <div class="col-span-12" style="margin-top: var(--space-12);">
+                <p class="mono-label" style="margin-bottom: var(--space-8);">6. Developer "10-Line Brand Rules"</p>
+                <div class="hover-card" style="padding: var(--space-32); font-family: var(--font-mono); font-size: 13px; line-height: 1.8;">
+                    1. NO soft drop shadows (box-shadow). Use 1px solid #E3DED3 for borders.<br>
+                    2. NO default blue for links. Use Deep Teal (#0F5B5B).<br>
+                    3. NO border radii above 6px. Keep corners sharp (2px) or slightly rounded (6px).<br>
+                    4. ONLY use Signal Amber (#C8762B) for data, highlights in diagrams, and stats.<br>
+                    5. Layouts MUST adhere strictly to the asymmetric 4-col / 8-col desktop grid.<br>
+                    6. Display typography (Fraunces H1/H2) MUST have -0.02em tracking applied.<br>
+                    7. Data labels MUST be uppercase IBM Plex Mono with 0.05em tracking.<br>
+                    8. Motion is limited to 450ms ease-out translateY reveals. Zero parallax.<br>
+                    9. Avoid pure black. Use Ink (#0E1A2B) for maximum depth and contrast.<br>
+                    10. Ensure Paper background (#F7F5F0) spans full bleed unless in dark mode sections.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            
+            if (!prefersReducedMotion) {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1
+                };
+
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                document.querySelectorAll('.reveal').forEach((el) => {
+                    observer.observe(el);
+                });
+            } else {
+                // Instantly show everything if reduced motion is requested
+                document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+            }
+        });
+    </script>
+</body>
+</html>

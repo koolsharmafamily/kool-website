@@ -1,15 +1,15 @@
 import { StrictMode } from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
 
-// Self-hosted fonts: no render-blocking request to fonts.googleapis.com, and
-// only the weights the design actually uses. The `latin-` prefix matters —
-// the unprefixed files pull in cyrillic, greek and vietnamese subsets too,
-// which roughly triples the font payload for a site written in English.
-import "@fontsource/source-serif-4/latin-600.css";
-import "@fontsource/source-serif-4/latin-700.css";
-import "@fontsource/inter/latin-400.css";
-import "@fontsource/inter/latin-500.css";
-import "@fontsource/inter/latin-600.css";
+// Self-hosted fonts: Fraunces (display), Inter Tight (body), IBM Plex Mono (data/labels)
+import "@fontsource/fraunces/latin-400.css";
+import "@fontsource/fraunces/latin-500.css";
+import "@fontsource/inter-tight/latin-400.css";
+import "@fontsource/inter-tight/latin-500.css";
+import "@fontsource/inter-tight/latin-600.css";
+import "@fontsource/ibm-plex-mono/latin-400.css";
+import "@fontsource/ibm-plex-mono/latin-500.css";
+import "@fontsource/ibm-plex-mono/latin-600.css";
 
 import "./index.css";
 import App from "./App";

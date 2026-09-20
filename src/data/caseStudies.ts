@@ -13,6 +13,12 @@ import type { CaseStudy } from "./types";
 
 const adlens: CaseStudy = {
   slug: "adlens-ai",
+  caseNumber: "CASE 01",
+  scr: {
+    situation: "Creative marketing intelligence depends on reviewing hundreds of unstructured ad videos across competitive categories.",
+    complication: "Manual analyst review is slow, subjective, and fails to scale, leaving the majority of video libraries unanalyzed.",
+    resolution: "Engineered an automated parsing and evaluation pipeline using multimodal LLMs to score ad creative against evidence-based frameworks.",
+  },
   title: "AdLens AI",
   subtitle:
     "Turning unstructured ad videos into structured, evidence-based marketing intelligence",
@@ -31,7 +37,7 @@ const adlens: CaseStudy = {
   ],
   problem: [
     "Creative review is done by hand. An analyst watches each ad, takes notes, scores it against an internal rubric, researches competitors separately, and assembles the findings into slides.",
-    "This is slow, and it is inconsistent: two analysts reviewing the same ad produce different scores, because the rubric lives in their heads rather than in the process. It also does not scale — the review effort grows linearly with the size of the library, so most libraries simply go unreviewed.",
+    "This is slow, and it is inconsistent: two analysts reviewing the same ad produce different scores, because the rubric lives in their heads rather than in the process. It also does not scale: the review effort grows linearly with the size of the library, so most libraries simply go unreviewed.",
     "Commercially, the cost is not the review time itself. It is that creative decisions get made on the few ads someone happened to watch recently.",
   ],
   framingQuestion:
@@ -77,7 +83,7 @@ const adlens: CaseStudy = {
     },
     {
       title: "Designed the output before the pipeline",
-      body: "I wrote the target report first — the scorecard, the recommendation card, the competitive comparison — and then worked backwards to the data each one needed. That stopped the model from deciding what the product was.",
+      body: "I wrote the target report first (the scorecard, the recommendation card, and the competitive comparison) and then worked backwards to the data each one needed. That stopped the model from deciding what the product was.",
     },
     {
       title: "Built it into a workflow, not a chat window",
@@ -289,6 +295,12 @@ const adlens: CaseStudy = {
 
 const dsp: CaseStudy = {
   slug: "distributor-workflow-automation",
+  caseNumber: "CASE 02",
+  scr: {
+    situation: "A major distribution network relied on independent financial distributors to drive investor engagement and fund flows.",
+    complication: "Distributors spent hours assembling manual client reporting across disconnected systems, driving friction and communication delays.",
+    resolution: "Conducted contextual field research across 20+ distributors, mapped process bottlenecks, and designed automated data workflows that drove measurable adoption.",
+  },
   title: "Distributor workflow research and automation",
   subtitle: "Finding where a distribution network actually loses time, then removing it",
   industry: "Asset management",
@@ -305,7 +317,7 @@ const dsp: CaseStudy = {
     "I joined the Distributor Success team, whose remit is that experience. The brief was open: find out what makes the relationship harder than it needs to be.",
   ],
   problem: [
-    "Distributors were spending a substantial part of each week assembling reporting for their own clients — pulling figures from more than one system, re-keying them into a template, and going back and forth over email when something did not reconcile.",
+    "Distributors were spending a substantial part of each week assembling reporting for their own clients: pulling figures from more than one system, re-keying them into a template, and going back and forth over email when something did not reconcile.",
     "The cost fell on the distributor rather than on the fund house, which is precisely why it had persisted: the people feeling the pain were not the people who could fix it.",
     "Commercially it matters because distributor attention is the scarce resource. Time spent on manual reporting is time not spent selling, and friction is a reason to favour a competitor.",
   ],
@@ -425,6 +437,12 @@ const dsp: CaseStudy = {
 
 const agencyAdOps: CaseStudy = {
   slug: "agency-ad-operations",
+  caseNumber: "CASE 03",
+  scr: {
+    situation: "A digital agency managed campaign delivery and budget reporting across dozens of independent client ad accounts.",
+    complication: "Account managers manually logged into each platform to pull spreadsheets, meaning budget pacing and performance anomalies were caught late.",
+    resolution: "Centralized API-driven data extraction and alerting workflows into a unified operational dashboard.",
+  },
   title: "Agency ad-operations automation",
   subtitle: "Centralised reporting and alerting across many client ad accounts",
   industry: "Digital marketing agency",
@@ -532,7 +550,7 @@ const agencyAdOps: CaseStudy = {
   risks: [
     {
       title: "Platform policy",
-      body: "Everything runs through official APIs under each platform's terms. The gateway is about secure, centralised access — it is not a way to create, disguise or rotate accounts, and it must never be described or used that way.",
+      body: "Everything runs through official APIs under each platform's terms. The gateway is about secure, centralised access: it is not a way to create, disguise or rotate accounts, and it must never be described or used that way.",
     },
     {
       title: "Credential handling",
@@ -549,8 +567,8 @@ const agencyAdOps: CaseStudy = {
   ],
 
   learned: [
-    "Reporting automation is only as stable as the access path to the data — centralising that was the prerequisite.",
-    "Centralising access was the prerequisite, not a detail — no reporting automation is stable until the path to the data is.",
+    "Reporting automation is only as stable as the access path to the data. Centralising that was the prerequisite.",
+    "Centralising access was the prerequisite, not a detail: no reporting automation is stable until the path to the data is.",
   ],
   next: [
     "Instrument the automation to measure hours saved per reporting cycle, and evaluate whether the no-code layer should move to a supported internal system.",
@@ -559,6 +577,12 @@ const agencyAdOps: CaseStudy = {
 
 const constructionWorkforce: CaseStudy = {
   slug: "construction-workforce-automation",
+  caseNumber: "CASE 04",
+  scr: {
+    situation: "Subcontractors on multi-site commercial projects moved between locations daily.",
+    complication: "Attendance was logged on physical paper rosters, then manually re-keyed for payroll, and re-keyed again for client invoicing: the same data keyed three times.",
+    resolution: "Redesigned the operating process to capture site verification digitally once at the source, creating a unified data feed for payroll and billing.",
+  },
   title: "Construction workforce automation",
   subtitle: "From site attendance to wages to invoicing, as one process instead of three",
   industry: "Construction",
@@ -568,10 +592,10 @@ const constructionWorkforce: CaseStudy = {
   status: "Built prototype",
   tags: ["Process redesign", "Workflow automation", "Payroll", "Operations"],
   cardProblem:
-    "Attendance was recorded on paper, re-entered for wages, then re-entered again for invoicing — the same data, keyed three times.",
+    "Attendance was recorded on paper, re-entered for wages, then re-entered again for invoicing: the same data, keyed three times.",
 
   context: [
-    "A construction business tracking a daily workforce across sites, where the same underlying fact — who worked, where, for how long — drives both what workers are paid and what clients are billed.",
+    "A construction business tracking a daily workforce across sites, where the same underlying fact (who worked, where, and for how long) drives both what workers are paid and what clients are billed.",
     "The details of the organisation have been anonymised.",
   ],
   problem: [
@@ -601,7 +625,7 @@ const constructionWorkforce: CaseStudy = {
     },
     {
       title: "Captured at source",
-      body: "The redesign records attendance once, digitally, at the point it happens — because every downstream problem traces back to that record being on paper.",
+      body: "The redesign records attendance once, digitally, at the point it happens, because every downstream problem traces back to that record being on paper.",
     },
     {
       title: "Made wages and invoicing two views of one record",
@@ -677,7 +701,7 @@ const constructionWorkforce: CaseStudy = {
   ],
 
   learned: [
-    "The redesign changed more than the tooling — it required the three teams to agree on a single source of truth, which was the harder conversation.",
+    "The redesign changed more than the tooling: it required the three teams to agree on a single source of truth, which was the harder conversation.",
     "Following one fact through three departments is a fast way to find duplicated effort that an org-chart view hides.",
   ],
   next: [
@@ -687,6 +711,12 @@ const constructionWorkforce: CaseStudy = {
 
 const financeAutomation: CaseStudy = {
   slug: "finance-data-automation",
+  caseNumber: "CASE 05",
+  scr: {
+    situation: "Monthly financial closes and management reporting depended on operational data exports from disparate operational teams.",
+    complication: "Manual data transformation, ad-hoc spreadsheet cleaning, and undocumented judgement rules led to delayed closes and reconciliation discrepancies.",
+    resolution: "Formalized undocumented cleaning logic into structured transformation rules, automating report assembly while preserving human review for genuine exceptions.",
+  },
   title: "Finance data and Excel automation",
   subtitle: "Removing the manual assembly between operations data and the finance view",
   industry: "Financial services",
@@ -703,7 +733,7 @@ const financeAutomation: CaseStudy = {
     "The employer's data is anonymised throughout.",
   ],
   problem: [
-    "Each reporting cycle, operational figures were exported, cleaned by hand, reshaped to match the finance template, and reconciled. The work was repetitive but not mindless — the cleaning steps required judgement, which is exactly why nobody had automated them.",
+    "Each reporting cycle, operational figures were exported, cleaned by hand, reshaped to match the finance template, and reconciled. The work was repetitive but not mindless: the cleaning steps required judgement, which is exactly why nobody had automated them.",
     "The cost was timing and trust. The finance view was always a little behind operations, and when the two disagreed, resolving it meant redoing the assembly to find where a manual step had gone wrong.",
     "Commercially, decisions were made on a number that people were not fully confident in, which is worse than a number that is openly approximate.",
   ],
@@ -757,7 +787,7 @@ const financeAutomation: CaseStudy = {
         { label: "Publish", tone: "muted" },
       ],
       caption:
-        "Framed deliberately as removing manual effort, not replacing judgement — the review step is load-bearing and stays.",
+        "Framed deliberately as removing manual effort, not replacing judgement: the review step is load-bearing and stays.",
     },
   },
 
@@ -802,13 +832,19 @@ const financeAutomation: CaseStudy = {
 
   learned: [
     "The reason a repetitive task has survived is usually that part of it requires judgement. Finding the exact boundary is most of the analysis.",
-    "Writing down an undocumented process has value before a single step is automated — it surfaced two people doing the same thing differently.",
+    "Writing down an undocumented process has value before a single step is automated: it surfaced two people doing the same thing differently.",
   ],
   next: ["Extend the documented rules to cover additional edge cases surfaced during the first three cycles."],
 };
 
 const aiConstructionSite: CaseStudy = {
   slug: "ai-construction-site",
+  caseNumber: "CASE 06",
+  scr: {
+    situation: "Large-scale construction projects require continuous tracking of worker safety, PPE compliance, and programme progress.",
+    complication: "Manual site inspections are intermittent, localized, and retrospective, creating safety blindspots and lagging progress indicators.",
+    resolution: "Designed a computer vision architecture integrating edge inference and camera networks to provide real-time safety alerts and progress telemetry.",
+  },
   title: "AI-powered construction site",
   subtitle: "Computer vision for safety and operations: what it could do, and what it would cost",
   industry: "Construction",
@@ -861,7 +897,7 @@ const aiConstructionSite: CaseStudy = {
   approach: [
     {
       title: "Started from the decisions, not the technology",
-      body: "I listed the decisions a site manager makes in a week and asked which are currently made without evidence. That produced three candidate uses — PPE compliance, exclusion zones, and progress against plan — and ruled out several others as solutions looking for a problem.",
+      body: "I listed the decisions a site manager makes in a week and asked which are currently made without evidence. That produced three candidate uses (PPE compliance, exclusion zones, and progress against plan) and ruled out several others as solutions looking for a problem.",
     },
     {
       title: "Designed for alerting, not for policing",
@@ -913,7 +949,7 @@ const aiConstructionSite: CaseStudy = {
   outcome: {
     kind: "expected",
     intro:
-      "This is a design, so there are no results. These are the measures that would decide whether it was worth doing — and I would want a baseline for each one before any camera was installed.",
+      "This is a design, so there are no results. These are the measures that would decide whether it was worth doing, and I would want a baseline for each one before any camera was installed.",
     items: [],
     groups: [
       {
@@ -944,11 +980,11 @@ const aiConstructionSite: CaseStudy = {
   risks: [
     {
       title: "Privacy and worker consent",
-      body: "Continuous capture of a workplace is monitoring of identifiable people. It needs consultation before deployment, a clear and narrow statement of purpose, defined retention, and a genuine answer to 'will this be used against me'. Without that, the project should not proceed — this is a condition, not a mitigation.",
+      body: "Continuous capture of a workplace is monitoring of identifiable people. It needs consultation before deployment, a clear and narrow statement of purpose, defined retention, and a genuine answer to 'will this be used against me'. Without that, the project should not proceed: this is a condition, not a mitigation.",
     },
     {
       title: "Accuracy and false confidence",
-      body: "Vision models degrade in rain, low light, dust and occlusion — which describes most of a construction site. A missed detection presented as a clean safety record is worse than no system, because it creates false assurance.",
+      body: "Vision models degrade in rain, low light, dust and occlusion, which describes most of a construction site. A missed detection presented as a clean safety record is worse than no system, because it creates false assurance.",
     },
     {
       title: "Scope creep into performance management",
@@ -976,6 +1012,12 @@ const aiConstructionSite: CaseStudy = {
 
 const trakit: CaseStudy = {
   slug: "trakit-australian-market-entry",
+  caseNumber: "CASE 07",
+  scr: {
+    situation: "A proven B2B logistics SaaS platform sought to expand market penetration into the Australian enterprise logistics sector.",
+    complication: "The existing brand messaging and web presence focused heavily on technical end-users rather than commercial decision-makers.",
+    resolution: "Conducted regional competitive analysis, built enterprise buyer personas, and executed a complete positioning redesign that increased session engagement by 35%.",
+  },
   title: "TrakIT: Australian market entry",
   subtitle: "Taking a B2B logistics SaaS platform into a new market, and rebuilding the site around its buyer",
   industry: "B2B SaaS, logistics",
@@ -1114,6 +1156,12 @@ const trakit: CaseStudy = {
 
 const tradingAgent: CaseStudy = {
   slug: "options-trading-agent",
+  caseNumber: "CASE 08",
+  scr: {
+    situation: "Autonomous agentic workflows can synthesize multi-factor market data and execute financial actions via APIs.",
+    complication: "LLMs operating autonomously risk hallucination, drift, or executing irreversible orders without rigorous deterministic boundaries.",
+    resolution: "Architected an n8n-orchestrated trading agent with strict programmatic guardrails, separating LLM market analysis from deterministic pre-execution risk validation.",
+  },
   title: "AI options-trading agent",
   subtitle: "An agentic workflow and API integration exercise, built to learn",
   industry: "Personal learning build",
@@ -1125,7 +1173,7 @@ const tradingAgent: CaseStudy = {
     "How do you give an autonomous workflow access to a real financial API without giving it the ability to do something irreversible?",
 
   context: [
-    "A self-directed build using n8n and the Zerodha Kite API. The interest was in agentic workflow design and API integration — specifically, how you constrain an automated system that touches something consequential.",
+    "A self-directed build using n8n and the Zerodha Kite API. The interest was in agentic workflow design and API integration: specifically, how you constrain an automated system that touches something consequential.",
     "This is a learning build. It is not a trading strategy, it is not a product, and it has never run unsupervised.",
   ],
   problem: [
@@ -1186,7 +1234,7 @@ const tradingAgent: CaseStudy = {
         "The model is the least trusted component in this diagram. Everything downstream of it is deterministic, and a person sits in the path.",
     },
     highlights: [
-      "Rule validation is deliberately not done by the model — a system cannot check its own reasoning.",
+      "Rule validation is deliberately not done by the model: a system cannot check its own reasoning.",
       "The approval step is not a convenience toggle. Without it, this is not a design I would run.",
     ],
   },
@@ -1196,7 +1244,7 @@ const tradingAgent: CaseStudy = {
   outcome: {
     kind: "expected",
     intro:
-      "There are no performance results here, and there will not be any. I make no claims about returns, profitability or live autonomous trading — this was built to learn agentic workflow design, and measuring it as a strategy would misrepresent what it is.",
+      "There are no performance results here, and there will not be any. I make no claims about returns, profitability or live autonomous trading: this was built to learn agentic workflow design, and measuring it as a strategy would misrepresent what it is.",
     items: [],
     groups: [
       {
@@ -1239,7 +1287,7 @@ const tradingAgent: CaseStudy = {
   learned: [
     "Designing the guardrails turned out to be the actual project. The agent was the straightforward part.",
     "Validation belongs outside the model. Asking a model to check its own output is not a control.",
-    "Working out how a workflow should fail — API timeout, malformed response, limit breach — took longer than making it work.",
+    "Working out how a workflow should fail (API timeout, malformed response, or limit breach) took longer than making it work.",
   ],
   next: [
     "Add a dry-run mode that replays historical data through the same gates, so the guardrails can be tested without touching a live API.",

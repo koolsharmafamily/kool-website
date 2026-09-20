@@ -36,7 +36,7 @@ export function Reveal({
       // The ref type varies per tag; the runtime element is always an HTMLElement.
       ref={ref as React.Ref<never>}
       id={id}
-      className={className}
+      className={`reveal ${className || ""}`.trim()}
       data-reveal=""
       {...(steps ? { "data-steps": "" } : {})}
       style={{ ...style, ...(index ? { "--reveal-i": index } : {}) } as CSSProperties}
