@@ -10,7 +10,9 @@ export function Container({
   className?: string;
 }) {
   return (
-    <div className={`mx-auto w-full max-w-6xl px-5 sm:px-8 ${className}`}>{children}</div>
+    <div className={`mx-auto w-full max-w-[1200px] px-5 sm:px-8 ${className}`}>
+      {children}
+    </div>
   );
 }
 
@@ -19,17 +21,25 @@ export function Section({
   children,
   className = "",
   labelledBy,
+  variant = "paper",
 }: {
   id?: string;
   children: ReactNode;
   className?: string;
   labelledBy?: string;
+  variant?: "paper" | "surface" | "dark";
 }) {
+  const variantStyles = {
+    paper: "bg-paper text-ink border-b border-rule",
+    surface: "bg-surface text-ink border-b border-rule",
+    dark: "bg-ink text-paper",
+  };
+
   return (
     <section
       id={id}
       aria-labelledby={labelledBy}
-      className={`scroll-mt-24 border-t border-rule py-16 sm:py-24 ${className}`}
+      className={`scroll-mt-20 py-20 sm:py-28 transition-colors ${variantStyles[variant]} ${className}`}
     >
       <Container>{children}</Container>
     </section>
@@ -41,24 +51,39 @@ export function SectionHeading({
   title,
   lede,
   kicker,
+  dark = false,
 }: {
   id?: string;
   title: string;
   lede?: string;
   kicker?: string;
+  dark?: boolean;
 }) {
   return (
-    <Reveal className="mb-10 sm:mb-14">
+    <Reveal className="mb-8">
       {kicker && (
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-accent">
+        <p
+          className={`mb-3 font-mono text-xs uppercase tracking-[0.12em] ${
+            dark ? "text-signal" : "text-ink-muted"
+          }`}
+        >
           {kicker}
         </p>
       )}
-      <h2 id={id} className="text-[1.75rem] leading-tight sm:text-[2.125rem]">
+      <h2
+        id={id}
+        className={`font-display text-[clamp(2rem,3.5vw,3rem)] font-normal leading-[1.1] tracking-[-0.02em] ${
+          dark ? "text-paper" : "text-ink"
+        }`}
+      >
         {title}
       </h2>
       {lede && (
-        <p className="mt-4 max-w-[62ch] text-[1.05rem] leading-relaxed text-ink-muted">
+        <p
+          className={`mt-4 max-w-[45ch] text-[1.0625rem] leading-relaxed ${
+            dark ? "text-[#A0ABB5]" : "text-ink-muted"
+          }`}
+        >
           {lede}
         </p>
       )}
@@ -66,39 +91,69 @@ export function SectionHeading({
   );
 }
 
-const statusStyles: Record<Status, string> = {
-  "Delivered in role": "border-accent/30 bg-accent-wash text-accent",
-  "Built prototype": "border-rule-strong bg-surface-sunk text-ink-muted",
-  "Concept design": "border-rule-strong bg-surface text-ink-soft",
-};
-
 export function StatusBadge({ status }: { status: Status }) {
+  if (status === "Delivered in role") {
+    return <span className="badge badge-teal">{status}</span>;
+  }
+  if (status === "Built prototype") {
+    return <span className="badge badge-navy">{status}</span>;
+  }
+  return <span className="badge badge-concept">{status}</span>;
+}
+
+/** Plain mono tag row, separated by middots, avoiding rounded grey pills */
+export function MonoTags({
+  tags,
+  className = "",
+}: {
+  tags: string[];
+  className?: string;
+}) {
   return (
-    <span
-      className={`inline-flex shrink-0 items-center rounded-full border px-2.5 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.08em] ${statusStyles[status]}`}
+    <p
+      className={`font-mono text-[11px] uppercase tracking-[0.06em] text-ink-muted ${className}`}
     >
-      {status}
-    </span>
+      {tags.join(" · ")}
+    </p>
   );
 }
 
+/** Legacy Chip wrapper for backwards compatibility, styled with subtle mono aesthetic */
 export function Chip({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-md border border-rule bg-surface-sunk px-2.5 py-1 text-[0.8rem] text-ink-muted">
+    <span className="inline-flex items-center rounded-[2px] border border-rule bg-surface px-2 py-0.5 font-mono text-[11px] text-ink-muted">
       {children}
     </span>
   );
 }
 
 /** A definition row: label on the left, value on the right. */
-export function MetaRow({ label, value }: { label: string; value: ReactNode }) {
+export function MetaRow({
+  label,
+  value,
+  dark = false,
+}: {
+  label: string;
+  value: ReactNode;
+  dark?: boolean;
+}) {
   if (!value) return null;
   return (
-    <div className="grid grid-cols-[minmax(0,7rem)_1fr] gap-x-4 gap-y-1 border-b border-rule py-3 last:border-b-0 max-[480px]:grid-cols-1">
-      <dt className="text-[0.8rem] font-semibold uppercase tracking-[0.08em] text-ink-soft">
+    <div
+      className={`grid grid-cols-[minmax(0,7.5rem)_1fr] gap-x-4 gap-y-1 border-b py-3 last:border-b-0 max-[480px]:grid-cols-1 ${
+        dark ? "border-[#203047]" : "border-rule"
+      }`}
+    >
+      <dt
+        className={`font-mono text-xs uppercase tracking-[0.08em] ${
+          dark ? "text-[#A0ABB5]" : "text-ink-muted"
+        }`}
+      >
         {label}
       </dt>
-      <dd className="m-0 text-[0.95rem] text-ink">{value}</dd>
+      <dd className={`m-0 text-[0.95rem] ${dark ? "text-paper" : "text-ink"}`}>
+        {value}
+      </dd>
     </div>
   );
 }

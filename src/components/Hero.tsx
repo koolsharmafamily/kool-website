@@ -1,103 +1,180 @@
 import { hero, proofPoints, site } from "../data/content";
 import { Container } from "./ui";
 import { Reveal } from "./Reveal";
-import { DownloadIcon, LinkedInIcon, MailIcon } from "./Icons";
+import { HeroExhibit } from "./HeroExhibit";
+import { DownloadIcon, LinkedInIcon, MailIcon, GitHubIcon } from "./Icons";
+import { useCountUp } from "../lib/useCountUp";
 
 export function Hero() {
   return (
-    <section id="top" className="pt-16 pb-16 sm:pt-24 sm:pb-24">
+    <section id="top" className="pt-10 pb-16 sm:pt-16 sm:pb-24">
       <Container>
-        <Reveal>
-          <h1 className="text-[2.25rem] leading-[1.1] sm:text-[3.25rem]">{hero.name}</h1>
-          <p className="mt-2 text-[1.15rem] font-semibold text-accent sm:text-[1.35rem]">
-            {hero.role}
-          </p>
-        </Reveal>
+        {/* 7/5 Grid Split */}
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-14">
+          {/* Left: 7 Columns */}
+          <div className="lg:col-span-7">
+            <Reveal>
+              <p className="mb-4 font-mono text-xs uppercase tracking-[0.12em] text-accent font-medium">
+                {hero.kicker}
+              </p>
+              <h1 className="font-display text-[clamp(2.75rem,5.5vw,4.75rem)] font-normal leading-[1.06] tracking-[-0.02em] text-ink">
+                {hero.value}
+              </h1>
+            </Reveal>
 
-        <Reveal index={1}>
-          <p className="mt-6 max-w-[38ch] font-serif text-[1.3rem] leading-snug text-ink sm:text-[1.6rem]">
-            {hero.value}
-          </p>
-        </Reveal>
+            <Reveal index={1}>
+              <p className="mt-6 max-w-[58ch] text-[1.125rem] leading-relaxed text-ink-muted">
+                {hero.sub}
+              </p>
+            </Reveal>
 
-        <Reveal index={2}>
-          <p className="mt-5 max-w-[62ch] text-[1rem] leading-relaxed text-ink-muted">
-            {hero.sub}
-          </p>
-        </Reveal>
+            <Reveal index={2} className="mt-8 flex flex-wrap items-center gap-4">
+              <a
+                href="#work"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("work")?.scrollIntoView({ block: "start" });
+                  history.replaceState(null, "", "/#work");
+                }}
+                className="btn btn-primary"
+              >
+                View the work
+              </a>
 
-        <Reveal index={3} className="mt-9 flex flex-wrap items-center gap-3">
-          <a
-            href="#work"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById("work")?.scrollIntoView({ block: "start" });
-              history.replaceState(null, "", "/#work");
-            }}
-            className="inline-flex min-h-[44px] items-center justify-center rounded-md bg-accent px-5 py-2.5 text-[0.95rem] font-semibold text-white transition-colors duration-200 hover:bg-accent-dark"
-          >
-            View case studies
-          </a>
-          <a
-            href={site.resume}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md border border-rule-strong bg-surface px-5 py-2.5 text-[0.95rem] font-semibold text-ink transition-colors duration-200 hover:border-accent hover:text-accent"
-          >
-            <DownloadIcon className="h-4 w-4" />
-            Download resume (PDF)
-          </a>
+              <a
+                href={site.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-[14px] font-medium text-ink hover:text-accent transition-colors"
+              >
+                <span>Download resume</span>
+                <span aria-hidden="true">&rarr;</span>
+                <span className="sr-only"> (PDF, opens in a new tab)</span>
+              </a>
 
-          <span className="mx-1 hidden h-6 w-px bg-rule sm:block" aria-hidden="true" />
+              <div className="mx-2 hidden h-5 w-px bg-rule sm:block" aria-hidden="true" />
 
-          {/* Grouped so the two icons never split across lines on a narrow screen. */}
-          <span className="flex gap-2">
-            <a
-              href={site.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="grid h-11 w-11 place-items-center rounded-md border border-rule text-ink-muted transition-colors duration-200 hover:border-accent hover:text-accent"
-            >
-              <LinkedInIcon className="h-[18px] w-[18px]" />
-              <span className="sr-only">LinkedIn profile (opens in a new tab)</span>
-            </a>
-            <a
-              href={`mailto:${site.email}`}
-              className="grid h-11 w-11 place-items-center rounded-md border border-rule text-ink-muted transition-colors duration-200 hover:border-accent hover:text-accent"
-            >
-              <MailIcon className="h-[18px] w-[18px]" />
-              <span className="sr-only">Email {site.email}</span>
-            </a>
-          </span>
-        </Reveal>
+              {/* Social Icons */}
+              <div className="flex items-center gap-2">
+                <a
+                  href={site.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn profile"
+                  className="grid h-10 w-10 place-items-center rounded-[2px] border border-rule bg-surface text-ink-muted transition-colors hover:border-ink hover:text-ink"
+                >
+                  <LinkedInIcon className="h-4 w-4" />
+                </a>
+
+                <a
+                  href={site.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub profile"
+                  className="grid h-10 w-10 place-items-center rounded-[2px] border border-rule bg-surface text-ink-muted transition-colors hover:border-ink hover:text-ink"
+                >
+                  <GitHubIcon className="h-4 w-4" />
+                </a>
+
+                <a
+                  href={`mailto:${site.email}`}
+                  aria-label={`Email ${site.email}`}
+                  className="grid h-10 w-10 place-items-center rounded-[2px] border border-rule bg-surface text-ink-muted transition-colors hover:border-ink hover:text-ink"
+                >
+                  <MailIcon className="h-4 w-4" />
+                </a>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Right: 5 Columns Signature Visual */}
+          <div className="lg:col-span-5">
+            <Reveal index={2}>
+              <HeroExhibit />
+            </Reveal>
+          </div>
+        </div>
+
+        {/* Logo Wordmark Strip */}
+        <div className="mt-16 sm:mt-24 border-t border-rule pt-8">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+            <span className="font-mono text-xs uppercase tracking-[0.14em] text-ink-muted shrink-0">
+              Experience across
+            </span>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-ink-muted">
+              {hero.trustedBy.map((org, i) => (
+                <span key={org} className="inline-flex items-center gap-6">
+                  <span className="hover:text-ink transition-colors cursor-default">{org}</span>
+                  {i < hero.trustedBy.length - 1 && (
+                    <span className="text-rule hidden sm:inline" aria-hidden="true">/</span>
+                  )}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
       </Container>
     </section>
   );
 }
 
+function ProofItem({
+  value,
+  label,
+  source,
+  showHairline = true,
+}: {
+  value: string;
+  label: string;
+  source: string;
+  showHairline?: boolean;
+}) {
+  const { count, ref } = useCountUp(value);
+
+  return (
+    <div className="relative flex-1 py-4 sm:py-2">
+      <div className="flex flex-col">
+        <span
+          ref={ref}
+          className="font-display text-[clamp(2.5rem,4.5vw,3.75rem)] font-normal leading-none text-signal"
+        >
+          {count}
+        </span>
+        <span className="mt-3 font-body text-sm font-medium text-paper">
+          {label}
+        </span>
+        <span className="mt-1 font-mono text-[11px] text-[#A0ABB5]">
+          {source}
+        </span>
+      </div>
+      {showHairline && (
+        <div
+          className="absolute right-0 top-2 bottom-2 hidden w-px bg-[#203047] lg:block"
+          aria-hidden="true"
+        />
+      )}
+    </div>
+  );
+}
+
 export function ProofStrip() {
   return (
-    <section aria-label="Selected figures" className="border-y border-rule bg-surface-sunk">
-      <Container className="py-8 sm:py-10">
-        <dl className="grid grid-cols-2 gap-x-6 gap-y-7 lg:grid-cols-4">
+    <section
+      aria-label="Key delivery metrics"
+      className="border-y border-[#203047] bg-ink text-paper py-12 sm:py-16"
+    >
+      <Container>
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {proofPoints.map((point, i) => (
-            <Reveal key={point.label} index={i} className="min-w-0">
-              <dt className="sr-only">{point.label}</dt>
-              <dd className="m-0">
-                <span className="block font-serif text-[1.9rem] font-bold leading-none text-accent sm:text-[2.35rem]">
-                  {point.value}
-                </span>
-                <span className="mt-2 block text-[0.875rem] leading-snug text-ink">
-                  {point.label}
-                </span>
-                {/* Every number is tied to where it came from. */}
-                <span className="mt-1 block text-[0.78rem] leading-snug text-ink-soft">
-                  {point.source}
-                </span>
-              </dd>
-            </Reveal>
+            <ProofItem
+              key={point.label}
+              value={point.value}
+              label={point.label}
+              source={point.source}
+              showHairline={i < proofPoints.length - 1}
+            />
           ))}
-        </dl>
+        </div>
       </Container>
     </section>
   );

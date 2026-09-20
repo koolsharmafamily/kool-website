@@ -1,53 +1,41 @@
-import { site } from "../data/content";
+import { KSMonogram } from "./KSMonogram";
 import { Container } from "./ui";
-import { GitHubIcon, LinkedInIcon, MailIcon } from "./Icons";
 
 export function Footer() {
+  const scrollToTop = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="border-t border-rule bg-surface-sunk no-print">
-      <Container className="flex flex-col items-start justify-between gap-5 py-9 sm:flex-row sm:items-center">
-        <div>
-          <p className="text-[0.85rem] text-ink-soft">
-            © {new Date().getFullYear()} Kulvir Sharma · Melbourne, Australia
-          </p>
-          <p className="mt-1 text-[0.78rem] text-ink-soft">
-            React · TypeScript · Tailwind · Prerendered for performance
-          </p>
+    <footer className="border-t border-[#203047] bg-ink text-paper py-8 no-print">
+      <Container className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+        {/* Monogram and Copyright */}
+        <div className="flex items-center gap-3">
+          <div className="flex h-7 w-7 items-center justify-center rounded-[2px] bg-[#142338] text-paper border border-[#203047]">
+            <KSMonogram size={16} />
+          </div>
+          <div className="text-xs text-[#A0ABB5]">
+            <span>© {new Date().getFullYear()} Kulvir Sharma</span>
+            <span className="mx-2 text-[#203047]">·</span>
+            <span>Melbourne → India</span>
+          </div>
         </div>
 
-        <ul className="flex list-none items-center gap-1 p-0">
-          <li>
-            <a
-              href={`mailto:${site.email}`}
-              className="grid h-11 w-11 place-items-center rounded-md text-ink-muted transition-colors duration-200 hover:text-accent"
-            >
-              <MailIcon className="h-[18px] w-[18px]" />
-              <span className="sr-only">Email {site.email}</span>
-            </a>
-          </li>
-          <li>
-            <a
-              href={site.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="grid h-11 w-11 place-items-center rounded-md text-ink-muted transition-colors duration-200 hover:text-accent"
-            >
-              <LinkedInIcon className="h-[18px] w-[18px]" />
-              <span className="sr-only">LinkedIn profile (opens in a new tab)</span>
-            </a>
-          </li>
-          <li>
-            <a
-              href={site.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="grid h-11 w-11 place-items-center rounded-md text-ink-muted transition-colors duration-200 hover:text-accent"
-            >
-              <GitHubIcon className="h-[18px] w-[18px]" />
-              <span className="sr-only">GitHub profile (opens in a new tab)</span>
-            </a>
-          </li>
-        </ul>
+        {/* Tech Stack Signature */}
+        <div className="font-mono text-[11px] text-[#A0ABB5] text-center">
+          Built with React, TypeScript and Vercel
+        </div>
+
+        {/* Back to top */}
+        <a
+          href="#top"
+          onClick={scrollToTop}
+          className="inline-flex items-center gap-1.5 font-mono text-xs text-[#A0ABB5] hover:text-paper transition-colors"
+        >
+          <span>Back to top</span>
+          <span aria-hidden="true">&uarr;</span>
+        </a>
       </Container>
     </footer>
   );
