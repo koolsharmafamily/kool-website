@@ -22,7 +22,7 @@ function getObserver(): IntersectionObserver | null {
         observer?.unobserve(entry.target);
       }
     },
-    { rootMargin: "0px 0px 40px 0px", threshold: 0.05 },
+    { rootMargin: "0px 0px 60px 0px", threshold: 0.01 },
   );
   return observer;
 }
@@ -43,6 +43,13 @@ export function observeReveal(el: Element | null): () => void {
     return () => {};
   }
 
+  // Any element in the initial viewport is made visible immediately
+  const rect = el.getBoundingClientRect();
+  if (rect.top <= (window.innerHeight || 800) + 50 && rect.bottom >= -50) {
+    reveal(el);
+    return () => {};
+  }
+
   const io = getObserver();
   if (!io) {
     reveal(el);
@@ -51,14 +58,11 @@ export function observeReveal(el: Element | null): () => void {
 
   io.observe(el);
 
-  // Safety fallback: ensure elements in viewport are revealed within 1s
+  // Safety fallback: ensure elements never remain invisible
   const timer = window.setTimeout(() => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      reveal(el);
-      io.unobserve(el);
-    }
-  }, 1000);
+    reveal(el);
+    io.unobserve(el);
+  }, 500);
 
   return () => {
     window.clearTimeout(timer);

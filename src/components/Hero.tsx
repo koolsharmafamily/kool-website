@@ -17,7 +17,7 @@ export function Hero() {
               <p className="mb-4 font-mono text-xs uppercase tracking-[0.12em] text-accent font-medium">
                 {hero.kicker}
               </p>
-              <h1 className="font-display text-[clamp(2.75rem,5.5vw,4.75rem)] font-normal leading-[1.06] tracking-[-0.02em] text-ink">
+              <h1 className="font-display text-[clamp(2.1rem,5.5vw,4.5rem)] font-normal leading-[1.08] tracking-[-0.02em] text-ink">
                 {hero.value}
               </h1>
             </Reveal>
@@ -28,7 +28,7 @@ export function Hero() {
               </p>
             </Reveal>
 
-            <Reveal index={2} className="mt-8 flex flex-wrap items-center gap-4">
+            <Reveal index={2} className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
               <a
                 href="#work"
                 onClick={(e) => {
@@ -52,7 +52,7 @@ export function Hero() {
                 <span className="sr-only"> (PDF, opens in a new tab)</span>
               </a>
 
-              <div className="mx-2 hidden h-5 w-px bg-rule sm:block" aria-hidden="true" />
+              <div className="mx-1 hidden h-5 w-px bg-rule sm:block" aria-hidden="true" />
 
               {/* Social Icons */}
               <div className="flex items-center gap-2">
@@ -61,9 +61,9 @@ export function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn profile"
-                  className="grid h-10 w-10 place-items-center rounded-[2px] border border-rule bg-surface text-ink-muted transition-colors hover:border-ink hover:text-ink"
+                  className="grid h-10 w-10 place-items-center rounded-[2px] border border-rule bg-surface text-ink transition-colors hover:border-accent hover:text-accent"
                 >
-                  <LinkedInIcon className="h-4 w-4" />
+                  <LinkedInIcon className="h-5 w-5" />
                 </a>
 
                 <a
@@ -71,17 +71,17 @@ export function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub profile"
-                  className="grid h-10 w-10 place-items-center rounded-[2px] border border-rule bg-surface text-ink-muted transition-colors hover:border-ink hover:text-ink"
+                  className="grid h-10 w-10 place-items-center rounded-[2px] border border-rule bg-surface text-ink transition-colors hover:border-accent hover:text-accent"
                 >
-                  <GitHubIcon className="h-4 w-4" />
+                  <GitHubIcon className="h-5 w-5" />
                 </a>
 
                 <a
                   href={`mailto:${site.email}`}
                   aria-label={`Email ${site.email}`}
-                  className="grid h-10 w-10 place-items-center rounded-[2px] border border-rule bg-surface text-ink-muted transition-colors hover:border-ink hover:text-ink"
+                  className="grid h-10 w-10 place-items-center rounded-[2px] border border-rule bg-surface text-ink transition-colors hover:border-accent hover:text-accent"
                 >
-                  <MailIcon className="h-4 w-4" />
+                  <MailIcon className="h-5 w-5" />
                 </a>
               </div>
             </Reveal>

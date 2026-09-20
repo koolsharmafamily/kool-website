@@ -116,16 +116,16 @@ export function Header() {
             })}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <a
               href={site.resume}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-outline min-h-[40px] px-3.5 sm:px-4"
+              aria-label="Download Resume (PDF, opens in a new tab)"
+              className="btn btn-outline min-h-[38px] px-2.5 sm:px-4"
             >
               <DownloadIcon className="h-3.5 w-3.5" />
-              <span>Resume</span>
-              <span className="sr-only"> (PDF, opens in a new tab)</span>
+              <span className="hidden sm:inline">Resume</span>
             </a>
 
             <button
@@ -134,7 +134,7 @@ export function Header() {
               aria-expanded={open}
               aria-controls="mobile-nav"
               onClick={() => setOpen((v) => !v)}
-              className="relative grid h-10 w-10 place-items-center rounded-[2px] border border-rule text-ink hover:border-ink md:hidden"
+              className="relative grid h-9 w-9 sm:h-10 sm:w-10 place-items-center rounded-[2px] border border-rule text-ink hover:border-ink md:hidden"
             >
               <span
                 className={`absolute block h-0.5 w-4 bg-current transition-transform duration-200 ${

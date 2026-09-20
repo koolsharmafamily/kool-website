@@ -4,7 +4,7 @@ export function HeroExhibit() {
   const [activeMode, setActiveMode] = useState<"both" | "after" | "portrait">("both");
 
   return (
-    <div className="hover-card flex flex-col justify-between overflow-hidden border border-rule bg-surface p-5 sm:p-6">
+    <div className="hover-card flex flex-col justify-between overflow-hidden border border-rule bg-surface p-4 sm:p-6 w-full">
       {/* Header bar with tabs */}
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2 border-b border-rule pb-3">
         <div>
@@ -59,10 +59,10 @@ export function HeroExhibit() {
         </div>
       ) : (
         /* Animated / Consulting Exhibit SVG */
-        <div className="w-full">
+        <div className="w-full overflow-hidden">
           <svg
             viewBox="0 0 400 230"
-            className="w-full h-auto block select-none"
+            className="w-full h-auto block select-none max-w-full"
             aria-label="Process comparison: Manual before state versus AI-enabled after state"
           >
             <defs>
