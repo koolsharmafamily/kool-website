@@ -37,7 +37,7 @@ export function getRoutes(): PrerenderRoute[] {
     },
     ...caseStudies.map((study) => ({
       path: `/work/${study.slug}`,
-      title: `${study.title} — ${study.subtitle} | Kulvir Sharma`,
+      title: `${study.title} · ${study.subtitle} | Kulvir Sharma`,
       description: study.cardProblem,
       index: true,
       priority: 0.8,

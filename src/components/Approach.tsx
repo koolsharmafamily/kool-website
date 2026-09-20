@@ -62,9 +62,9 @@ export function Approach() {
                   {step.body}
                 </p>
 
-                {step.appliedIn && (
+                {step.caption && (
                   <div className="mt-4 border-t border-rule/60 pt-2 font-mono text-[11px] text-accent font-medium">
-                    {step.appliedIn}
+                    {step.caption}
                   </div>
                 )}
               </li>

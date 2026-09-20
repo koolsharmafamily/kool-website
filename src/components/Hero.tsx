@@ -2,7 +2,7 @@ import { hero, proofPoints, site } from "../data/content";
 import { Container } from "./ui";
 import { Reveal } from "./Reveal";
 import { HeroExhibit } from "./HeroExhibit";
-import { DownloadIcon, LinkedInIcon, MailIcon, GitHubIcon } from "./Icons";
+import { LinkedInIcon, MailIcon, GitHubIcon } from "./Icons";
 import { useCountUp } from "../lib/useCountUp";
 
 export function Hero() {

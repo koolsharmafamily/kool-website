@@ -1,6 +1,5 @@
 import { Link } from "wouter";
 import { caseStudies } from "../data/caseStudies";
-import type { CaseStudy } from "../data/types";
 import { Section, StatusBadge, MonoTags } from "./ui";
 import { Reveal } from "./Reveal";
 import { CaseCover } from "./CaseCovers";
