@@ -8,7 +8,18 @@ export function Work() {
   const [, setLocation] = useLocation();
   const [featured, second, third, ...indexStudies] = caseStudies;
 
+  const navigate = (href: string) => {
+    if (typeof document !== "undefined" && "startViewTransition" in document) {
+      (document as unknown as { startViewTransition: (cb: () => void) => void }).startViewTransition(() => {
+        setLocation(href);
+      });
+    } else {
+      setLocation(href);
+    }
+  };
+
   return (
+
     <Section id="work" labelledBy="work-heading" variant="paper">
 
       {/* Asymmetric Header: 4 cols header, 8 cols intro */}
@@ -161,7 +172,7 @@ export function Work() {
                 <tr
                   key={study.slug}
                   onClick={() => {
-                    setLocation(`/work/${study.slug}`);
+                    navigate(`/work/${study.slug}`);
                   }}
                   className="cursor-pointer group/row"
                 >

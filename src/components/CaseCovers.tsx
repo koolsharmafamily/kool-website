@@ -17,6 +17,14 @@ export function AdLensCover({ className = "" }: CoverProps) {
       <path d="M-20,150 Q120,90 200,150 T420,150" stroke="#495664" strokeWidth="1" opacity="0.4" />
       <path d="M-20,110 Q120,50 200,110 T420,110" stroke="#495664" strokeWidth="1" opacity="0.4" />
 
+      {/* Animated Data-Flow Packets */}
+      <circle r="3" fill="#C8762B" opacity="0.9">
+        <animateMotion path="M-20,130 Q120,70 200,130 T420,130" dur="4.2s" repeatCount="indefinite" />
+      </circle>
+      <circle r="2.5" fill="#0F5B5B" opacity="0.9">
+        <animateMotion path="M-20,150 Q120,90 200,150 T420,150" dur="3.6s" repeatCount="indefinite" begin="1.4s" />
+      </circle>
+
       {/* Nodes */}
       <circle cx="80" cy="118" r="4" fill="#0F5B5B" />
       <circle cx="200" cy="130" r="5" fill="#C8762B" />
@@ -71,6 +79,17 @@ export function DistributorCover({ className = "" }: CoverProps) {
       <path d="M120,120 L240,120" stroke="#0F5B5B" strokeWidth="1.5" />
       <path d="M120,168 L180,120 L240,120" stroke="#0F5B5B" strokeWidth="1.5" />
 
+      {/* Live Data Packets streaming into central engine */}
+      <circle r="3" fill="#C8762B">
+        <animateMotion path="M120,72 L180,120 L240,120" dur="2.6s" repeatCount="indefinite" />
+      </circle>
+      <circle r="3" fill="#0F5B5B">
+        <animateMotion path="M120,120 L240,120" dur="2.0s" repeatCount="indefinite" begin="0.7s" />
+      </circle>
+      <circle r="3" fill="#C8762B">
+        <animateMotion path="M120,168 L180,120 L240,120" dur="2.8s" repeatCount="indefinite" begin="1.4s" />
+      </circle>
+
       {/* Central Pipeline Node */}
       <rect x="240" y="96" width="110" height="48" fill="#0F5B5B" stroke="#0F5B5B" rx="2" />
       <text x="295" y="120" fill="#FFFFFF" textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="11" fontWeight="600">
@@ -118,6 +137,17 @@ export function AgencyAdOpsCover({ className = "" }: CoverProps) {
       <rect x="270" y="108" width="80" height="24" stroke="#C8762B" strokeWidth="1.5" fill="#0E1A2B" rx="1" />
       <text x="310" y="124" fill="#C8762B" textAnchor="middle" fontFamily="IBM Plex Mono, monospace" fontSize="8">AUDIT_LOG</text>
       <line x1="232" y1="120" x2="270" y2="120" stroke="#C8762B" strokeWidth="1.5" />
+
+      {/* Live Packets into Central Gateway and Audit */}
+      <circle r="2.5" fill="#C8762B">
+        <animateMotion path="M130,62 L175,98 L200,120" dur="2.4s" repeatCount="indefinite" />
+      </circle>
+      <circle r="2.5" fill="#E6F0F0">
+        <animateMotion path="M130,178 L175,142 L200,120" dur="2.8s" repeatCount="indefinite" begin="0.8s" />
+      </circle>
+      <circle r="3" fill="#C8762B">
+        <animateMotion path="M200,120 L270,120" dur="1.6s" repeatCount="indefinite" begin="0.4s" />
+      </circle>
     </svg>
   );
 }

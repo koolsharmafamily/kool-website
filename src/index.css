@@ -440,6 +440,22 @@ a:hover {
   padding: 0.75rem 1rem !important;
 }
 
+/* ---------------------------------------------------------------------------
+   Native View Transitions (Page-to-Page Layout Connector)
+--------------------------------------------------------------------------- */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 250ms;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}
+
 @media print {
   .no-print {
     display: none !important;
@@ -449,4 +465,5 @@ a:hover {
     color: #000;
   }
 }
+
 

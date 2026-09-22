@@ -14,12 +14,30 @@ const toneStyles: Record<NonNullable<FlowStep["tone"]>, string> = {
   pain: "border border-dashed border-signal bg-[#FCF8F2] text-signal font-medium",
 };
 
-function Step({ step, index }: { step: FlowStep; index: number }) {
+function Step({
+  step,
+  index,
+  isHovered,
+  onMouseEnter,
+  onMouseLeave,
+}: {
+  step: FlowStep;
+  index: number;
+  isHovered: boolean;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}) {
   const tone = step.tone ?? "default";
   return (
     <li
       style={{ "--i": index } as CSSProperties}
-      className={`group/step relative flex min-w-0 flex-col justify-center rounded-[2px] px-3.5 py-3 sm:flex-1 sm:basis-[7rem] sm:max-w-[16rem] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xs ${toneStyles[tone]}`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className={`group/step relative flex min-w-0 flex-col justify-center rounded-[2px] px-3.5 py-3 sm:flex-1 sm:basis-[7rem] sm:max-w-[16rem] transition-all duration-200 cursor-default ${
+        isHovered
+          ? "border-accent shadow-md -translate-y-0.5 bg-surface ring-1 ring-accent/30"
+          : toneStyles[tone]
+      }`}
     >
       <div className="flex items-center justify-between gap-1.5">
         <div className="flex items-center gap-1.5 min-w-0">
@@ -31,7 +49,7 @@ function Step({ step, index }: { step: FlowStep; index: number }) {
           )}
           <span className="text-[0.85rem] font-semibold leading-snug">{step.label}</span>
         </div>
-        <span className="font-mono text-[9px] text-ink-muted/50 group-hover/step:text-accent group-hover/step:opacity-100 transition-colors shrink-0">
+        <span className={`font-mono text-[9px] transition-colors shrink-0 ${isHovered ? "text-accent font-semibold" : "text-ink-muted/50"}`}>
           {String(Math.floor(index / 2) + 1).padStart(2, "0")}
         </span>
       </div>
@@ -46,25 +64,37 @@ function Step({ step, index }: { step: FlowStep; index: number }) {
   );
 }
 
+function Arrow({
+  index,
+  isInbound,
+  isOutbound,
+}: {
+  index: number;
+  isInbound: boolean;
+  isOutbound: boolean;
+}) {
+  const isHighlighted = isInbound || isOutbound;
+  const highlightColor = isInbound ? "text-signal" : "text-accent";
 
-function Arrow({ index }: { index: number }) {
   return (
     <li
       aria-hidden="true"
       style={{ "--i": index } as CSSProperties}
-      className="flex shrink-0 items-center justify-center self-center py-1 sm:px-1.5 sm:py-0"
+      className={`flex shrink-0 items-center justify-center self-center py-1 sm:px-1.5 sm:py-0 transition-colors duration-200 ${
+        isHighlighted ? `${highlightColor} scale-110` : "text-ink-muted/50"
+      }`}
     >
       <svg
         width="16"
         height="16"
         viewBox="0 0 24 24"
         fill="none"
-        className="rotate-90 text-ink-muted sm:rotate-0"
+        className="rotate-90 sm:rotate-0 transition-transform"
       >
         <path
           d="M4 12h14m0 0l-5-5m5 5l-5 5"
           stroke="currentColor"
-          strokeWidth="1.5"
+          strokeWidth={isHighlighted ? "2" : "1.5"}
           strokeLinecap="round"
           strokeLinejoin="round"
         />
@@ -74,6 +104,8 @@ function Arrow({ index }: { index: number }) {
 }
 
 function Flow({ steps, compact = false }: { steps: FlowStep[]; compact?: boolean }) {
+  const [hoveredStepIndex, setHoveredStepIndex] = useState<number | null>(null);
+
   return (
     <ol
       data-steps=""
@@ -83,13 +115,26 @@ function Flow({ steps, compact = false }: { steps: FlowStep[]; compact?: boolean
     >
       {steps.map((step, i) => (
         <Fragment key={`${step.label}-${i}`}>
-          <Step step={step} index={i * 2} />
-          {i < steps.length - 1 && <Arrow index={i * 2 + 1} />}
+          <Step
+            step={step}
+            index={i * 2}
+            isHovered={hoveredStepIndex === i}
+            onMouseEnter={() => setHoveredStepIndex(i)}
+            onMouseLeave={() => setHoveredStepIndex(null)}
+          />
+          {i < steps.length - 1 && (
+            <Arrow
+              index={i * 2 + 1}
+              isInbound={hoveredStepIndex === i + 1}
+              isOutbound={hoveredStepIndex === i}
+            />
+          )}
         </Fragment>
       ))}
     </ol>
   );
 }
+
 
 function Frame({
   exhibitNumber = "EXHIBIT",
