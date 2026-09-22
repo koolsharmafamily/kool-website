@@ -1,10 +1,8 @@
 import { hero, proofPoints, site } from "../data/content";
 import { Container } from "./ui";
 import { Reveal } from "./Reveal";
-import { Magnetic } from "./Magnetic";
 import { HeroExhibit } from "./HeroExhibit";
 import { LinkedInIcon, MailIcon, GitHubIcon } from "./Icons";
-import { useCountUp } from "../lib/useCountUp";
 
 export function Hero() {
   return (
@@ -30,14 +28,13 @@ export function Hero() {
             </Reveal>
 
             <Reveal index={2} className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
-              <Magnetic maxDistance={5} intensity={0.25}>
-                <a
-                  href="#work"
-                  className="btn btn-primary"
-                >
-                  View the work
-                </a>
-              </Magnetic>
+              <a
+                href="#work"
+                className="btn btn-primary"
+              >
+                View the work
+              </a>
+
 
 
               <a
@@ -128,16 +125,11 @@ function ProofItem({
   source: string;
   showHairline?: boolean;
 }) {
-  const { count, ref } = useCountUp(value);
-
   return (
     <div className="relative flex-1 py-4 sm:py-2">
       <div className="flex flex-col">
-        <span
-          ref={ref}
-          className="font-display text-[clamp(2.5rem,4.5vw,3.75rem)] font-normal leading-none text-signal"
-        >
-          {count}
+        <span className="font-display text-[clamp(2.5rem,4.5vw,3.75rem)] font-normal leading-none text-signal">
+          {value}
         </span>
         <span className="mt-3 font-body text-sm font-medium text-paper">
           {label}
@@ -155,6 +147,7 @@ function ProofItem({
     </div>
   );
 }
+
 
 export function ProofStrip() {
   return (

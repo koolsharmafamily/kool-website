@@ -1,209 +1,97 @@
-import { useState } from "react";
-
+/**
+ * Executive Candidate Dossier
+ * Provides Big 4 recruiters and consulting leaders with an immediate, authoritative
+ * synthesis of academic pedigree, institutional advisory experience, and core delivery capabilities.
+ */
 export function HeroExhibit() {
-  const [activeMode, setActiveMode] = useState<"both" | "portrait">("both");
-
   return (
-    <div className="hover-card flex flex-col justify-between overflow-hidden border border-rule bg-surface p-4 sm:p-6 w-full">
-      {/* Header bar with tabs */}
-      <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-rule pb-3">
-        <div>
-          <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-accent">
-            EXHIBIT 1 · AdLens AI
+    <div className="hover-card flex flex-col justify-between overflow-hidden border border-rule bg-surface p-5 sm:p-7 w-full shadow-xs">
+      {/* Header Bar */}
+      <div className="mb-5 flex items-center justify-between border-b border-rule pb-3.5">
+        <div className="flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
+          <span className="font-mono text-xs font-semibold uppercase tracking-[0.1em] text-accent">
+            Candidate Dossier
           </span>
-          <p className="text-xs text-ink-muted">Workflow Transformation Architecture</p>
+        </div>
+        <span className="inline-block rounded-[2px] border border-rule bg-paper px-2 py-0.5 font-mono text-[11px] font-medium text-ink">
+          Ref: 2026-KS
+        </span>
+      </div>
+
+      {/* Structured Credentials Grid */}
+      <div className="space-y-4 text-xs">
+        {/* Education */}
+        <div className="border-b border-rule/60 pb-3">
+          <span className="font-mono text-[10px] uppercase tracking-wider text-ink-muted block mb-1">
+            Academic Pedigree
+          </span>
+          <p className="font-body font-semibold text-ink text-sm leading-snug">
+            The University of Melbourne
+          </p>
+          <p className="text-ink-muted text-xs mt-0.5">
+            Bachelor of Commerce: Finance & Management (2022–2026)
+          </p>
+          <p className="font-mono text-[11px] text-accent mt-1">
+            Olive Wykes & Elite Athlete Scholar · UniMelb Sports Award
+          </p>
         </div>
 
-        <div className="inline-flex rounded-[2px] border border-rule bg-paper p-0.5 font-mono text-[10px] self-start sm:self-auto">
-          <button
-            type="button"
-            onClick={() => setActiveMode("both")}
-            className={`rounded-[2px] px-2.5 py-1 transition-colors ${
-              activeMode === "both"
-                ? "bg-ink text-paper font-medium"
-                : "text-ink-muted hover:text-ink"
-            }`}
-          >
-            Diagram
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveMode("portrait")}
-            className={`rounded-[2px] px-2.5 py-1 transition-colors ${
-              activeMode === "portrait"
-                ? "bg-ink text-paper font-medium"
-                : "text-ink-muted hover:text-ink"
-            }`}
-          >
-            Portrait Slot
-          </button>
+        {/* Institutional Client History */}
+        <div className="border-b border-rule/60 pb-3">
+          <span className="font-mono text-[10px] uppercase tracking-wider text-ink-muted block mb-1">
+            Institutional Advisory & Industry Roles
+          </span>
+          <div className="space-y-1.5 mt-1">
+            <div className="flex items-baseline justify-between gap-2">
+              <span className="font-medium text-ink">Grant Thornton Bharat</span>
+              <span className="font-mono text-[11px] text-ink-muted shrink-0">M&A Lead Advisory</span>
+            </div>
+            <div className="flex items-baseline justify-between gap-2">
+              <span className="font-medium text-ink">DSP Asset Managers</span>
+              <span className="font-mono text-[11px] text-ink-muted shrink-0">Fintech & Workflows</span>
+            </div>
+            <div className="flex items-baseline justify-between gap-2">
+              <span className="font-medium text-ink">Publicis Sapient</span>
+              <span className="font-mono text-[11px] text-ink-muted shrink-0">Business Consulting</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Core Methodologies & Applied Tech */}
+        <div className="border-b border-rule/60 pb-3">
+          <span className="font-mono text-[10px] uppercase tracking-wider text-ink-muted block mb-1">
+            Delivery & Technical Stack
+          </span>
+          <p className="text-ink leading-relaxed font-mono text-[11px]">
+            Requirements Elicitation · Process Mapping · DCF Valuation · Multimodal AI Pipelines · n8n · Supabase · Python
+          </p>
+        </div>
+
+        {/* High-Performance Distinction */}
+        <div>
+          <span className="font-mono text-[10px] uppercase tracking-wider text-signal block mb-1 font-semibold">
+            Competitive Distinction
+          </span>
+          <p className="text-ink-muted text-[11px] leading-relaxed">
+            Junior Asian Games Athlete (India) · Former India No. 2 · 3× UniNationals Medallist · Music Theory Teacher
+          </p>
         </div>
       </div>
 
-      {activeMode === "portrait" ? (
-        /* Portrait Slot */
-        <div className="flex aspect-4/5 w-full flex-col items-center justify-center rounded-[2px] border border-dashed border-rule bg-paper/60 p-6 text-center">
-          <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full border border-rule bg-surface text-ink-muted">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-          </div>
-          <p className="font-display text-base text-ink">Portrait Slot (4:5)</p>
-          <p className="mt-1 max-w-[28ch] text-xs text-ink-muted">
-            Ready for professional headshot. Configured in <code>TODO-FOR-KULVIR.md</code>.
-          </p>
-          <span className="mt-3 inline-block rounded-[2px] border border-rule bg-surface px-2 py-1 font-mono text-[10px] text-ink-muted">
-            public/portrait.jpg
-          </span>
-        </div>
-      ) : (
-        /* Animated / Consulting Exhibit */
-        <div className="w-full">
-          {/* Mobile Simplified View: Clean high-contrast cards (< sm) */}
-          <div className="sm:hidden space-y-3 py-1">
-            {/* Before */}
-            <div className="rounded-[2px] border border-rule bg-paper/70 p-3">
-              <div className="flex items-center justify-between mb-1 font-mono text-[10px]">
-                <span className="text-signal font-semibold uppercase">BEFORE · Manual Review</span>
-                <span className="text-signal font-medium">45 min / run</span>
-              </div>
-              <p className="text-xs text-ink-muted leading-snug">
-                Video &rarr; Manual notes &rarr; Spreadsheet rubric
-              </p>
-              <span className="mt-1 inline-block font-mono text-[9px] text-signal uppercase tracking-wider">
-                3 manual bottlenecks
-              </span>
-            </div>
-
-            {/* After */}
-            <div className="rounded-[2px] border border-accent/30 bg-[#F0F7F7] p-3">
-              <div className="flex items-center justify-between mb-1 font-mono text-[10px]">
-                <span className="text-accent font-semibold uppercase">AFTER · AI Extraction</span>
-                <span className="text-accent font-bold">4 min / run (-85%)</span>
-              </div>
-              <p className="text-xs text-ink leading-snug font-medium">
-                Video &rarr; Multimodal LLM &rarr; Structured Dashboard
-              </p>
-              <span className="mt-1 inline-block font-mono text-[9px] text-accent uppercase tracking-wider">
-                Automated evidence scoring
-              </span>
-            </div>
-          </div>
-
-          {/* Desktop / Tablet View: Full SVG Process Architecture (sm:block) */}
-          <div className="hidden sm:block w-full overflow-hidden">
-            <svg
-              viewBox="0 0 400 230"
-              className="w-full h-auto block select-none max-w-full"
-              aria-label="Process comparison: Manual before state versus AI-enabled after state"
-            >
-              <defs>
-                <marker
-                  id="arrow-gray"
-                  viewBox="0 0 10 10"
-                  refX="8"
-                  refY="5"
-                  markerWidth="4"
-                  markerHeight="4"
-                  orient="auto-start-reverse"
-                >
-                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#495664" />
-                </marker>
-                <marker
-                  id="arrow-teal"
-                  viewBox="0 0 10 10"
-                  refX="8"
-                  refY="5"
-                  markerWidth="4"
-                  markerHeight="4"
-                  orient="auto-start-reverse"
-                >
-                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#0F5B5B" />
-                </marker>
-              </defs>
-
-              {/* Stage Guidelines */}
-              <line x1="0" y1="28" x2="400" y2="28" stroke="#E3DED3" strokeWidth="1" strokeDasharray="2,2" />
-              <line x1="0" y1="130" x2="400" y2="130" stroke="#E3DED3" strokeWidth="1" strokeDasharray="2,2" />
-
-              {/* Labels */}
-              <text x="0" y="20" fill="#495664" className="svg-text font-mono text-[10px] tracking-wider uppercase font-semibold">
-                BEFORE (Manual · 45 min/run)
-              </text>
-              <text x="0" y="122" fill="#0F5B5B" className="svg-text font-mono text-[10px] tracking-wider uppercase font-semibold">
-                AFTER (Automated · 4 min/run)
-              </text>
-
-              {/* BEFORE FLOW */}
-              <g className="transition-opacity duration-300">
-                <rect x="0" y="38" width="68" height="30" fill="#FFFFFF" stroke="#495664" strokeWidth="1" rx="2" />
-                <text x="34" y="57" fill="#0E1A2B" textAnchor="middle" className="svg-title font-body text-[11px] font-medium">Video</text>
-
-                <line x1="68" y1="53" x2="104" y2="53" stroke="#495664" strokeWidth="1" markerEnd="url(#arrow-gray)" />
-
-                <rect x="110" y="38" width="68" height="30" fill="#FFFFFF" stroke="#C8762B" strokeWidth="1.5" strokeDasharray="3,2" rx="2" />
-                <text x="144" y="57" fill="#C8762B" textAnchor="middle" className="svg-title font-body text-[11px] font-medium">Watch</text>
-
-                <line x1="178" y1="53" x2="214" y2="53" stroke="#495664" strokeWidth="1" markerEnd="url(#arrow-gray)" />
-
-                <rect x="220" y="38" width="68" height="30" fill="#FFFFFF" stroke="#C8762B" strokeWidth="1.5" strokeDasharray="3,2" rx="2" />
-                <text x="254" y="57" fill="#C8762B" textAnchor="middle" className="svg-title font-body text-[11px] font-medium">Notes</text>
-
-                <line x1="288" y1="53" x2="324" y2="53" stroke="#495664" strokeWidth="1" markerEnd="url(#arrow-gray)" />
-
-                <rect x="330" y="38" width="68" height="30" fill="#FFFFFF" stroke="#C8762B" strokeWidth="1.5" rx="2" />
-                <text x="364" y="57" fill="#C8762B" textAnchor="middle" className="svg-title font-body text-[11px] font-medium">Spreadsheet</text>
-              </g>
-
-              {/* Vertical Mapping Bridges */}
-              <line x1="34" y1="74" x2="34" y2="136" stroke="#E3DED3" strokeWidth="1" strokeDasharray="2,2" />
-              <line x1="364" y1="74" x2="364" y2="136" stroke="#E3DED3" strokeWidth="1" strokeDasharray="2,2" />
-
-              {/* AFTER FLOW */}
-              <g className="transition-opacity duration-300">
-                <rect x="0" y="142" width="68" height="30" fill="#FFFFFF" stroke="#495664" strokeWidth="1" rx="2" />
-                <text x="34" y="161" fill="#0E1A2B" textAnchor="middle" className="svg-title font-body text-[11px] font-medium">Video</text>
-
-                <line x1="68" y1="157" x2="104" y2="157" stroke="#0F5B5B" strokeWidth="1.5" markerEnd="url(#arrow-teal)" />
-
-                <rect x="110" y="142" width="68" height="30" fill="#E6F0F0" stroke="#0F5B5B" strokeWidth="1.5" rx="2" />
-                <text x="144" y="161" fill="#0F5B5B" textAnchor="middle" className="svg-title font-body text-[11px] font-medium">AI Extract</text>
-
-                <line x1="178" y1="157" x2="214" y2="157" stroke="#0F5B5B" strokeWidth="1.5" markerEnd="url(#arrow-teal)" />
-
-                <rect x="220" y="142" width="68" height="30" fill="#E6F0F0" stroke="#0F5B5B" strokeWidth="1.5" rx="2" />
-                <text x="254" y="161" fill="#0F5B5B" textAnchor="middle" className="svg-title font-body text-[11px] font-medium">Framework</text>
-
-                <line x1="288" y1="157" x2="324" y2="157" stroke="#0F5B5B" strokeWidth="1.5" markerEnd="url(#arrow-teal)" />
-
-                <rect x="330" y="142" width="68" height="30" fill="#0F5B5B" stroke="#0F5B5B" strokeWidth="1.5" rx="2" />
-                <text x="364" y="161" fill="#FFFFFF" textAnchor="middle" className="svg-title font-body text-[11px] font-medium">Dashboard</text>
-              </g>
-
-              {/* Bottleneck Annotation */}
-              <circle cx="200" cy="53" r="3" fill="#C8762B" />
-              <text x="200" y="80" fill="#C8762B" textAnchor="middle" className="font-mono text-[9px] uppercase tracking-wider">
-                3 bottlenecks eliminated
-              </text>
-
-              {/* Outcome Annotation */}
-              <circle cx="200" cy="157" r="3" fill="#0F5B5B" />
-              <text x="200" y="196" fill="#0F5B5B" textAnchor="middle" className="font-mono text-[9px] uppercase tracking-wider font-medium">
-                85% reduction in manual effort
-              </text>
-            </svg>
-          </div>
-
-          {/* Footnote matching consulting report */}
-          <div className="mt-3 border-t border-rule pt-2 text-[11px] text-ink-muted">
-            <span className="font-mono text-[10px] uppercase text-ink-soft">Source:</span> Benchmark of 40 ad reviews. See{" "}
-            <a href="/work/adlens-ai" className="font-medium text-accent hover:underline">
-              AdLens AI case study &rarr;
-            </a>
-          </div>
-        </div>
-      )}
+      {/* Bottom CTA bar */}
+      <div className="mt-5 border-t border-rule pt-3.5 flex items-center justify-between text-xs">
+        <a
+          href="#work"
+          className="font-medium text-accent hover:text-ink transition-colors inline-flex items-center gap-1 font-mono text-[11px]"
+        >
+          <span>Explore 8 case studies</span>
+          <span aria-hidden="true">&darr;</span>
+        </a>
+        <span className="font-mono text-[11px] text-ink-muted">
+          Melbourne · India
+        </span>
+      </div>
     </div>
   );
 }

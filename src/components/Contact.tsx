@@ -3,7 +3,6 @@ import { toast } from "sonner";
 import { contact, site } from "../data/content";
 import { Container } from "./ui";
 import { Reveal } from "./Reveal";
-import { Magnetic } from "./Magnetic";
 import { DownloadIcon, GitHubIcon, LinkedInIcon, MailIcon } from "./Icons";
 
 export function Contact() {
@@ -36,7 +35,7 @@ export function Contact() {
           <div className="md:col-span-8">
             <Reveal>
               <p className="font-mono text-xs uppercase tracking-[0.14em] text-signal font-medium mb-4">
-                07 · Contact
+                07 · Contact & Availability
               </p>
               <h2
                 id="contact-heading"
@@ -55,17 +54,16 @@ export function Contact() {
                   {site.email}
                 </a>
 
-                <Magnetic maxDistance={5} intensity={0.25}>
-                  <button
-                    type="button"
-                    onClick={copyEmail}
-                    className="inline-flex items-center gap-1.5 rounded-[2px] border border-[#203047] bg-[#142338] px-3.5 py-2 min-h-[44px] font-mono text-xs text-[#A0ABB5] transition-colors hover:border-accent hover:text-paper cursor-pointer"
-                  >
-                    <MailIcon className="h-3.5 w-3.5" />
-                    <span>{copied ? "Copied!" : "Copy email"}</span>
-                  </button>
-                </Magnetic>
+                <button
+                  type="button"
+                  onClick={copyEmail}
+                  className="inline-flex items-center gap-1.5 rounded-[2px] border border-[#203047] bg-[#142338] px-3.5 py-2 min-h-[44px] font-mono text-xs text-[#A0ABB5] transition-colors hover:border-accent hover:text-paper cursor-pointer"
+                >
+                  <MailIcon className="h-3.5 w-3.5" />
+                  <span>{copied ? "Copied!" : "Copy email"}</span>
+                </button>
               </div>
+
 
 
               <p className="max-w-[54ch] text-sm leading-relaxed text-[#A0ABB5]">

@@ -5,7 +5,6 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { GrainOverlay } from "./components/GrainOverlay";
-import { SmoothScroll } from "./components/SmoothScroll";
 import { Home } from "./pages/Home";
 import { CaseStudyPage } from "./pages/CaseStudyPage";
 import { NotFound } from "./pages/NotFound";
@@ -14,7 +13,6 @@ export default function App() {
   return (
     <>
       <GrainOverlay />
-      <SmoothScroll />
       <Toaster
         position="bottom-right"
         richColors={false}
@@ -23,6 +21,7 @@ export default function App() {
           duration: 2500,
         }}
       />
+
       <a href="#main" className="skip-link">
         Skip to content
       </a>

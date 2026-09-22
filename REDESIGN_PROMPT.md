@@ -60,16 +60,60 @@ Fix every one of these.
 - **Rhythm:** alternate section backgrounds (paper → white → **one full-bleed dark navy section** → paper). Use hairline rules instead of card borders where possible. Cut card shadows by about 80%.
 - **Remove:** the eyebrow labels on every section. Keep them only as mono numbers ("01 · Work") in the heading column.
 
-### Motion (subtle, but finished)
-- Replace the current reveal with one based on IntersectionObserver: opacity from 0 to 1 and translateY 12px to 0, over 450ms, ease-out, animated once.
-- It must **never** leave content semi-transparent. The final state is guaranteed, and content is visible immediately if JS fails or `prefers-reduced-motion` is set.
-- Animate only `transform` and `opacity`. No scroll listeners doing layout work.
-- Diagrams: the steps light up in sequence once when they come into view.
-- Numbers in the proof strip count up once over 800ms (static if reduced motion is set).
-- Cards: lift 2px and the arrow nudges on hover. The nav gets an underline that slides to the active section.
-- Nothing else: no parallax, no cursor effects, no loaders.
+### Motion system: animation that explains, not decorates
+Principle: every animation must **show how a system works** or **give feedback**. That is what signals "tech-savvy consultant". Decorative motion signals "template".
 
----
+**Content source:** every animated exhibit must use the exact steps, labels and sample data in `src/data/motion.ts`. Do not invent steps. The hero exhibit analyses the illustrative "Pulse" smart-bottle ad defined there, and must be labelled "Illustrative sample". DSP's second row is labelled "Improved / proposed workflow" and never "Automated".
+
+**Global rules**
+- Durations: 150ms (micro), 300ms (UI), 450–600ms (reveals), max 1.2s (diagram sequences). Easing: `cubic-bezier(0.2, 0.7, 0.2, 1)`.
+- Animate only `transform`, `opacity`, `stroke-dashoffset`, and `clip-path`. Use IntersectionObserver for triggers, never scroll listeners.
+- Everything plays **once** per page load. Nothing loops next to text, except the hero exhibit (see below).
+- Content is never hidden waiting for an animation. With JS off or `prefers-reduced-motion`, everything renders in its final state.
+- One "wow" moment per page, at most. Everything else is quiet.
+- Use CSS and the Web Animations API or a small `motion` package; no GSAP-sized dependencies. Put everything in `src/lib/motion.ts` plus reusable components.
+
+**M1. Hero exhibit (the signature piece)**
+- A live mini-interface in the right column, framed as "EXHIBIT 1 · AdLens AI". It cycles through 3 stages, about 4s each, and pauses on hover or when it's off-screen.
+  1. A video frame placeholder with a timeline scrubber moving across it
+  2. Extracted evidence lines typing into structured tags (Hook · CTA · Audience) with timestamps
+  3. Scorecard bars filling in, with one recommendation card sliding in ("Open with the pain point · High")
+- This is the only looping element. It stops after 2 full cycles and holds on stage 3.
+
+**M2. Process diagrams that build step by step (every case study)**
+- The "Today" row draws in left to right: nodes fade in, and connectors draw with `stroke-dashoffset`. Pain points pulse amber once.
+- Then the "With AI / automation" row builds the same way in teal, and the new or automated steps get a subtle teal glow.
+- A **Before / After toggle** morphs between the two states (nodes that exist in both slide into place; removed steps fade out and collapse).
+
+**M3. Data flow along architecture connectors**
+- On architecture diagrams (AdLens, agency ad-ops, n8n trading agent), small 4px dots travel along the connectors in sequence, for example Drive → n8n → API → Gemini → Supabase → Slack.
+- Each flow runs 2–3 times when the diagram enters the viewport, then stops. Hovering a node highlights its inbound and outbound paths and shows a one-line tooltip on what that step does.
+
+**M4. Numbers and data**
+- The proof strip numbers count up over 800ms with tabular mono figures (no layout shift).
+- Scorecard and KPI bars fill from 0 with a 60ms stagger.
+
+**M5. Navigation and page feel**
+- The nav active underline slides between items.
+- The header goes from transparent to solid with a hairline after 40px of scroll.
+- Case study pages get a 2px teal reading-progress bar and a table of contents that highlights the current section as you scroll.
+- **Page transition:** clicking a case card morphs its cover into the case study header using the View Transitions API (a fade fallback where it's unsupported), under 350ms.
+
+**M6. Micro-interactions**
+- Cards lift 2px and the arrow nudges 3px on hover. Index-table rows get a teal left-rule on hover.
+- The copy-email button becomes "Copied ✓" for 1.5s.
+- The resume button: the download icon drops 2px on hover.
+- Focus rings animate in over 150ms.
+
+**M7. Section reveals**
+- Headings and blocks rise and fade in once (12px, 450ms), with children staggered 60ms apart. Nothing below the fold stays semi-transparent.
+
+**Banned:** typewriter headline, rotating words, particles, animated gradients, custom cursor, magnetic buttons, parallax, scroll-jacking, smooth-scroll libraries, loaders, 3D tilt, globes, skill percentage bars, confetti.
+
+**Motion QA before hand-back:**
+- Record a short screen capture of the hero and one case study (at 1440px and 390px).
+- Confirm 60fps in the Chrome Performance panel, no layout shift, and correct reduced-motion behaviour.
+- Confirm nothing ever looks greyed out mid-scroll.
 
 ## Part 3: Section-by-section spec (home page)
 
@@ -82,7 +126,7 @@ Fix every one of these.
      - One sentence of background
      - Primary button **View the work** (solid ink) and secondary **Download resume** (text link with arrow)
      - LinkedIn, GitHub and email icons
-   - **Right: a signature visual.** Build a **live, animated "transformation exhibit"** as an SVG/HTML component: a small before→after process diagram that fades from "Manual: Video → Watch → Notes → Spreadsheet" to "AI-enabled: Video → Extraction → Framework → Dashboard", labelled "EXHIBIT 1 · AdLens AI". It looks like a figure from a consulting report and immediately says "BA who builds". Also leave a **portrait slot** (rounded rectangle, greyscale, 4:5) that can replace or sit beside the exhibit once I supply a photo (`TODO`).
+   - **Right: a signature visual, animated as described in motion spec M1.** (If M1 is too heavy on mobile, show the static before→after exhibit described here instead.) Build a **live, animated "transformation exhibit"** as an SVG/HTML component: a small before→after process diagram that fades from "Manual: Video → Watch → Notes → Spreadsheet" to "AI-enabled: Video → Extraction → Framework → Dashboard", labelled "EXHIBIT 1 · AdLens AI". It looks like a figure from a consulting report and immediately says "BA who builds". Also leave a **portrait slot** (rounded rectangle, greyscale, 4:5) that can replace or sit beside the exhibit once I supply a photo (`TODO`).
    - A thin logo row below the fold line: "Experience across" followed by wordmarks set in text (not logos) for Grant Thornton Bharat, DSP Asset Managers, Publicis Sapient, TrakIT, University of Melbourne, in muted ink.
 
 3. **Proof strip (the full-bleed dark navy section):** four large numbers in the mono or display font with the amber signal colour, each with a one-line label and its source in small text, and vertical hairlines between them. Count up once.

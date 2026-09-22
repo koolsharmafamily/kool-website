@@ -22,7 +22,7 @@ export function Experience() {
         <div className="md:col-span-4">
           <Reveal>
             <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent font-medium mb-3">
-              04 · Track Record
+              04 · Career & Engagements
             </p>
             <h2
               id="experience-heading"

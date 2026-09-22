@@ -1,6 +1,5 @@
 import { KSMonogram } from "./KSMonogram";
 import { Container } from "./ui";
-import { Magnetic } from "./Magnetic";
 
 export function Footer() {
   return (
@@ -24,17 +23,16 @@ export function Footer() {
         </div>
 
         {/* Back to top */}
-        <Magnetic maxDistance={4} intensity={0.2}>
-          <a
-            href="#top"
-            className="inline-flex items-center gap-1.5 font-mono text-xs text-[#A0ABB5] hover:text-paper transition-colors py-1 px-2"
-          >
-            <span>Back to top</span>
-            <span aria-hidden="true">&uarr;</span>
-          </a>
-        </Magnetic>
+        <a
+          href="#top"
+          className="inline-flex items-center gap-1.5 font-mono text-xs text-[#A0ABB5] hover:text-paper transition-colors py-1 px-2"
+        >
+          <span>Back to top</span>
+          <span aria-hidden="true">&uarr;</span>
+        </a>
       </Container>
     </footer>
   );
 }
+
 

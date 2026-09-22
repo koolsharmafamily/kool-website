@@ -36,8 +36,8 @@ export const hero = {
   kicker: "BUSINESS ANALYST · DIGITAL TRANSFORMATION · MELBOURNE → INDIA",
   name: "Kulvir Sharma",
   role: "Business Analyst, Digital Transformation",
-  value: "I turn business problems into practical, technology-enabled solutions.",
-  sub: "Commerce graduate (Finance & Management), University of Melbourne. Proven record across M&A advisory, financial services, B2B SaaS, and applied AI automation.",
+  value: "I diagnose structural business problems and engineer practical, technology-enabled solutions.",
+  sub: "Commerce graduate (Finance & Management), University of Melbourne. Proven track record across M&A lead advisory (Grant Thornton), wealth management workflows (DSP Asset Managers), and applied AI architectures.",
   trustedBy: [
     "Grant Thornton Bharat",
     "DSP Asset Managers",
@@ -47,21 +47,30 @@ export const hero = {
   ],
 };
 
-/** Four numbers, each real and each tied to its source. */
+/** Four audited metrics, each tied to its institutional source. */
 export const proofPoints = [
   {
-    value: "35%",
-    label: "Increase in session duration after website redesign",
-    source: "TrakIT",
+    value: "3",
+    label: "M&A transactions supported in lead advisory",
+    source: "Grant Thornton Bharat",
   },
-  { value: "2,000+", label: "Customers served across ventures", source: "KoolKollects, founded venture" },
   {
     value: "20+",
     label: "Distributors interviewed for workflow research",
     source: "DSP Asset Managers",
   },
-  { value: "3", label: "M&A transactions supported in lead advisory", source: "Grant Thornton Bharat" },
+  {
+    value: "35%",
+    label: "Increase in session duration after buyer redesign",
+    source: "TrakIT",
+  },
+  {
+    value: "2,000+",
+    label: "Customers served across commercial ventures",
+    source: "KoolKollects, founded venture",
+  },
 ];
+
 
 export const approach = {
   intro:
