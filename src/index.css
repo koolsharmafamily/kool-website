@@ -422,6 +422,46 @@ a:hover {
   height: 100%;
 }
 
+/* ---------------------------------------------------------------------------
+   Lenis Smooth Scrolling
+--------------------------------------------------------------------------- */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Editorial Toast Styling (Sonner)
+--------------------------------------------------------------------------- */
+[data-sonner-toaster] {
+  font-family: var(--font-body) !important;
+}
+
+[data-sonner-toast] {
+  background: var(--color-ink) !important;
+  color: var(--color-paper) !important;
+  border: 1px solid #203047 !important;
+  border-radius: var(--radius-sm) !important;
+  font-size: 0.825rem !important;
+  box-shadow: 0 10px 30px -10px rgba(14, 26, 43, 0.4) !important;
+  padding: 0.75rem 1rem !important;
+}
+
 @media print {
   .no-print {
     display: none !important;
@@ -431,3 +471,4 @@ a:hover {
     color: #000;
   }
 }
+

@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { toast } from "sonner";
 import { contact, site } from "../data/content";
 import { Container } from "./ui";
 import { Reveal } from "./Reveal";
+import { Magnetic } from "./Magnetic";
 import { DownloadIcon, GitHubIcon, LinkedInIcon, MailIcon } from "./Icons";
 
 export function Contact() {
@@ -10,7 +12,16 @@ export function Contact() {
   const copyEmail = () => {
     navigator.clipboard.writeText(site.email);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), 2500);
+
+    toast.custom(() => (
+      <div className="flex items-center gap-2.5 rounded-[2px] border border-[#203047] bg-[#0E1A2B] px-3.5 py-2.5 font-mono text-xs text-paper shadow-xl">
+        <span className="h-2 w-2 rounded-full bg-accent shrink-0" aria-hidden="true" />
+        <span className="text-[#E3DED3]">
+          Copied to clipboard <span className="text-[#A0ABB5]">·</span> <span className="text-paper font-semibold">{site.email}</span>
+        </span>
+      </div>
+    ));
   };
 
   return (
@@ -44,15 +55,18 @@ export function Contact() {
                   {site.email}
                 </a>
 
-                <button
-                  type="button"
-                  onClick={copyEmail}
-                  className="inline-flex items-center gap-1.5 rounded-[2px] border border-[#203047] bg-[#142338] px-3.5 py-2 min-h-[44px] font-mono text-xs text-[#A0ABB5] transition-colors hover:border-accent hover:text-paper cursor-pointer"
-                >
-                  <MailIcon className="h-3.5 w-3.5" />
-                  <span>{copied ? "Copied to clipboard!" : "Copy email"}</span>
-                </button>
+                <Magnetic maxDistance={5} intensity={0.25}>
+                  <button
+                    type="button"
+                    onClick={copyEmail}
+                    className="inline-flex items-center gap-1.5 rounded-[2px] border border-[#203047] bg-[#142338] px-3.5 py-2 min-h-[44px] font-mono text-xs text-[#A0ABB5] transition-colors hover:border-accent hover:text-paper cursor-pointer"
+                  >
+                    <MailIcon className="h-3.5 w-3.5" />
+                    <span>{copied ? "Copied!" : "Copy email"}</span>
+                  </button>
+                </Magnetic>
               </div>
+
 
               <p className="max-w-[54ch] text-sm leading-relaxed text-[#A0ABB5]">
                 {contact.note}

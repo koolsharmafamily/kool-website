@@ -1,14 +1,16 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { caseStudies } from "../data/caseStudies";
 import { Section, StatusBadge, MonoTags } from "./ui";
 import { Reveal } from "./Reveal";
 import { CaseCover } from "./CaseCovers";
 
 export function Work() {
+  const [, setLocation] = useLocation();
   const [featured, second, third, ...indexStudies] = caseStudies;
 
   return (
     <Section id="work" labelledBy="work-heading" variant="paper">
+
       {/* Asymmetric Header: 4 cols header, 8 cols intro */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 mb-12 sm:mb-16">
         <div className="md:col-span-4">
@@ -159,9 +161,9 @@ export function Work() {
                 <tr
                   key={study.slug}
                   onClick={() => {
-                    window.location.href = `/work/${study.slug}`;
+                    setLocation(`/work/${study.slug}`);
                   }}
-                  className="cursor-pointer"
+                  className="cursor-pointer group/row"
                 >
                   <td className="font-mono text-xs font-semibold text-accent">
                     {study.caseNumber}

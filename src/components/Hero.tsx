@@ -1,6 +1,7 @@
 import { hero, proofPoints, site } from "../data/content";
 import { Container } from "./ui";
 import { Reveal } from "./Reveal";
+import { Magnetic } from "./Magnetic";
 import { HeroExhibit } from "./HeroExhibit";
 import { LinkedInIcon, MailIcon, GitHubIcon } from "./Icons";
 import { useCountUp } from "../lib/useCountUp";
@@ -29,17 +30,15 @@ export function Hero() {
             </Reveal>
 
             <Reveal index={2} className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
-              <a
-                href="#work"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("work")?.scrollIntoView({ block: "start" });
-                  history.replaceState(null, "", "/#work");
-                }}
-                className="btn btn-primary"
-              >
-                View the work
-              </a>
+              <Magnetic maxDistance={5} intensity={0.25}>
+                <a
+                  href="#work"
+                  className="btn btn-primary"
+                >
+                  View the work
+                </a>
+              </Magnetic>
+
 
               <a
                 href={site.resume}

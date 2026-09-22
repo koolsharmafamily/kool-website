@@ -1,12 +1,8 @@
 import { KSMonogram } from "./KSMonogram";
 import { Container } from "./ui";
+import { Magnetic } from "./Magnetic";
 
 export function Footer() {
-  const scrollToTop = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <footer className="border-t border-[#203047] bg-ink text-paper py-8 no-print">
       <Container className="flex flex-col items-center justify-between gap-6 sm:flex-row">
@@ -28,15 +24,17 @@ export function Footer() {
         </div>
 
         {/* Back to top */}
-        <a
-          href="#top"
-          onClick={scrollToTop}
-          className="inline-flex items-center gap-1.5 font-mono text-xs text-[#A0ABB5] hover:text-paper transition-colors"
-        >
-          <span>Back to top</span>
-          <span aria-hidden="true">&uarr;</span>
-        </a>
+        <Magnetic maxDistance={4} intensity={0.2}>
+          <a
+            href="#top"
+            className="inline-flex items-center gap-1.5 font-mono text-xs text-[#A0ABB5] hover:text-paper transition-colors py-1 px-2"
+          >
+            <span>Back to top</span>
+            <span aria-hidden="true">&uarr;</span>
+          </a>
+        </Magnetic>
       </Container>
     </footer>
   );
 }
+

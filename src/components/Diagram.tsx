@@ -19,16 +19,21 @@ function Step({ step, index }: { step: FlowStep; index: number }) {
   return (
     <li
       style={{ "--i": index } as CSSProperties}
-      className={`flex min-w-0 flex-col justify-center rounded-[2px] px-3.5 py-3 sm:flex-1 sm:basis-[7rem] sm:max-w-[16rem] transition-colors ${toneStyles[tone]}`}
+      className={`group/step relative flex min-w-0 flex-col justify-center rounded-[2px] px-3.5 py-3 sm:flex-1 sm:basis-[7rem] sm:max-w-[16rem] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xs ${toneStyles[tone]}`}
     >
-      <div className="flex items-center gap-1.5">
-        {tone === "pain" && (
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-signal shrink-0" aria-hidden="true" />
-        )}
-        {tone === "accent" && (
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent shrink-0" aria-hidden="true" />
-        )}
-        <span className="text-[0.85rem] font-semibold leading-snug">{step.label}</span>
+      <div className="flex items-center justify-between gap-1.5">
+        <div className="flex items-center gap-1.5 min-w-0">
+          {tone === "pain" && (
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-signal shrink-0" aria-hidden="true" />
+          )}
+          {tone === "accent" && (
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent shrink-0" aria-hidden="true" />
+          )}
+          <span className="text-[0.85rem] font-semibold leading-snug">{step.label}</span>
+        </div>
+        <span className="font-mono text-[9px] text-ink-muted/50 group-hover/step:text-accent group-hover/step:opacity-100 transition-colors shrink-0">
+          {String(Math.floor(index / 2) + 1).padStart(2, "0")}
+        </span>
       </div>
       {step.detail && (
         <span className={`mt-1 text-[0.75rem] leading-snug ${tone === "pain" ? "text-signal/90" : tone === "accent" ? "text-accent/90" : "text-ink-muted"}`}>
@@ -40,6 +45,7 @@ function Step({ step, index }: { step: FlowStep; index: number }) {
     </li>
   );
 }
+
 
 function Arrow({ index }: { index: number }) {
   return (
