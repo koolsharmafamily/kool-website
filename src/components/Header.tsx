@@ -14,10 +14,10 @@ export function Header() {
   const onHome = location === "/";
   const active = useScrollSpy(onHome ? sectionIds : []);
 
-  // Track scroll position for header transparency vs solid state
+  // Track scroll position for header transparency vs solid state (40px per spec)
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 40);
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -70,7 +70,7 @@ export function Header() {
       <header
         className={`sticky top-0 z-50 transition-all duration-300 no-print ${
           scrolled || open
-            ? "border-b border-rule bg-paper/95 backdrop-blur-md"
+            ? "border-b border-rule bg-paper/95 backdrop-blur-md shadow-xs"
             : "border-b border-transparent bg-paper/80 backdrop-blur-xs"
         }`}
       >
@@ -95,7 +95,7 @@ export function Header() {
 
           <nav
             aria-label="Primary"
-            className="hidden items-center gap-6 md:flex"
+            className="relative hidden items-center gap-6 md:flex"
           >
             {nav.map((item) => {
               const id = item.href.split("#")[1];
@@ -122,9 +122,9 @@ export function Header() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Download Resume (PDF, opens in a new tab)"
-              className="btn btn-outline min-h-[44px] px-2.5 sm:px-4"
+              className="group btn btn-outline min-h-[44px] px-2.5 sm:px-4"
             >
-              <DownloadIcon className="h-3.5 w-3.5" />
+              <DownloadIcon className="h-3.5 w-3.5 transition-transform duration-150 group-hover:translate-y-0.5" />
               <span className="hidden sm:inline">Resume</span>
             </a>
 
