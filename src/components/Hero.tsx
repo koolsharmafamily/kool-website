@@ -17,7 +17,7 @@ export function Hero() {
               <p className="mb-4 font-mono text-xs uppercase tracking-[0.12em] text-accent font-medium">
                 {hero.kicker}
               </p>
-              <h1 className="font-display text-[clamp(2.1rem,5.5vw,4.5rem)] font-normal leading-[1.08] tracking-[-0.02em] text-ink">
+              <h1 className="font-display text-[clamp(1.85rem,5.5vw,4.5rem)] font-normal leading-[1.08] tracking-[-0.02em] text-ink">
                 {hero.value}
               </h1>
             </Reveal>
@@ -45,7 +45,7 @@ export function Hero() {
                 href={site.resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-[14px] font-medium text-ink hover:text-accent transition-colors"
+                className="inline-flex items-center gap-1.5 min-h-[44px] text-[14px] font-medium text-ink hover:text-accent transition-colors"
               >
                 <span>Download resume</span>
                 <span aria-hidden="true">&rarr;</span>
@@ -61,7 +61,7 @@ export function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn profile"
-                  className="grid h-10 w-10 place-items-center rounded-[2px] border border-rule bg-surface text-ink transition-colors hover:border-accent hover:text-accent"
+                  className="grid h-11 w-11 place-items-center rounded-[2px] border border-rule bg-surface text-ink transition-colors hover:border-accent hover:text-accent"
                 >
                   <LinkedInIcon className="h-5 w-5" />
                 </a>
@@ -71,7 +71,7 @@ export function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub profile"
-                  className="grid h-10 w-10 place-items-center rounded-[2px] border border-rule bg-surface text-ink transition-colors hover:border-accent hover:text-accent"
+                  className="grid h-11 w-11 place-items-center rounded-[2px] border border-rule bg-surface text-ink transition-colors hover:border-accent hover:text-accent"
                 >
                   <GitHubIcon className="h-5 w-5" />
                 </a>
@@ -79,7 +79,7 @@ export function Hero() {
                 <a
                   href={`mailto:${site.email}`}
                   aria-label={`Email ${site.email}`}
-                  className="grid h-10 w-10 place-items-center rounded-[2px] border border-rule bg-surface text-ink transition-colors hover:border-accent hover:text-accent"
+                  className="grid h-11 w-11 place-items-center rounded-[2px] border border-rule bg-surface text-ink transition-colors hover:border-accent hover:text-accent"
                 >
                   <MailIcon className="h-5 w-5" />
                 </a>

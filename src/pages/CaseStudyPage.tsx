@@ -133,17 +133,72 @@ export function CaseStudyPage({ slug }: { slug: string }) {
             </div>
 
             {/* Title & Subtitle */}
-            <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-normal leading-[1.08] tracking-[-0.02em] text-ink max-w-[28ch]">
+            <h1 className="font-display text-[clamp(1.85rem,5vw,3.5rem)] font-normal leading-[1.08] tracking-[-0.02em] text-ink max-w-[28ch]">
               {study.title}
             </h1>
 
-            <p className="mt-4 max-w-[64ch] text-lg sm:text-xl font-normal leading-relaxed text-ink-muted">
+            <p className="mt-4 max-w-[64ch] text-base sm:text-xl font-normal leading-relaxed text-ink-muted">
               {study.subtitle}
             </p>
 
             {/* Full-width Signature Cover Visual */}
-            <div className="mt-10 h-64 sm:h-80 lg:h-96 w-full rounded-[2px] overflow-hidden border border-rule bg-ink">
+            <div className="mt-8 sm:mt-10 h-48 sm:h-80 lg:h-96 w-full rounded-[2px] overflow-hidden border border-rule bg-ink">
               <CaseCover slug={study.slug} />
+            </div>
+
+            {/* Mobile "At a Glance" Summary Block (collapses under cover on < lg screens) */}
+            <div className="mt-8 lg:hidden border border-rule bg-surface p-5 rounded-[2px]">
+              <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent font-semibold pb-3 border-b border-rule">
+                At a Glance
+              </p>
+
+              <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2.5 text-xs">
+                <div>
+                  <dt className="font-mono text-[10px] uppercase text-ink-muted">Case ID</dt>
+                  <dd className="font-mono text-ink font-semibold mt-0.5">{study.caseNumber}</dd>
+                </div>
+                <div>
+                  <dt className="font-mono text-[10px] uppercase text-ink-muted">Status</dt>
+                  <dd className="mt-0.5"><StatusBadge status={study.status} /></dd>
+                </div>
+                <div>
+                  <dt className="font-mono text-[10px] uppercase text-ink-muted">Industry</dt>
+                  <dd className="text-ink font-medium mt-0.5 truncate">{study.industry}</dd>
+                </div>
+                <div>
+                  <dt className="font-mono text-[10px] uppercase text-ink-muted">Timeframe</dt>
+                  <dd className="text-ink font-medium mt-0.5">{study.timeframe}</dd>
+                </div>
+                <div className="col-span-2">
+                  <dt className="font-mono text-[10px] uppercase text-ink-muted">Role</dt>
+                  <dd className="text-ink font-medium mt-0.5">{study.role}</dd>
+                </div>
+              </dl>
+
+              <div className="mt-4 border-t border-rule pt-3">
+                <p className="font-mono text-[10px] uppercase tracking-wider text-ink-muted mb-1.5 font-semibold">
+                  Core Technologies
+                </p>
+                <MonoTags tags={study.tools} />
+              </div>
+
+              {study.links && study.links.length > 0 && (
+                <div className="mt-4 border-t border-rule pt-3 flex flex-wrap gap-2">
+                  {study.links.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-outline py-2 px-3 text-xs flex items-center justify-center gap-2 min-h-[44px]"
+                    >
+                      <GitHubIcon className="h-3.5 w-3.5" />
+                      <span>{link.label}</span>
+                      <span className="text-[10px]">&nearr;</span>
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           </Reveal>
         </Container>
@@ -425,8 +480,8 @@ export function CaseStudyPage({ slug }: { slug: string }) {
             </SectionBlock>
           </div>
 
-          {/* Right 4 Columns: Sticky "At a Glance" Panel & Scroll-Spy TOC */}
-          <aside className="lg:col-span-4 lg:col-start-9">
+          {/* Right 4 Columns: Sticky "At a Glance" Panel & Scroll-Spy TOC (desktop only) */}
+          <aside className="hidden lg:block lg:col-span-4 lg:col-start-9">
             <div className="sticky top-24 space-y-8">
               {/* Project Snapshot Card */}
               <div className="border border-rule bg-surface p-6 rounded-[2px] hover-card">

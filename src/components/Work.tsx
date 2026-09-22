@@ -40,7 +40,7 @@ export function Work() {
           className="group hover-card block overflow-hidden border border-rule bg-surface"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12">
-            <div className="flex flex-col justify-between p-7 sm:p-10 lg:col-span-7">
+            <div className="flex flex-col justify-between p-5 sm:p-10 lg:col-span-7">
               <div>
                 <div className="mb-4 flex items-center gap-3">
                   <span className="font-mono text-xs font-semibold text-accent">
@@ -95,7 +95,7 @@ export function Work() {
                   <CaseCover slug={study.slug} />
                 </div>
 
-                <div className="p-6 sm:p-8">
+                <div className="p-5 sm:p-8">
                   <div className="mb-3 flex items-center gap-3">
                     <span className="font-mono text-xs font-semibold text-accent">
                       {study.caseNumber}
@@ -116,7 +116,7 @@ export function Work() {
                 </div>
               </div>
 
-              <div className="p-6 sm:p-8 pt-0 border-t border-rule/60 mt-4 flex flex-wrap items-center justify-between gap-3">
+              <div className="p-5 sm:p-8 pt-0 border-t border-rule/60 mt-4 flex flex-wrap items-center justify-between gap-3">
                 <MonoTags tags={study.tags.slice(0, 3)} />
                 <span className="inline-flex items-center gap-1 text-sm font-medium text-accent">
                   <span>Read case</span>

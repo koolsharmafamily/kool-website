@@ -17,10 +17,10 @@ export function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="border-t border-[#203047] bg-ink text-paper py-20 sm:py-28"
+      className="border-t border-[#203047] bg-ink text-paper py-14 sm:py-28"
     >
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
           {/* Main Inquiry Column */}
           <div className="md:col-span-8">
             <Reveal>
@@ -29,7 +29,7 @@ export function Contact() {
               </p>
               <h2
                 id="contact-heading"
-                className="font-display text-[clamp(2.5rem,5vw,4rem)] font-normal leading-[1.08] tracking-[-0.02em] text-paper mb-8"
+                className="font-display text-[clamp(1.85rem,6vw,4rem)] font-normal leading-[1.08] tracking-[-0.02em] text-paper mb-8"
               >
                 Let's talk about the problem you're solving.
               </h2>
@@ -39,7 +39,7 @@ export function Contact() {
               <div className="flex flex-wrap items-center gap-4 mb-8">
                 <a
                   href={`mailto:${site.email}`}
-                  className="font-display text-[clamp(1.35rem,2.5vw,2rem)] text-paper border-b-2 border-accent pb-1 hover:text-accent transition-colors"
+                  className="font-display text-[clamp(1.2rem,2.5vw,2rem)] text-paper border-b-2 border-accent pb-1 hover:text-accent transition-colors break-all sm:break-normal"
                 >
                   {site.email}
                 </a>
@@ -47,7 +47,7 @@ export function Contact() {
                 <button
                   type="button"
                   onClick={copyEmail}
-                  className="inline-flex items-center gap-1.5 rounded-[2px] border border-[#203047] bg-[#142338] px-3 py-1.5 font-mono text-xs text-[#A0ABB5] transition-colors hover:border-accent hover:text-paper cursor-pointer"
+                  className="inline-flex items-center gap-1.5 rounded-[2px] border border-[#203047] bg-[#142338] px-3.5 py-2 min-h-[44px] font-mono text-xs text-[#A0ABB5] transition-colors hover:border-accent hover:text-paper cursor-pointer"
                 >
                   <MailIcon className="h-3.5 w-3.5" />
                   <span>{copied ? "Copied to clipboard!" : "Copy email"}</span>
@@ -81,7 +81,7 @@ export function Contact() {
                 href={site.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between py-2 border-b border-[#203047] text-sm text-paper hover:text-accent transition-colors"
+                className="flex items-center justify-between py-2.5 min-h-[44px] border-b border-[#203047] text-sm text-paper hover:text-accent transition-colors"
               >
                 <span className="flex items-center gap-2">
                   <LinkedInIcon className="h-4 w-4 text-[#A0ABB5]" />
@@ -94,7 +94,7 @@ export function Contact() {
                 href={site.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between py-2 border-b border-[#203047] text-sm text-paper hover:text-accent transition-colors"
+                className="flex items-center justify-between py-2.5 min-h-[44px] border-b border-[#203047] text-sm text-paper hover:text-accent transition-colors"
               >
                 <span className="flex items-center gap-2">
                   <GitHubIcon className="h-4 w-4 text-[#A0ABB5]" />
@@ -107,7 +107,7 @@ export function Contact() {
                 href={site.resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between py-2 border-b border-[#203047] text-sm text-paper hover:text-accent transition-colors"
+                className="flex items-center justify-between py-2.5 min-h-[44px] border-b border-[#203047] text-sm text-paper hover:text-accent transition-colors"
               >
                 <span className="flex items-center gap-2">
                   <DownloadIcon className="h-4 w-4 text-[#A0ABB5]" />

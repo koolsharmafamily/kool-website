@@ -74,7 +74,7 @@ export function Header() {
             : "border-b border-transparent bg-paper/80 backdrop-blur-xs"
         }`}
       >
-        <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between gap-4 px-5 py-3 sm:px-8">
+        <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
           <a
             href="/"
             onClick={(e) => {
@@ -122,7 +122,7 @@ export function Header() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Download Resume (PDF, opens in a new tab)"
-              className="btn btn-outline min-h-[38px] px-2.5 sm:px-4"
+              className="btn btn-outline min-h-[44px] px-2.5 sm:px-4"
             >
               <DownloadIcon className="h-3.5 w-3.5" />
               <span className="hidden sm:inline">Resume</span>
@@ -134,7 +134,7 @@ export function Header() {
               aria-expanded={open}
               aria-controls="mobile-nav"
               onClick={() => setOpen((v) => !v)}
-              className="relative grid h-9 w-9 sm:h-10 sm:w-10 place-items-center rounded-[2px] border border-rule text-ink hover:border-ink md:hidden"
+              className="relative grid h-11 w-11 place-items-center rounded-[2px] border border-rule text-ink hover:border-ink md:hidden"
             >
               <span
                 className={`absolute block h-0.5 w-4 bg-current transition-transform duration-200 ${

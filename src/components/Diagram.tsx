@@ -102,9 +102,9 @@ function Frame({
 }) {
   return (
     <Reveal as="figure" className="my-8 min-w-0" steps>
-      <div className="hover-card border border-rule bg-surface p-6 sm:p-8 rounded-[2px]">
+      <div className="hover-card border border-rule bg-surface p-4 sm:p-8 rounded-[2px]">
         {/* Exhibit Header */}
-        <div className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-rule pb-4">
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-rule pb-4">
           <div>
             <span className="font-mono text-xs uppercase tracking-[0.14em] text-accent font-semibold">
               {exhibitNumber}
@@ -164,47 +164,50 @@ export function Diagram({
         summary={data.summary}
         caption={data.caption}
         toggleControls={
-          <div className="inline-flex rounded-[2px] border border-rule bg-paper p-0.5 font-mono text-xs">
+          <div className="grid grid-cols-3 w-full sm:w-auto sm:inline-flex rounded-[2px] border border-rule bg-paper p-0.5 font-mono text-[11px] sm:text-xs">
             <button
               type="button"
               onClick={() => setToggleState("both")}
-              className={`px-2.5 py-1 rounded-[2px] transition-colors ${
+              className={`py-1.5 px-2 text-center rounded-[2px] transition-colors min-h-[36px] sm:min-h-0 flex items-center justify-center ${
                 toggleState === "both"
                   ? "bg-ink text-paper font-semibold"
                   : "text-ink-muted hover:text-ink"
               }`}
             >
-              Side-by-side
+              <span className="sm:hidden">Both</span>
+              <span className="hidden sm:inline">Side-by-side</span>
             </button>
             <button
               type="button"
               onClick={() => setToggleState("before")}
-              className={`px-2.5 py-1 rounded-[2px] transition-colors ${
+              className={`py-1.5 px-2 text-center rounded-[2px] transition-colors min-h-[36px] sm:min-h-0 flex items-center justify-center ${
                 toggleState === "before"
                   ? "bg-signal text-white font-semibold"
                   : "text-ink-muted hover:text-ink"
               }`}
             >
-              Before (Manual)
+              <span className="sm:hidden">Before</span>
+              <span className="hidden sm:inline">Before (Manual)</span>
             </button>
             <button
               type="button"
               onClick={() => setToggleState("after")}
-              className={`px-2.5 py-1 rounded-[2px] transition-colors ${
+              className={`py-1.5 px-2 text-center rounded-[2px] transition-colors min-h-[36px] sm:min-h-0 flex items-center justify-center ${
                 toggleState === "after"
                   ? "bg-accent text-white font-semibold"
                   : "text-ink-muted hover:text-ink"
               }`}
             >
-              After (Automated)
+              <span className="sm:hidden">After</span>
+              <span className="hidden sm:inline">After (Automated)</span>
             </button>
           </div>
         }
       >
         <div className="space-y-6">
           {(toggleState === "both" || toggleState === "before") && (
-            <div className="rounded-[2px] border border-rule/70 bg-paper/40 p-4">
-              <div className="mb-3 flex items-center justify-between">
+            <div className="rounded-[2px] border border-rule/70 bg-paper/40 p-3 sm:p-4">
+              <div className="mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <span className="font-mono text-xs font-semibold uppercase tracking-wider text-signal">
                   {data.before.label} · Baseline manual flow
                 </span>
@@ -215,8 +218,8 @@ export function Diagram({
           )}
 
           {(toggleState === "both" || toggleState === "after") && (
-            <div className="rounded-[2px] border border-accent/20 bg-[#F0F7F7]/60 p-4">
-              <div className="mb-3 flex items-center justify-between">
+            <div className="rounded-[2px] border border-accent/20 bg-[#F0F7F7]/60 p-3 sm:p-4">
+              <div className="mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <span className="font-mono text-xs font-semibold uppercase tracking-wider text-accent">
                   {data.after.label} · Automated target architecture
                 </span>

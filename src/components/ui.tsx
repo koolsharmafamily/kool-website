@@ -10,7 +10,7 @@ export function Container({
   className?: string;
 }) {
   return (
-    <div className={`mx-auto w-full max-w-[1200px] px-5 sm:px-8 ${className}`}>
+    <div className={`mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8 ${className}`}>
       {children}
     </div>
   );
@@ -39,7 +39,7 @@ export function Section({
     <section
       id={id}
       aria-labelledby={labelledBy}
-      className={`scroll-mt-20 py-20 sm:py-28 transition-colors ${variantStyles[variant]} ${className}`}
+      className={`scroll-mt-20 py-14 sm:py-20 lg:py-28 transition-colors ${variantStyles[variant]} ${className}`}
     >
       <Container>{children}</Container>
     </section>
