@@ -250,7 +250,9 @@ export function Diagram({
               }`}
             >
               <span className="sm:hidden">After</span>
-              <span className="hidden sm:inline">After (Automated)</span>
+              <span className="hidden sm:inline">
+                {data.after.label.toLowerCase().includes("improved") ? "After (Improved)" : "After (Automated)"}
+              </span>
             </button>
           </div>
         }
@@ -260,7 +262,7 @@ export function Diagram({
             <div className="rounded-[2px] border border-rule/70 bg-paper/40 p-3 sm:p-4">
               <div className="mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <span className="font-mono text-xs font-semibold uppercase tracking-wider text-signal">
-                  {data.before.label} · Baseline manual flow
+                  {data.before.label} · Baseline workflow
                 </span>
                 <span className="font-mono text-[11px] text-signal font-medium">Bottlenecks marked in amber</span>
               </div>
@@ -272,9 +274,13 @@ export function Diagram({
             <div className="rounded-[2px] border border-accent/20 bg-[#F0F7F7]/60 p-3 sm:p-4">
               <div className="mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <span className="font-mono text-xs font-semibold uppercase tracking-wider text-accent">
-                  {data.after.label} · Automated target architecture
+                  {data.after.label}
                 </span>
-                <span className="font-mono text-[11px] text-accent font-medium">Automated steps marked in teal</span>
+                <span className="font-mono text-[11px] text-accent font-medium">
+                  {data.after.label.toLowerCase().includes("improved")
+                    ? "Optimised steps marked in teal"
+                    : "Automated steps marked in teal"}
+                </span>
               </div>
               <Flow steps={data.after.steps} />
             </div>
