@@ -192,7 +192,7 @@ export function HeroExhibit() {
                     ? "Scene 5: Close-up of product benefits"
                     : "Scene 6: Final product hero shot + CTA"}
                 </p>
-                <span className="inline-block mt-1.5 font-mono text-[10px] text-accent bg-[#142338] px-1.5 py-0.5 rounded-[2px] border border-[#203047]">
+                <span className="inline-block mt-1.5 font-mono text-[10px] text-paper bg-[#142338] px-1.5 py-0.5 rounded-[2px] border border-[#203047]">
                   {scrubberProgress < 12
                     ? "Hook · Pain point"
                     : scrubberProgress < 26

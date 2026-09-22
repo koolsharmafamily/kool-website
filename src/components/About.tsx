@@ -88,7 +88,7 @@ export function About() {
         <div className="hover-card border border-rule bg-surface p-7 sm:p-10">
           <div className="mb-6 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-rule pb-4">
             <div>
-              <span className="font-mono text-xs uppercase tracking-[0.14em] text-signal font-semibold">
+              <span className="font-mono text-xs uppercase tracking-[0.14em] text-[#9B5414] font-semibold">
                 06 · High-Performance & Leadership
               </span>
               <h3 className="font-display text-2xl sm:text-3xl text-ink font-normal mt-1.5">
@@ -104,7 +104,7 @@ export function About() {
             {/* Athletics */}
             <div className="p-5 bg-paper rounded-[2px] border border-rule flex flex-col justify-between">
               <div>
-                <span className="font-mono text-[11px] uppercase tracking-wider text-signal font-semibold block mb-1">
+                <span className="font-mono text-[11px] uppercase tracking-wider text-[#9B5414] font-semibold block mb-1">
                   International Athletics
                 </span>
                 <p className="font-display text-lg text-ink font-semibold">

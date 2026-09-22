@@ -10,22 +10,22 @@ export function Footer() {
           <div className="flex h-7 w-7 items-center justify-center rounded-[2px] bg-[#142338] text-paper border border-[#203047]">
             <KSMonogram size={16} />
           </div>
-          <div className="text-xs text-[#A0ABB5]">
+          <div className="text-xs text-[#CBD5E1]">
             <span>© {new Date().getFullYear()} Kulvir Sharma</span>
-            <span className="mx-2 text-[#203047]">·</span>
+            <span className="mx-2 text-[#495664]">·</span>
             <span>Melbourne → India</span>
           </div>
         </div>
 
         {/* Tech Stack Signature */}
-        <div className="font-mono text-[11px] text-[#A0ABB5] text-center">
+        <div className="font-mono text-[11px] text-[#CBD5E1] text-center">
           Built with React, TypeScript and Vercel
         </div>
 
         {/* Back to top */}
         <a
           href="#top"
-          className="inline-flex items-center gap-1.5 font-mono text-xs text-[#A0ABB5] hover:text-paper transition-colors py-1 px-2"
+          className="inline-flex items-center gap-1.5 font-mono text-xs text-[#CBD5E1] hover:text-paper transition-colors py-1 px-2"
         >
           <span>Back to top</span>
           <span aria-hidden="true">&uarr;</span>

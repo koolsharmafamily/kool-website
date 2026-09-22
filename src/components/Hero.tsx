@@ -130,14 +130,17 @@ function ProofItem({
   source: string;
   showHairline?: boolean;
 }) {
-  const [displayValue, setDisplayValue] = useState(0);
+  const [displayValue, setDisplayValue] = useState(numericValue);
   const itemRef = useRef<HTMLDivElement>(null);
+  const animatedRef = useRef(false);
 
   useEffect(() => {
     const el = itemRef.current;
-    if (!el) return;
+    if (!el || animatedRef.current) return;
 
     return observeInView(el, () => {
+      animatedRef.current = true;
+      setDisplayValue(0);
       animateCounter((val) => {
         setDisplayValue(val);
       }, numericValue, 800);
