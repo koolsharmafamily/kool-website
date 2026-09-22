@@ -74,7 +74,7 @@ export function Header() {
             : "border-b border-transparent bg-paper/80 backdrop-blur-xs"
         }`}
       >
-        <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+        <div className="site-container flex items-center justify-between gap-4 py-3">
           <a
             href="/"
             onClick={(e) => {

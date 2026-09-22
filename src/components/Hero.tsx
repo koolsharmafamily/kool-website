@@ -17,7 +17,7 @@ export function Hero() {
               <p className="mb-4 font-mono text-xs uppercase tracking-[0.12em] text-accent font-medium">
                 {hero.kicker}
               </p>
-              <h1 className="font-display text-[clamp(1.85rem,5.5vw,4.5rem)] font-normal leading-[1.08] tracking-[-0.02em] text-ink">
+              <h1 className="font-display text-[clamp(2rem,4vw,3.75rem)] font-normal leading-[1.08] tracking-[-0.02em] text-ink">
                 {hero.value}
               </h1>
             </Reveal>
