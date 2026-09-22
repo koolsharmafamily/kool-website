@@ -1,4 +1,7 @@
-import { hero, proofPoints, site } from "../data/content";
+import { useEffect, useRef, useState } from "react";
+import { hero, site } from "../data/content";
+import { proof } from "../data/motion";
+import { animateCounter, observeInView } from "../lib/motion";
 import { Container } from "./ui";
 import { Reveal } from "./Reveal";
 import { HeroExhibit } from "./HeroExhibit";
@@ -115,21 +118,40 @@ export function Hero() {
 }
 
 function ProofItem({
-  value,
+  numericValue,
+  suffix,
   label,
   source,
   showHairline = true,
 }: {
-  value: string;
+  numericValue: number;
+  suffix: string;
   label: string;
   source: string;
   showHairline?: boolean;
 }) {
+  const [displayValue, setDisplayValue] = useState(0);
+  const itemRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = itemRef.current;
+    if (!el) return;
+
+    return observeInView(el, () => {
+      animateCounter((val) => {
+        setDisplayValue(val);
+      }, numericValue, 800);
+    });
+  }, [numericValue]);
+
+  // Format with thousand separators if >= 1000
+  const formatted = displayValue >= 1000 ? displayValue.toLocaleString("en-US") : displayValue.toString();
+
   return (
-    <div className="relative flex-1 py-4 sm:py-2">
+    <div ref={itemRef} className="relative flex-1 py-4 sm:py-2">
       <div className="flex flex-col">
-        <span className="font-display text-[clamp(2.5rem,4.5vw,3.75rem)] font-normal leading-none text-signal">
-          {value}
+        <span className="font-display text-[clamp(2.5rem,4.5vw,3.75rem)] font-normal leading-none text-signal tabular-nums">
+          {formatted}{suffix}
         </span>
         <span className="mt-3 font-body text-sm font-medium text-paper">
           {label}
@@ -148,7 +170,6 @@ function ProofItem({
   );
 }
 
-
 export function ProofStrip() {
   return (
     <section
@@ -157,13 +178,14 @@ export function ProofStrip() {
     >
       <Container>
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-          {proofPoints.map((point, i) => (
+          {proof.map((point, i) => (
             <ProofItem
               key={point.label}
-              value={point.value}
+              numericValue={point.value}
+              suffix={point.suffix}
               label={point.label}
               source={point.source}
-              showHairline={i < proofPoints.length - 1}
+              showHairline={i < proof.length - 1}
             />
           ))}
         </div>
@@ -171,3 +193,4 @@ export function ProofStrip() {
     </section>
   );
 }
+
