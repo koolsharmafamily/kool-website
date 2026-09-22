@@ -10,7 +10,7 @@ export function Approach() {
         <div className="md:col-span-4">
           <Reveal>
             <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent font-medium mb-3">
-              02 · Problem-Solving Methodology
+              02 · How I work
             </p>
             <h2
               id="approach-heading"

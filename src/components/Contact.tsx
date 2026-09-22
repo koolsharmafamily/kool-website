@@ -11,7 +11,7 @@ export function Contact() {
   const copyEmail = () => {
     navigator.clipboard.writeText(site.email);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+    setTimeout(() => setCopied(false), 1500);
 
     toast.custom(() => (
       <div className="flex items-center gap-2.5 rounded-[2px] border border-[#203047] bg-[#0E1A2B] px-3.5 py-2.5 font-mono text-xs text-paper shadow-xl">
@@ -60,7 +60,7 @@ export function Contact() {
                   className="inline-flex items-center gap-1.5 rounded-[2px] border border-[#203047] bg-[#142338] px-3.5 py-2 min-h-[44px] font-mono text-xs text-[#A0ABB5] transition-colors hover:border-accent hover:text-paper cursor-pointer"
                 >
                   <MailIcon className="h-3.5 w-3.5" />
-                  <span>{copied ? "Copied!" : "Copy email"}</span>
+                  <span>{copied ? "Copied ✓" : "Copy email"}</span>
                 </button>
               </div>
 
