@@ -296,7 +296,24 @@ a:hover {
 }
 
 .data-table tbody tr {
+  position: relative;
   transition: background-color 0.2s var(--ease-out);
+}
+
+.data-table tbody tr::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--color-accent);
+  opacity: 0;
+  transition: opacity 0.2s var(--ease-out);
+}
+
+.data-table tbody tr:hover::before {
+  opacity: 1;
 }
 
 .data-table tbody tr:hover {

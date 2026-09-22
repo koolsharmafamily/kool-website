@@ -3,19 +3,14 @@ import { caseStudies } from "../data/caseStudies";
 import { Section, StatusBadge, MonoTags } from "./ui";
 import { Reveal } from "./Reveal";
 import { CaseCover } from "./CaseCovers";
+import { navigateWithTransition } from "../lib/motion";
 
 export function Work() {
   const [, setLocation] = useLocation();
   const [featured, second, third, ...indexStudies] = caseStudies;
 
   const navigate = (href: string) => {
-    if (typeof document !== "undefined" && "startViewTransition" in document) {
-      (document as unknown as { startViewTransition: (cb: () => void) => void }).startViewTransition(() => {
-        setLocation(href);
-      });
-    } else {
-      setLocation(href);
-    }
+    navigateWithTransition(() => setLocation(href));
   };
 
   return (
