@@ -115,7 +115,7 @@ export const experience = [
   {
     org: "Anylytics",
     title: "Management Consultant Trainee",
-    dates: "Mar 2026 – Present",
+    dates: "Mar 2026 – May 2026",
     location: "Melbourne, Australia",
     shows: "Translating business requirements into product features",
   },
