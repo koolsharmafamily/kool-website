@@ -20,9 +20,9 @@ export function Home() {
       <ProofStrip />
       <Work />
       <Approach />
+      <OtherWork />
       <Experience />
       <About />
-      <OtherWork />
       <Contact />
     </>
   );

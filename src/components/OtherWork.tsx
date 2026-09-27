@@ -14,13 +14,16 @@ export function OtherWork() {
   const categories = [
     { label: "Client Intake & Bookings", code: "LEDGER-01", tag: "Deployed System" },
     { label: "Multi-API Songbook Utility", code: "LEDGER-02", tag: "Integration Tool" },
-    { label: "GenAI Production Studio", code: "LEDGER-03", tag: "Automated Pipeline" },
-    { label: "Cinema Food-Ordering Flow", code: "LEDGER-04", tag: "Process Architecture" },
+    { label: "GenAI Content Studio", code: "LEDGER-03", tag: "GenAI Workflow" },
+    { label: "Cinema Food Ordering", code: "LEDGER-04", tag: "Process Architecture" },
     { label: "Sports Academy Advisory", code: "LEDGER-05", tag: "CRM & Strategy" },
   ];
 
   return (
-    <Section id="other-work" labelledBy="other-work-heading" variant="paper">
+    <Section id="systems" labelledBy="systems-heading" variant="paper" className="relative">
+      {/* Backwards compatibility anchor */}
+      <span id="other-work" className="absolute -top-20" aria-hidden="true" />
+
       {/* Asymmetric Header */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 mb-10 sm:mb-14">
         <div className="md:col-span-4">
@@ -29,7 +32,7 @@ export function OtherWork() {
               03 · Systems & Utilities
             </p>
             <h2
-              id="other-work-heading"
+              id="systems-heading"
               className="font-display text-[clamp(2rem,3.5vw,3rem)] font-normal leading-tight tracking-[-0.02em] text-ink"
             >
               Operational ledger

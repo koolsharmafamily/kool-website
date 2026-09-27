@@ -27,6 +27,7 @@ export const site = {
 export const nav = [
   { label: "Work", href: "/#work" },
   { label: "Approach", href: "/#approach" },
+  { label: "Systems", href: "/#systems" },
   { label: "Experience", href: "/#experience" },
   { label: "About", href: "/#about" },
   { label: "Contact", href: "/#contact" },
@@ -275,13 +276,13 @@ export const otherWork: OtherWorkItem[] = [
     meta: "",
   },
   {
-    title: "GenAI content automation studio",
-    body: "A content pipeline for a music band, built to turn one session into a run of publishable assets.",
+    title: "GenAI Music Content Studio",
+    body: "GenAI-driven content workflow and blog/copywriting automation pipeline engineered for a music band (Kool Kalakaars) to turn performance sessions into publishable assets.",
     meta: "",
   },
   {
-    title: "Automated cinema food-ordering workflow",
-    body: "An ordering flow designed to remove the queue between the customer and the kitchen.",
+    title: "Cinema Food Ordering Architecture",
+    body: "Automated cinema food-ordering workflow and customer/kitchen queue elimination architecture streamlining order processing and fulfilment.",
     meta: "",
   },
   {

@@ -35,7 +35,7 @@ export function Contact() {
           <div className="md:col-span-8">
             <Reveal>
               <p className="font-mono text-xs uppercase tracking-[0.14em] text-signal font-medium mb-4">
-                07 · Contact & Availability
+                06 · Contact & Availability
               </p>
               <h2
                 id="contact-heading"

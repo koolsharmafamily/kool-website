@@ -89,7 +89,7 @@ export function About() {
           <div className="mb-6 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-rule pb-4">
             <div>
               <span className="font-mono text-xs uppercase tracking-[0.14em] text-[#9B5414] font-semibold">
-                06 · High-Performance & Leadership
+                Leadership & Distinction
               </span>
               <h3 className="font-display text-2xl sm:text-3xl text-ink font-normal mt-1.5">
                 Elite Athletics & Musical Direction
